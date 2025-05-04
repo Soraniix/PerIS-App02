@@ -307,8 +307,9 @@ main section form fieldset {
 }
 
 #hinweise .filter-tabs {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     display: flex;
+    
 }
 
 #hinweise .filter-tabs button {
@@ -318,9 +319,38 @@ main section form fieldset {
     background-color: whitesmoke;
     border-radius: 4px ;
     cursor: pointer;
+    transition: transform 0.2s ease;
+
 }
 
 .filter-tabs button.active {
     background-color: #ddd;
     font-weight: bold;
+}
+
+#hinweise .filter-tabs button:hover {
+    transform: scale(1.1);
+    background-color: #ccc;
+}
+
+.form-actions {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+.form-actions .edit_times_button {
+    width: 37px;
+    height: 37px;
+    margin-bottom: 0;
+}
+
+.form-actions .save_times_button {
+    width: 45px;
+    height: 45px; 
+}
+
+.form-actions img:hover {
+    transform: scale(1.1);
 }
