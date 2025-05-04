@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="Soranix" content="PerIS-App Dashboard">
     <title>PerIS Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/style.css">
 
 </head>
@@ -31,12 +34,271 @@
     </header>
 
     <main>
-        <section><h2>Übersicht Beschlüsse</h2></section>
-        <section><h2>Hinweis & Notizen</h2></section>
-        <section><h2>Offene Aufgaben</h2></section>
-        <section><h2>Offene Löschungen</h2></section>
-        <section><h2>Offene Ausleitungen</h2></section>
-        <section><h2>Kamera Zeiten</h2></section>
+
+        <section id="uebersicht-beschluesse">
+            <h2>Übersicht Beschlüsse</h2>
+            <ul>
+                <li data-beschluesse-id="01" class="date-warning">
+                    <div><span class="label">Name:</span><span class="value">EV Soranix</span></div>
+                    <div><span class="label">Vorg. Nr.:</span><span class="value">1234/24/133230</span></div>
+                    <div><span class="label">Datum:</span><span class="ablaufdatum">01.01.2026</span></div>
+                </li>
+
+                <li data-beschluesse-id="02" class="date-normal">
+                    <div><span class="label">Name:</span><span class="value">EV Elena</span></div>
+                    <div><span class="label">Vorg. Nr.:</span><span class="value">4321/24/133230</span></div>
+                    <div><span class="label">Datum:</span><span class="ablaufdatum">02.01.2026</span></div>
+                </li>
+
+                <li data-beschluesse-id="03" class="date-critical">
+                    <div><span class="label">Name:</span><span class="value">EV Fori</span></div>
+                    <div><span class="label">Vorg. Nr.:</span><span class="value">5678/24/133230</span></div>
+                    <div><span class="label">Datum:</span><span class="ablaufdatum">03.01.2026</span></div>
+                </li>
+
+                <li data-beschluesse-id="04" class="date-expired">
+                    <div><span class="label">Name:</span><span class="value">EV Madeleine</span></div>
+                    <div><span class="label">Vorg. Nr.:</span><span class="value">8765/24/133230</span></div>
+                    <div><span class="label">Datum:</span><span class="ablaufdatum">04.01.2026</span></div>
+                </li>
+
+            </ul>
+            <div class="beschlussdetails hidden">
+                <h3>Beschluss Details</h3>
+                <div class="details-content">(Details werden hier geladen)</div>
+                <button type="button" class="close-button">Schließen</button>
+            </div>
+        </section>
+
+        <section id="hinweise">
+            <h2>Hinweis & Notizen</h2>
+            <div class="filter-tabs">
+                <button type="button" class="active">Alle öffentlichen</button>
+                <button type="button">privat</button>
+            </div>
+
+            <ul class="hinweis-liste">
+                <li data-note-id="01" class="prio-hoch note-public">
+                    
+                    <div class="note-header"><span class="note-title">Wichtiger Systemhinweis</span>
+                    <span class="note-meta">von Admin am 04.05.2025</span>
+                    <span class="note-prio-badge">Hoch</span>
+                    </div>
+                    
+                    <div class="note-body">Der Server wird heute Nacht um 02:00 Uhr neu gestartet für wichtige Updates.</div>
+                </li>
+
+                <li data-note-id="02" class="prio-mittel note-private">
+                    
+                    <div class="note-header"><span class="note-title">Recherchen checken</span>
+                    <span class="note-meta">von Soranix am 05.05.2025</span>
+                    <span class="note-prio-badge">Mittel</span>
+                    </div>
+                    
+                    <div class="note-body">Du musst noch mit Robert eine Termin finden und die Mobile checken. Ich schreibe noch deutlich mehr extra um ... zu generieren</div>
+
+                </li>
+
+                <li data-note-id="03" class="prio-niedrig note-private">
+                    
+                    <div class="note-header"><span class="note-title">Recherchen checken</span>
+                    <span class="note-meta">von Soranix am 05.05.2025</span>
+                    <span class="note-prio-badge">Niedrig</span>
+                    </div>
+                    
+                    <div class="note-body">Du musst noch mit Robert eine Termin finden und die Mobile checken </div>
+
+                </li>
+
+            </ul>
+
+            <div class="note-details-panel hidden">
+                <h3>Notiz Details</h3>
+                <div class="details-content">(vollständiger Text und Details...)</div>
+                <button type="button" class="close-button">Schließen</button>
+
+            </div>
+
+        </section>
+
+        <section id="offene-aufgaben">
+            <h2>Offene Aufgaben</h2>
+            <ul>
+                <li data-task-id="01" class="task-status-offen">
+                    Aufgabe: Prüfe Lage XYL
+                    <span class="task-status">offen</span>
+                </li>
+
+                <li data-task-id="02" class="task-status-arbeit">
+                    Prüfe Live-System auf Fehler!
+                    <span class="task-status">in Arbeit</span>
+                </li>
+
+                <li data-task-id="03" class="task-status-offen">
+                    System-check!
+                    <span class="task-status">offen</span>
+                </li>
+                <li data-task-id="04" class="task-status-arbeit">
+                    Prüfe Live-System auf Fehler!
+                    <span class="task-status">in Arbeit</span>
+                </li>
+
+                <li data-task-id="05" class="task-status-offen">
+                    System-check!
+                    <span class="task-status">offen</span>
+                </li>
+
+                <li data-task-id="06" class="task-status-arbeit">
+                    Prüfe Live-System auf Fehler!
+                    <span class="task-status">in Arbeit</span>
+                </li>
+
+                <li data-task-id="07" class="task-status-offen">
+                    System-check!
+                    <span class="task-status">offen</span>
+                </li>
+
+            </ul>
+            <div class ="notiz-panel hidden">
+                <h3>Notizen</h3>
+                <div class="alte-notizen"><p>(hier erscheinen alte notizen...)</p></div>
+                <form>
+                    <textarea name="neue_notiz" id="neue_notiz_input" placeholder="Neue Notizen hier eingeben"></textarea>
+                    <button type="submit">Speichern</button>
+                </form>
+                <button type="button" class="close-button">Schließen</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>Offene Löschungen</h2>
+        </section>
+
+        <section>
+            <h2>Offene Ausleitungen</h2>
+        </section>
+
+        <section>
+            <h2>Kamera Zeiten</h2>
+            <form action="">
+                <fieldset>
+                    <legend>Standort Görlitz</legend>
+                    <div>
+                        <label for="start_sb">SB:</label>
+                        <input type="time" id="start_sb" name="start_sb" value="00:00" disabled> 
+                        bis
+                        <input type="time" name="end_sb" id="end_sb" value="00:00" disabled>
+                        <select name="status_sb" id="status_sb" disabled>
+                            <option value="on">AN</option>
+                            <option value="off">AUS</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="start_hw">HW:</label>
+                        <input type="time" id="start_hw" name="start_hw" value="00:00" disabled> 
+                        bis
+                        <input type="time" name="end_hw" id="end_hw" value="00:00" disabled>
+                        <select name="status_hw" id="status_hw" disabled>
+                            <option value="on">AN</option>
+                            <option value="off">AUS</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="start_asb">ASB:</label>
+                        <input type="time" id="start_asb" name="start_asb" value="00:00" disabled>
+                        bis
+                        <input type="time" name="end_asb" id="end_asb" value="00:00" disabled>
+                        <select name="status_asb" id="status_asb" disabled>
+                            <option value="on">AN</option>
+                            <option value="off">AUS</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="start_jk">JK:</label>
+                        <input type="time" name="start_jk" id="start_jk" value="00:00" disabled>
+                        bis
+                        <input type="time" name="end_jk" id="end_jk" value="00:00" disabled>
+                        <select name="status_jk" id="status_jk" disabled>
+                            <option value="on">AN</option>
+                            <option value="off">AUS</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="start_hs">HS:</label>
+                        <input type="time" name="start_hs" id="start_hs" value="00:00" disabled>
+                        bis
+                        <input type="time" name="end_hs" id="end_hs" value="00:00" disabled>
+                        <select name="status_hs" id="status_hs" disabled>
+                            <option value="on">AN</option>
+                            <option value="off">AUS</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="start_ng">NG:</label>
+                        <input type="time" name="start_ng" id="start_ng" value="00:00" disabled>
+                        bis
+                        <input type="time" name="end_ng" id="end_ng" value="00:00" disabled>
+                        <select name="status_ng" id="status_ng" disabled>
+                            <option value="on">AN</option>
+                            <option value="off">AUS</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Standort Zittau</legend>
+                        <div>
+                            <label for="start_b178">B178:</label>
+                            <input type="time" name="start_b178" id="start_b178" value="00:00" disabled>
+                            bis
+                            <input type="time" name="end_b178" id="end_b178" value="00:00" disabled>
+                            <select name="status_b178" id="status_b178" disabled>
+                                <option value="on">AN</option>
+                                <option value="off">AUS</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="start_fs">FS:</label>
+                            <input type="time" name="start_fs" id="start_fs" value="00:00" disabled>
+                            bis
+                            <input type="time" name="end_fs" id="end_fs" value="00:00" disabled>
+                            <select name="status_fs" id="status_fs" disabled>
+                                <option value="on">AN</option>
+                                <option value="off">AUS</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="start_cs">CS:</label>
+                            <input type="time" name="start_cs" id="start_cs" value="00:00" disabled>
+                            bis
+                            <input type="time" name="end_cs" id="end_cs" value="00:00" disabled>
+                            <select name="status_cs" id="status_cs" disabled>
+                                <option value="on">AN</option>
+                                <option value="off">AUS</option>
+                            </select>
+                        </div>
+                </fieldset>
+                <div class="form-actions">
+                    <button type="submit">Alle Zeiten speichern</button>
+                    <button type="button" id="edit_times_buttons">Bearbeiten</button>
+                </div>
+                
+            </form>
+
+        <div class="location-notes-panel hidden"> <h3>Notizen für Standort</h3> <div class="existing-notes"><p>(Hier erscheinen alte Notizen...)</p></div>
+            <form>
+                <textarea placeholder="Neue Notiz hier eingeben..."></textarea>
+                <button type="submit">Notiz Speichern</button>
+            </form>
+            <button type="button" class="close-button">Schließen</button>
+        </div>
+
+        </section>
     </main>
 
     <footer>
