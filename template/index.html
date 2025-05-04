@@ -118,6 +118,31 @@
                 <button type="button" class="close-button">Schließen</button>
 
             </div>
+            
+            <img class="add-note-button" src="../static/images/plus.png" alt="Plus Icon" title="Neue Notiz hinzufügen">
+            
+            <div class="add-note-panel hidden">
+                <form action=""> 
+                    <label for="note-title">Title:</label>
+                    <input type="text" name="note-title" id="note-title">
+                    
+                    <label for="note-text">Notiz/ Hinweis:</label>
+                    <textarea name="note-text" id="note-text" placeholder="Neue Notiz..."></textarea> <label for="note-prio">Priorität:</label>
+                    <select name="note-prio" id="note-prio">
+                        <option value="niedrig">Niedrig</option>
+                        <option value="mittel">Mittel</option>
+                        <option value="hoch">Hoch</option>
+                    </select>
+            
+                    <div>
+                        <input type="radio" name="visibility" id="vis-public" value="public" checked> <label for="vis-public">öffentlich</label>
+                        <input type="radio" name="visibility" id="vis-private" value="private"> <label for="vis-private">Privat</label> </div>
+            
+                    <button type="submit">Notiz hinzufügen</button>
+                </form>
+
+            </div>
+
 
         </section>
 
