@@ -354,3 +354,30 @@ main section form fieldset {
 .form-actions img:hover {
     transform: scale(1.1);
 }
+
+#offene-loeschungen ul {
+    list-style: none;
+    max-height: 370px;
+    overflow: auto;
+
+}
+
+#offene-loeschungen li {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+    
+    border-bottom: 1px solid #ccc;
+    transition: background-color 0.2s ease;
+}
+
+#offene-loeschungen li:hover {
+    background-color: #ccc;
+}
+
+#offene-loeschungen li span.label {
+    font-weight: bold;
+    display: inline-block;
+    width: 140px;
+    margin-right: 20px;
+}
