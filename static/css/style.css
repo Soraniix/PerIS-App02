@@ -381,3 +381,47 @@ main section form fieldset {
     width: 140px;
     margin-right: 20px;
 }
+
+
+#offene-ausleitungen ul {
+    list-style: none;
+    max-height: 450px;
+    overflow-y: auto;
+    
+}
+
+#offene-ausleitungen li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ccc;
+    transition: all 0.2s ease;
+}
+
+#offene-ausleitungen li:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+#offene-ausleitungen .label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+
+#offene-ausleitungen li.laufzeit-kurz .value-ausl-time {
+    color: red;
+}
+
+#offene-ausleitungen li.laufzeit-ok .value-ausl-time {
+    color: rgb(0, 138, 51);
+}
+
+#offene-ausleitungen li.laufzeit-mittel .value-ausl-time {
+    color: rgb(255, 111, 0);
+}
+
+#offene-ausleitungen li div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
