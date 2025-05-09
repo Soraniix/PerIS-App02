@@ -120,8 +120,9 @@ main section h2 {
 #offene-aufgaben ul {
     list-style:  none;
     padding-left: 0;
-    max-height: 250px;
+    max-height: 80%;;
     overflow-y: auto;
+    height: 350px;
 }
 
 
@@ -175,7 +176,8 @@ main section form fieldset {
 #uebersicht-beschluesse ul {
     list-style: none;
     padding-left: 0;
-    max-height: 250px;
+    height: 350px;
+    max-height:80%;;
     overflow-y: auto;
     margin-bottom: 10px;
 }
@@ -227,13 +229,14 @@ main section form fieldset {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 #hinweise ul {
     list-style: none;
     padding-left: 0;
-    max-height: 250px;
+    height: 300px;
+    max-height: 80%;
     overflow-y: auto;
 }
 
@@ -319,7 +322,7 @@ main section form fieldset {
     background-color: whitesmoke;
     border-radius: 4px ;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    
 
 }
 
@@ -329,7 +332,7 @@ main section form fieldset {
 }
 
 #hinweise .filter-tabs button:hover {
-    transform: scale(1.1);
+    
     background-color: #ccc;
 }
 
@@ -357,9 +360,9 @@ main section form fieldset {
 
 #offene-loeschungen ul {
     list-style: none;
-    max-height: 370px;
+    max-height: 80%;
     overflow: auto;
-
+    height: 400px;
 }
 
 #offene-loeschungen li {
@@ -385,9 +388,9 @@ main section form fieldset {
 
 #offene-ausleitungen ul {
     list-style: none;
-    max-height: 450px;
+    max-height: 80%;
     overflow-y: auto;
-    
+    height: 400px;
 }
 
 #offene-ausleitungen li {
@@ -425,3 +428,95 @@ main section form fieldset {
     justify-content: space-between;
 }
 
+/* Styling für das Panel zum Hinzufügen von Notizen */
+.add-note-panel {
+    background-color: #fff; /* Weißer Hintergrund */
+    border: 1px solid #ccc; /* Heller Rahmen */
+    border-radius: 5px;     /* Abgerundete Ecken, passend zu den Sektionen */
+    padding: 20px;          /* Innenabstand */
+    margin-top: 15px;       /* Abstand zum Plus-Button oder der Liste darüber */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Leichter Schatten für "Tiefe" */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 500px;
+
+    
+}
+
+.add-note-panel #header label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.add-note-panel #main #prio label {
+    margin-right: 100px;
+    font-weight: bold;
+
+}
+
+.add-note-panel #main #vis #vis-titel {
+    font-weight: bold;
+    margin-right: 75px;
+}
+
+.add-note-panel #main #vis  {
+    margin-top: 10px;
+    
+}
+
+.add-note-panel #main #vis label {
+    margin-right: 10px;
+}
+
+.add-note-panel #header #note-title {
+    width: 100%;
+    height: 3em;
+    border: 1px solid #ccc;
+    padding-left: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.add-note-panel #header #note-text {
+    width: 100%;
+    height: 10em;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 8px;
+    border-radius: 5px;
+}
+  
+.add-note-panel button {
+    background-color: #333;
+    color: white; padding: 10px 15px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.add-note-panel button:hover {
+     background-color: #555; 
+}
+
+     .add-note-panel input:focus,
+     .add-note-panel textarea:focus,
+     .add-note-panel select:focus {
+         outline: 2px solid gray;
+     }
+
+.add-note-panel #buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+#hinweise { /* Oder welche Sektion auch immer das .add-note-panel direkt enthält */
+    position: relative; /* WICHTIG für absolute Kinder */
+    /* Deine bestehenden Styles für die Sektion bleiben erhalten */
+}

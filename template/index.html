@@ -8,14 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/style.css">
-    <script src="../static/js/script.js"></script>
+    
 </head>
 
 <body>
-    
-
-
-</body>
     <header>
         <img src="../static/images/PerIS-Logo.png" alt="PerIS-Logo">
         <h1>Dashboard</h1>
@@ -73,16 +69,17 @@
         <section id="hinweise">
             <h2>Hinweis & Notizen</h2>
             <div class="filter-tabs">
-                <button type="button" class="active">Alle öffentlichen</button>
-                <button type="button">privat</button>
+                <button type="button" class="active">öffentlich</button>
+                <button type="button" class="active">privat</button>
             </div>
 
             <ul class="hinweis-liste">
                 <li data-note-id="01" class="prio-hoch note-public">
                     
-                    <div class="note-header"><span class="note-title">Wichtiger Systemhinweis</span>
+                    <div class="note-header">
+                    <span class="note-title">Wichtiger Systemhinweis</span>
                     <span class="note-meta">von Admin am 04.05.2025</span>
-                    <span class="note-prio-badge">Hoch</span>
+                    <span class="note-prio-badge">Hoch <span> - </span><span>public</span></span> 
                     </div>
                     
                     <div class="note-body">Der Server wird heute Nacht um 02:00 Uhr neu gestartet für wichtige Updates.</div>
@@ -92,7 +89,7 @@
                     
                     <div class="note-header"><span class="note-title">Recherchen checken</span>
                     <span class="note-meta">von Soranix am 05.05.2025</span>
-                    <span class="note-prio-badge">Mittel</span>
+                    <span class="note-prio-badge">Mittel <span> - </span><span>privat</span></span>
                     </div>
                     
                     <div class="note-body">Du musst noch mit Robert eine Termin finden und die Mobile checken. Ich schreibe noch deutlich mehr extra um ... zu generieren</div>
@@ -103,7 +100,7 @@
                     
                     <div class="note-header"><span class="note-title">Recherchen checken</span>
                     <span class="note-meta">von Soranix am 05.05.2025</span>
-                    <span class="note-prio-badge">Niedrig</span>
+                    <span class="note-prio-badge">Niedrig  <span> - </span><span>privat</span></span>
                     </div>
                     
                     <div class="note-body">Du musst noch mit Robert eine Termin finden und die Mobile checken </div>
@@ -123,22 +120,41 @@
             
             <div class="add-note-panel hidden">
                 <form action=""> 
-                    <label for="note-title">Title:</label>
-                    <input type="text" name="note-title" id="note-title">
+                    <div id="header">
+                        <label for="note-title">Titel:</label>
+                        <input type="text" name="note-title" id="note-title" placeholder="Titel..." required>
+                        
+                        <label for="note-text">Notiz/ Hinweis:</label>
+                        <textarea name="note-text" id="note-text" placeholder="Neue Notiz..." required></textarea> 
+
+                    </div>
+
+                    <div id="main">
+                        <div id="prio">
+                            <label for="note-prio">Priorität:</label>    
+                            <select name="note-prio" id="note-prio">
+                                <option value="niedrig">Niedrig</option>
+                                <option value="mittel">Mittel</option>
+                                <option value="hoch">Hoch</option>
+                            </select>
+                        </div>
+                        
+                
+                        <div id="vis">
+                            <label for="vis" id="vis-titel">Sichtbarkeit:</label>
+                            <input type="radio" name="visibility" id="vis-public" value="public" checked> <label for="vis-public">öffentlich</label>
+                            <input type="radio" name="visibility" id="vis-private" value="private"> <label for="vis-private">Privat</label> </div>
+
+                    </div>
+                    <div id="buttons">
+                        <div>
+                            <button type="submit">Notiz hinzufügen</button>
+                            <button type="reset" class="clear-button">Clear</button>
+                        </div>
+                        
+                        <button type="button" class="close-button">X</button>
+                    </div>
                     
-                    <label for="note-text">Notiz/ Hinweis:</label>
-                    <textarea name="note-text" id="note-text" placeholder="Neue Notiz..."></textarea> <label for="note-prio">Priorität:</label>
-                    <select name="note-prio" id="note-prio">
-                        <option value="niedrig">Niedrig</option>
-                        <option value="mittel">Mittel</option>
-                        <option value="hoch">Hoch</option>
-                    </select>
-            
-                    <div>
-                        <input type="radio" name="visibility" id="vis-public" value="public" checked> <label for="vis-public">öffentlich</label>
-                        <input type="radio" name="visibility" id="vis-private" value="private"> <label for="vis-private">Privat</label> </div>
-            
-                    <button type="submit">Notiz hinzufügen</button>
                 </form>
 
             </div>
@@ -569,5 +585,9 @@
 
     <footer>
         <p>&copy;2025   -    Nico Puchert    -    PerIS-WebApp</p>
-    </footer>
+    </footer>  
+
+    <script src="../static/js/script.js"></script>
+</body>
+
 </html>
