@@ -79,7 +79,7 @@
                     <div class="note-header">
                     <span class="note-title">Wichtiger Systemhinweis</span>
                     <span class="note-meta">von Admin am 04.05.2025</span>
-                    <span class="note-prio-badge">Hoch <span> - </span><span>public</span></span> 
+                    <span class="note-prio-badge">Hoch <span> - </span><span class="note-vis-badge">public</span></span> 
                     </div>
                     
                     <div class="note-body">Der Server wird heute Nacht um 02:00 Uhr neu gestartet für wichtige Updates.</div>
@@ -89,7 +89,7 @@
                     
                     <div class="note-header"><span class="note-title">Recherchen checken</span>
                     <span class="note-meta">von Soranix am 05.05.2025</span>
-                    <span class="note-prio-badge">Mittel <span> - </span><span>privat</span></span>
+                    <span class="note-prio-badge">Mittel <span> - </span><span class="note-vis-badge">private</span></span>
                     </div>
                     
                     <div class="note-body">Du musst noch mit Robert eine Termin finden und die Mobile checken. Ich schreibe noch deutlich mehr extra um ... zu generieren</div>
@@ -100,7 +100,7 @@
                     
                     <div class="note-header"><span class="note-title">Recherchen checken</span>
                     <span class="note-meta">von Soranix am 05.05.2025</span>
-                    <span class="note-prio-badge">Niedrig  <span> - </span><span>privat</span></span>
+                    <span class="note-prio-badge">Niedrig  <span> - </span><span class="note-vis-badge">private</span></span>
                     </div>
                     
                     <div class="note-body">Du musst noch mit Robert eine Termin finden und die Mobile checken </div>
@@ -110,9 +110,36 @@
             </ul>
 
             <div class="note-details-panel hidden">
-                <h3>Notiz Details</h3>
-                <div class="details-content">(vollständiger Text und Details...)</div>
-                <button type="button" class="close-button">Schließen</button>
+                <form action="">
+                    <h3>Infos</h3>
+                    <div><input type="text" name="details-titel" id="details-titel" class="details-titel change-info" disabled required></div>
+                    <div><input type="text" name="details-meta" id="details-meta" class="details-meta" disabled></div>
+                    
+                    <textarea type="text" name="details-content" id="details-content" class="details-content change-info" disabled required></textarea>
+                    <div class="border-unten"></div>
+                    <div class="auswahl">
+                        <select name="note-details-prio" id="note-details-prio" class="note-details-prio change-info" disabled>
+                            <option value="niedrig">Niedrig</option>
+                            <option value="mittel">Mittel</option>
+                            <option value="hoch">Hoch</option>
+                        </select>
+
+                        <div class="radio" >
+                            <span style="font-weight: bold;">Sichtbarkeit:</span>
+                            <span><label for="note-details-vis">öffentlich</label> <input type="radio" name="note-details-vis" id="note-details-vis-public" value="public" disabled class="change-info"></span>
+                            <span><label for="note-details-vis">privat</label> <input type="radio" name="note-details-vis" id="note-details-vis-private" value="private" disabled class="change-info"></span>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div>
+                            <button type="button" class="close-button button">X</button>
+                            <button type="button" class="change-button button">Bearbeiten</button>
+                        </div>
+                        <button type="submit" class="save-button button">Speichern</button>
+
+                    </div>
+
+                </form>
 
             </div>
             
@@ -151,9 +178,8 @@
                             <button type="submit">Notiz hinzufügen</button>
                             <button type="reset" class="clear-button">Clear</button>
                         </div>
-                        
-                        <button type="button" class="close-button">X</button>
-                    </div>
+                            <button type="button" class="close-button">X</button>
+                        </div>
                     
                 </form>
 

@@ -520,3 +520,129 @@ main section form fieldset {
     position: relative; /* WICHTIG für absolute Kinder */
     /* Deine bestehenden Styles für die Sektion bleiben erhalten */
 }
+
+#hinweise .note-details-panel {
+    background-color: #fff; /* Weißer Hintergrund */
+    border: 1px solid #ccc; /* Heller Rahmen */
+    border-radius: 5px;     /* Abgerundete Ecken, passend zu den Sektionen */
+    padding: 20px;          /* Innenabstand */
+    margin-top: 15px;       /* Abstand zum Plus-Button oder der Liste darüber */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Leichter Schatten für "Tiefe" */
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 400px;
+    height: max-content;
+    max-width: 500px;
+}
+
+#hinweise .note-details-panel h3 {
+    text-align: center;
+    padding: 20px;
+
+}
+
+#hinweise .note-details-panel img.edit_times_button {
+    width: 25px;
+}
+
+#hinweise .note-details-panel img.save_times_button {
+    width: 30px;
+}
+
+#hinweise .note-details-panel form {
+    display: flex;
+    flex-direction: column;
+}
+
+#hinweise .note-details-panel .details-titel {
+    font-weight: bold;
+    border: none;
+    font-size: 1em;
+    align-self: center;
+    width: 100%;
+    text-align: left    ;
+    margin-bottom: 10px;
+    
+    border-radius: 5px;
+}
+
+#hinweise .note-details-panel .details-meta {
+    border: none;
+    width: 80%;
+    padding: 5px;
+    padding-bottom: 0;
+    border-radius: 5px;
+    font-style: italic;
+}
+
+#hinweise .note-details-panel .details-content {
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    padding-top: 0;
+    border-radius: 5px;
+    font-size: 0.7em;
+    height: 150px;
+}
+
+#hinweise .note-details-panel form h3 {
+    background-color: #333;
+    border-radius: 5px;
+    color: #fff;
+    padding: 4px;
+    margin-bottom: 30px;
+    
+}
+
+.border-unten {
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.note-details-panel .auswahl {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-details-panel .radio {
+    font-size: 0.8em;
+}
+
+.note-details-panel .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.note-details-panel .button {
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+
+}
+
+.note-details-panel .buttons div {
+    display: flex;
+    align-items: center;
+    
+}
+
+.note-details-panel .close-button {
+    margin-right: 10px;
+}
+
+.note-details-panel .details-content {
+    resize: none;
+}

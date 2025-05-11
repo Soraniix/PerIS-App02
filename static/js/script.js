@@ -67,10 +67,14 @@ addNoteForm.addEventListener('submit', function(event) {
          <div class="note-header">
             <span class="note-title">${titel}</span>
             <span class="note-meta">von Dir am ${aktuelleZeit}</span>
-            <span class="note-prio-badge">${prioText} <span> - </span><span>${vis}</span></span>
+            <span class="note-prio-badge">${prioText} <span> - </span><span class="note-vis-badge">${vis}</span></span>
         </div>
         <div class="note-body"><p>${text}</p></div>
     `;
+
+    newList.addEventListener("click", () => {
+        oeffnenDetailsHinweise(newList);
+    });
 
     if (hinweiseListe) {
         hinweiseListe.prepend(newList);
@@ -121,3 +125,115 @@ const hinweiseListe = document.querySelectorAll('#hinweise .hinweis-liste li');
         }
     });
 }
+
+// -- Funktion öffnen der Hinweise //
+
+const hinweiseListe  =  document.querySelectorAll("#hinweise .hinweis-liste li")
+
+hinweiseListe.forEach(eintrag => {
+    eintrag.addEventListener("click", () => {
+        oeffnenDetailsHinweise(eintrag)
+    })
+})
+
+function oeffnenDetailsHinweise(eintrag){
+    const panel = document.querySelector(".note-details-panel")
+    document.querySelectorAll(".hinweis-liste li").forEach(li => li.classList.remove("selected"))
+    eintrag.classList.add("selected")
+
+    if (!panel)
+        return;
+
+    const titel = eintrag.querySelector(".note-title").textContent
+    const meta = eintrag.querySelector(".note-meta").textContent
+    const prio = eintrag.querySelector(".note-prio-badge").childNodes[0].textContent.trim().toLowerCase()
+    const vis = eintrag.querySelector(".note-vis-badge").textContent.trim().toLowerCase()
+    const noteBody = eintrag.querySelector(".note-body").textContent
+
+
+    const detailsTitel = panel.querySelector(".details-titel")
+    const detailsMeta = panel.querySelector(".details-meta")
+    const detailsPrio = panel.querySelector(".note-details-prio")
+    const detailsVis = panel.querySelector(`input[name="note-details-vis"][value="${vis}"]`)
+    const detailsNoteBody = panel.querySelector(".details-content")
+
+
+    if (detailsTitel)
+        detailsTitel.value = titel
+    if (detailsMeta)
+        detailsMeta.value = meta
+    if (detailsPrio)
+        detailsPrio.value = prio
+    if (detailsVis)
+        detailsVis.checked = true
+    if (detailsNoteBody)
+        detailsNoteBody.value = noteBody
+
+    panel.classList.toggle("hidden")
+
+}
+
+const closeNoteInfoButton = document.querySelector(".note-details-panel .close-button")
+const changeNoteInfoButton = document.querySelector(".note-details-panel .change-button")
+const changeListe = document.querySelectorAll(".change-info")
+const panelNoteDetails = document.querySelector(".note-details-panel")
+const panelForm = document.querySelector(".note-details-panel form")
+const saveNoteInfoButton = document.querySelector(".note-details-panel .save-button");
+
+closeNoteInfoButton.addEventListener("click", () => {
+    
+    panelNoteDetails.classList.add("hidden")
+    panelForm.reset()
+    changeListe.forEach(e => e.disabled = true)
+    
+})
+
+changeNoteInfoButton.addEventListener("click", () => {
+    
+
+    changeListe.forEach(element => {
+        if (element.disabled) {
+            element.disabled = false
+        } else {
+            element.disabled = true
+        }
+        
+    })
+})
+
+saveNoteInfoButton.addEventListener("click", () => {
+    event.preventDefault()
+    const selectedList = document.querySelector("#hinweise .hinweis-liste .selected")
+
+    if (!selectedList) return
+
+    const neuerTitel = panelNoteDetails.querySelector("#details-titel").value;
+    const neuerInhalt = panelNoteDetails.querySelector("#details-content").value;
+    const neuePrio = panelNoteDetails.querySelector("#note-details-prio").value;
+    const neueVis = panelNoteDetails.querySelector('input[name="note-details-vis"]:checked')?.value || "public";
+
+    selectedList.querySelector(".note-title").textContent = neuerTitel
+    selectedList.querySelector(".note-body").textContent = neuerInhalt
+
+    selectedList.classList.remove("prio-hoch", "prio-mittel", "prio-niedrig");
+    selectedList.classList.remove("note-public", "note-private");
+
+    if (neuePrio === "hoch") {
+        selectedList.classList.add("prio-hoch")
+        selectedList.querySelector(".note-prio-badge").textContent = neuePrio
+    } else if (neuePrio === "mittel") {
+        selectedList.classList.add("prio-mittel")
+        selectedList.querySelector(".note-prio-badge").textContent = neuePrio
+    } else if (neuePrio === "niedrig") {
+        selectedList.classList.add("prio-niedrig")
+        selectedList.querySelector(".note-prio-badge").textContent = neuePrio
+    }
+
+    selectedList.querySelector(".note-prio-badge").innerHTML = `
+    ${neuePrio.charAt(0).toUpperCase() + neuePrio.slice(1)} <span> - </span><span class="note-vis-badge">${neueVis}</span>
+`;
+
+
+    changeListe.forEach(e => e.disabled = true)
+
+})
