@@ -14,6 +14,12 @@ const addNoteForm = document.querySelector(".add-note-panel form")
 //Filter  Button finden und Speichern: 
 const filterTabButtons = document.querySelectorAll("#hinweise .filter-tabs button")
 
+const closeNoteInfoButton = document.querySelector(".note-details-panel .close-button")
+const changeNoteInfoButton = document.querySelector(".note-details-panel .change-button")
+const changeListe = document.querySelectorAll(".change-info")
+const panelNoteDetails = document.querySelector(".note-details-panel")
+const panelForm = document.querySelector(".note-details-panel form")
+const saveNoteInfoButton = document.querySelector(".note-details-panel .save-button");
 
 
 
@@ -140,6 +146,8 @@ function oeffnenDetailsHinweise(eintrag){
     const panel = document.querySelector(".note-details-panel")
     document.querySelectorAll(".hinweis-liste li").forEach(li => li.classList.remove("selected"))
     eintrag.classList.add("selected")
+    changeNoteInfoButton.textContent = "Bearbeiten"
+    saveNoteInfoButton.classList.add("hidden")
 
     if (!panel)
         return;
@@ -173,12 +181,6 @@ function oeffnenDetailsHinweise(eintrag){
 
 }
 
-const closeNoteInfoButton = document.querySelector(".note-details-panel .close-button")
-const changeNoteInfoButton = document.querySelector(".note-details-panel .change-button")
-const changeListe = document.querySelectorAll(".change-info")
-const panelNoteDetails = document.querySelector(".note-details-panel")
-const panelForm = document.querySelector(".note-details-panel form")
-const saveNoteInfoButton = document.querySelector(".note-details-panel .save-button");
 
 closeNoteInfoButton.addEventListener("click", () => {
     
@@ -194,8 +196,12 @@ changeNoteInfoButton.addEventListener("click", () => {
     changeListe.forEach(element => {
         if (element.disabled) {
             element.disabled = false
+            changeNoteInfoButton.textContent = "Abbrechen"
+            saveNoteInfoButton.classList.remove("hidden")
         } else {
             element.disabled = true
+            changeNoteInfoButton.textContent = "Bearbeiten"
+            saveNoteInfoButton.classList.add("hidden")
         }
         
     })
@@ -235,5 +241,62 @@ saveNoteInfoButton.addEventListener("click", () => {
 
 
     changeListe.forEach(e => e.disabled = true)
+    changeNoteInfoButton.textContent = "Bearbeiten"
+    saveNoteInfoButton.classList.add("hidden")
+
+})
+
+const delListButton = document.querySelector(".del-button")
+
+delListButton.addEventListener("click", () => {
+    const selectedList = document.querySelector("#hinweise .hinweis-liste .selected")
+    panelNoteDetails.classList.add("hidden")
+    selectedList.remove()
+})
+
+//---------------------------------------------------------------------//
+//Kamera Zeiten
+
+const addKameraZeitenChange = document.querySelector(".edit-times-button")
+const addKameraZeitenSave = document.querySelector(".save-times-button")
+const nameToggelButton = document.querySelector(".edit-times-button")
+
+addKameraZeitenChange.addEventListener("click", () => {
+    const changeInputs = document.querySelectorAll("#kamera-zeiten input, select")
+    const addZeitenForm = document.querySelector("#kamera-zeiten form")
+    
+
+    changeInputs.forEach(feld => feld.toggleAttribute("disabled"))
+    
+    if (addKameraZeitenSave.classList.contains("hidden"))
+        addKameraZeitenSave.classList.remove("hidden")
+    else
+        addKameraZeitenSave.classList.add("hidden")
+    
+
+    if (nameToggelButton.textContent  == "Abbrechen") {
+        nameToggelButton.textContent  = "Bearbeiten"
+        addZeitenForm.reset()
+    } else {
+        nameToggelButton.textContent  = "Abbrechen"
+    }
+})
+
+addKameraZeitenSave.addEventListener("click", (event) => {
+    event.preventDefault()
+    let kameraDaten = {}
+    const changeInputs = document.querySelectorAll("#kamera-zeiten input, select")
+    changeInputs.forEach(function(feld) {
+         
+        if (feld.name) {
+            kameraDaten[feld.name] = feld.value
+            feld.disabled = true
+        }
+        
+    } )
+    console.log(kameraDaten)
+    nameToggelButton.textContent = "Bearbeiten"
+    addKameraZeitenSave.classList.add("hidden")
+    
 
 })

@@ -134,8 +134,9 @@
                         <div>
                             <button type="button" class="close-button button">X</button>
                             <button type="button" class="change-button button">Bearbeiten</button>
+                            <button type="button" class="del-button button">Löschen</button>
                         </div>
-                        <button type="submit" class="save-button button">Speichern</button>
+                        <button type="submit" class="save-button button hidden">Speichern</button>
 
                     </div>
 
@@ -175,10 +176,11 @@
                     </div>
                     <div id="buttons">
                         <div>
-                            <button type="submit">Notiz hinzufügen</button>
+                            <button type="button" class="close-button">X</button>
                             <button type="reset" class="clear-button">Clear</button>
                         </div>
-                            <button type="button" class="close-button">X</button>
+                            <button type="submit">Notiz hinzufügen</button>
+                            
                         </div>
                     
                 </form>
@@ -189,7 +191,7 @@
         </section>
 
         <section id="offene-aufgaben">
-            <h2>Offene Aufgaben</h2>
+            <h2>Aufgaben</h2>
             <ul>
                 <li data-task-id="01" class="task-status-offen">
                     Aufgabe: Prüfe Lage XYL
@@ -592,8 +594,8 @@
                         </div>
                 </fieldset>
                 <div class="form-actions">
-                    <img class="edit_times_button" src="../static/images/bearbeiten-icon.png" alt="bearbeiten-icon" title="Bearbeiten">
-                    <img class="save_times_button" type="submit" src="../static/images/speichern-icon.png" alt="speichern-icon" title="Speichern">
+                    <button class="edit-times-button button" type="button">Bearbeiten</button>
+                    <button class="save-times-button button hidden" type="submit">Speichern</button>
                 </div>
                 
             </form>

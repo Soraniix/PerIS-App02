@@ -499,13 +499,13 @@ main section form fieldset {
     margin-top: 20px;
 }
 
-.add-note-panel button:hover {
+#hinweise button:hover {
      background-color: #555; 
 }
 
-     .add-note-panel input:focus,
-     .add-note-panel textarea:focus,
-     .add-note-panel select:focus {
+     #hinweise input:focus,
+     #hinweise textarea:focus,
+     #hinweise select:focus {
          outline: 2px solid gray;
      }
 
@@ -630,7 +630,6 @@ main section form fieldset {
     border: none; border-radius: 4px;
     cursor: pointer;
     margin-top: 20px;
-
 }
 
 .note-details-panel .buttons div {
@@ -643,6 +642,18 @@ main section form fieldset {
     margin-right: 10px;
 }
 
+.note-details-panel .del-button {
+    margin-left: 10px;
+}
+
 .note-details-panel .details-content {
     resize: none;
+}
+
+.form-actions .button {
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
 }
