@@ -1,27 +1,61 @@
 // Das Plus-Icon finden und in einer Variablen speichern
-const addNoteButton = document.querySelector('.add-note-button');
+const addNoteButton = document.querySelector('.add-button');
 console.log('Wert von addNoteButton:', addNoteButton); // NEUE TESTZEILE
 
 // Das Panel zum Hinzufügen von Notizen finden und speichern
-const addNotePanel = document.querySelector('.add-note-panel');
+const addNotePanel = document.querySelector('#hinweise .dashboad-add-panel');
 console.log('Wert von addNotePanel:', addNotePanel); // NEUE TESTZEILE (schadet nicht)
 
-const closeNoteButton = document.querySelector(".add-note-panel .close-button")
+const closeNoteButton = document.querySelector("#hinweise .dashboad-add-panel .close-button")
 
 //Referenz auf die Form selbst...
-const addNoteForm = document.querySelector(".add-note-panel form")
+const addNoteForm = document.querySelector("#hinweise .dashboad-add-panel form")
 
 //Filter  Button finden und Speichern: 
 const filterTabButtons = document.querySelectorAll("#hinweise .filter-tabs button")
 
-const closeNoteInfoButton = document.querySelector(".note-details-panel .close-button")
-const changeNoteInfoButton = document.querySelector(".note-details-panel .change-button")
+const closeNoteInfoButton = document.querySelector("#hinweise .dashboard-details-panel .close-button")
+const changeNoteInfoButton = document.querySelector("#hinweise .dashboard-details-panel .change-button")
 const changeListe = document.querySelectorAll(".change-info")
-const panelNoteDetails = document.querySelector(".note-details-panel")
-const panelForm = document.querySelector(".note-details-panel form")
-const saveNoteInfoButton = document.querySelector(".note-details-panel .save-button");
+const panelNoteDetails = document.querySelector("#hinweise .dashboard-details-panel")
+const panelForm = document.querySelector("#hinweise .dashboard-details-panel form")
+const saveNoteInfoButton = document.querySelector("#hinweise .dashboard-details-panel .save-button");
 
 const openNavHeader = document.querySelectorAll("header nav ul li a")
+
+// const für Aufgaben
+
+const addListenObjekteAufgaben = document.querySelectorAll("#offene-aufgaben .dashboard-list li")
+const addAufgabeDetailsPanel = document.querySelector("#offene-aufgaben .dashboard-details-panel")
+
+
+
+
+
+
+
+
+addListenObjekteAufgaben.forEach(eintrag => {
+    eintrag.addEventListener("click", (event) => {
+        oeffneAufgabeDetails(eintrag)
+    })
+})
+
+
+function oeffneAufgabeDetails(eintrag){
+    addAufgabeDetailsPanel.classList.remove("hidden")
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 openNavHeader.forEach(eintrag => {
@@ -169,7 +203,7 @@ hinweiseListe.forEach(eintrag => {
 })
 
 function oeffnenDetailsHinweise(eintrag){
-    const panel = document.querySelector(".note-details-panel")
+    const panel = document.querySelector("#hinweise .dashboard-details-panel")
     document.querySelectorAll(".hinweis-liste li").forEach(li => li.classList.remove("selected"))
     eintrag.classList.add("selected")
     changeNoteInfoButton.textContent = "Bearbeiten"

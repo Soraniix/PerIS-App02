@@ -110,7 +110,7 @@
 
             </ul>
 
-            <div class="note-details-panel hidden">
+            <div class="dashboard-details-panel hidden">
                 <form action="">
                     <h3>Infos</h3>
                     <div><input type="text" name="details-titel" id="details-titel" class="details-titel change-info" disabled required></div>
@@ -145,9 +145,9 @@
 
             </div>
             
-            <img class="add-note-button" src="../static/images/plus-icon.png" alt="Plus Icon" title="Neue Notiz hinzufügen">
+            <img class="add-button" src="../static/images/plus-icon.png" alt="Plus Icon" title="Neue Notiz hinzufügen">
             
-            <div class="add-note-panel dashboard-panel hidden">
+            <div class="dashboad-add-panel hidden">
                 <form action=""> 
                     <div id="header">
                         <label for="note-title">Titel:</label>
@@ -172,7 +172,8 @@
                         <div id="vis">
                             <label for="vis" id="vis-titel">Sichtbarkeit:</label>
                             <input type="radio" name="visibility" id="vis-public" value="public" checked> <label for="vis-public">öffentlich</label>
-                            <input type="radio" name="visibility" id="vis-private" value="private"> <label for="vis-private">Privat</label> </div>
+                            <input type="radio" name="visibility" id="vis-private" value="private"> <label for="vis-private">Privat</label> 
+                        </div>
 
                     </div>
                     <div id="buttons">
@@ -229,15 +230,79 @@
                 </li>
 
             </ul>
-            <div class ="notiz-panel hidden">
-                <h3>Notizen</h3>
-                <div class="alte-notizen"><p>(hier erscheinen alte notizen...)</p></div>
-                <form>
-                    <textarea name="neue_notiz" id="neue_notiz_input" placeholder="Neue Notizen hier eingeben"></textarea>
-                    <button type="submit">Speichern</button>
+            
+
+
+            <div class ="dashboard-details-panel hidden">
+                
+                <h3 class="task-header-title">Details</h3>
+                
+                
+                <form class="task-form">
+
+                    <div class="form-group task-title ">
+                        <input class="task-titel task-info-field" type="text" name="task-titel" id="task-titel">
+                    </div>
+
+                    <div class="form-group task-meta">
+                        <span class="meta-ersteller-label label">Erstellt von <span class="meta-ersteller">Admin</span></span>
+                        <span class="meta-erstellt-label label">am <span class="meta-erstellt">12.12.2025 um 19:20 Uhr</span></span>
+                    </div>
+                    
+                    <div class="form-group task-content">
+                        <textarea class="task-body task-info-field" name="task-body" id="task-body" placeholder="Hier steht der Task Text drin!" ></textarea>    
+                    </div>
+
+                    <div class="task-vis-prio">
+                        <div class="form-group task-prio"> 
+                            <select class="task-prio task-info-field" name="task-prio" id="task-prio" disabled>
+                                <option value="niedrig">Niedrig</option>
+                                <option value="mittel">Mittel</option>
+                                <option value="hoch">Hoch</option>
+                            </select>
+                        </div>
+                
+                        <div class="form-group task-vis">
+                            <label class="task-vis task-info-field" for="task-visibility" id="task-vis-titel">Sichtbarkeit:</label>
+                            <input class="task-vis task-info-field" type="radio" name="task-visibility" id="task-vis-public" disabled value="public" checked> <label for="task-vis-public">öffentlich</label>
+                            <input class="task-vis task-info-field" type="radio" name="task-visibility" id="task-vis-private" disabled value="private"> <label for="task-vis-private">Privat</label> 
+                        </div>
+                    </div>
+                    
+
+                    <div class="form-group task-tags">
+                        <label>Zugehörige Recherche-IDs</label>
+                        <div class="id-tags">(7734-GR)</div>
+                    </div>
+
+                    <div class="form-group task-tags">
+                        <label>Zugehörige Personen</label>
+                        <div class="person-tags">(PuNi0705)</div>
+                    </div>
+
+                    <div class="form-group task-comments-section">
+                        <div class="existing-comments-list">
+                            <p><strong class="task-name-date-comment">Nico (09.05.2025):</strong>Zweiter Kommentar dazu</p>
+                            <p><strong class="task-name-date-comment">Robert (08.05.2025):</strong>Erster!</p>
+                        </div>
+                        <textarea class="new-comment-task change-info-task" placeholder="Neuer Kommentar..."></textarea>
+                        <button type="button" class="add-comment-task-button change-info-task">Kommentar hinzufügen</button>
+                    </div>
+                    
+                    <div class="form-group task-buttons">
+                        <div class="buttons-left">
+                            <button class="close-button" type="button">X</button>
+                            <button class="clear-button" type="button">Clear</button>
+                        </div>
+                        <img class="task-header-icon" src="/static/images/quelle.jpg" alt="">
+                        <button class="save-button" type="submit">Speichern</button>
+
+                    </div>
+                    
                 </form>
-                <button type="button" class="close-button">Schließen</button>
             </div>
+
+
         </section>
 
         <section id="offene-loeschungen">
