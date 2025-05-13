@@ -21,7 +21,33 @@ const panelNoteDetails = document.querySelector(".note-details-panel")
 const panelForm = document.querySelector(".note-details-panel form")
 const saveNoteInfoButton = document.querySelector(".note-details-panel .save-button");
 
+const openNavHeader = document.querySelectorAll("header nav ul li a")
 
+
+openNavHeader.forEach(eintrag => {
+    eintrag.addEventListener("click", () => {  
+        openNavHeader.forEach(i => {
+            i.classList.remove("active")
+        })
+        localStorage.setItem("letztesNavElement", eintrag.href)
+        eintrag.classList.add("active")
+    })
+} )
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    let refLink = localStorage.getItem("letztesNavElement")
+    if (refLink) {
+        openNavHeader.forEach(eintrag => {
+            let vergleichRef = eintrag.href
+            eintrag.classList.remove("active")
+            if (refLink == vergleichRef){
+                eintrag.classList.add("active")
+            }
+        })
+    }
+})
 
 
 
@@ -297,6 +323,5 @@ addKameraZeitenSave.addEventListener("click", (event) => {
     console.log(kameraDaten)
     nameToggelButton.textContent = "Bearbeiten"
     addKameraZeitenSave.classList.add("hidden")
-    
-
 })
+

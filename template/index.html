@@ -17,6 +17,7 @@
         <h1>Dashboard</h1>
         <nav>
             <ul>
+                <li><a href="index.html">Dashboard</a></li>
                 <li><a href="#">Rechercheübersicht</a></li>
                 <li><a href="#">Aufgabenliste</a></li>
                 <li><a href="#">Trefferliste</a></li>
@@ -33,26 +34,26 @@
 
         <section id="uebersicht-beschluesse">
             <h2>Übersicht Beschlüsse</h2>
-            <ul>
-                <li data-beschluesse-id="01" class="date-warning">
+            <ul class="dashboard-list">
+                <li data-beschluesse-id="01" class="date-warning dashboard-list-item">
                     <div><span class="label">Name:</span><span class="value">EV Soranix</span></div>
                     <div><span class="label">Vorg. Nr.:</span><span class="value">1234/24/133230</span></div>
                     <div><span class="label">Datum:</span><span class="ablaufdatum">01.01.2026</span></div>
                 </li>
 
-                <li data-beschluesse-id="02" class="date-normal">
+                <li data-beschluesse-id="02" class="date-normal dashboard-list-item">
                     <div><span class="label">Name:</span><span class="value">EV Elena</span></div>
                     <div><span class="label">Vorg. Nr.:</span><span class="value">4321/24/133230</span></div>
                     <div><span class="label">Datum:</span><span class="ablaufdatum">02.01.2026</span></div>
                 </li>
 
-                <li data-beschluesse-id="03" class="date-critical">
+                <li data-beschluesse-id="03" class="date-critical dashboard-list-item">
                     <div><span class="label">Name:</span><span class="value">EV Fori</span></div>
                     <div><span class="label">Vorg. Nr.:</span><span class="value">5678/24/133230</span></div>
                     <div><span class="label">Datum:</span><span class="ablaufdatum">03.01.2026</span></div>
                 </li>
 
-                <li data-beschluesse-id="04" class="date-expired">
+                <li data-beschluesse-id="04" class="date-expired dashboard-list-item">
                     <div><span class="label">Name:</span><span class="value">EV Madeleine</span></div>
                     <div><span class="label">Vorg. Nr.:</span><span class="value">8765/24/133230</span></div>
                     <div><span class="label">Datum:</span><span class="ablaufdatum">04.01.2026</span></div>
@@ -73,8 +74,8 @@
                 <button type="button" class="active">privat</button>
             </div>
 
-            <ul class="hinweis-liste">
-                <li data-note-id="01" class="prio-hoch note-public">
+            <ul class="hinweis-liste dashboard-list">
+                <li data-note-id="01" class="prio-hoch note-public ">
                     
                     <div class="note-header">
                     <span class="note-title">Wichtiger Systemhinweis</span>
@@ -146,7 +147,7 @@
             
             <img class="add-note-button" src="../static/images/plus-icon.png" alt="Plus Icon" title="Neue Notiz hinzufügen">
             
-            <div class="add-note-panel hidden">
+            <div class="add-note-panel dashboard-panel hidden">
                 <form action=""> 
                     <div id="header">
                         <label for="note-title">Titel:</label>
@@ -192,37 +193,37 @@
 
         <section id="offene-aufgaben">
             <h2>Aufgaben</h2>
-            <ul>
-                <li data-task-id="01" class="task-status-offen">
+            <ul class="dashboard-list">
+                <li data-task-id="01" class="task-status-offen dashboard-list-item">
                     Aufgabe: Prüfe Lage XYL
                     <span class="task-status">offen</span>
                 </li>
 
-                <li data-task-id="02" class="task-status-arbeit">
+                <li data-task-id="02" class="task-status-arbeit dashboard-list-item">
                     Prüfe Live-System auf Fehler!
                     <span class="task-status">in Arbeit</span>
                 </li>
 
-                <li data-task-id="03" class="task-status-offen">
+                <li data-task-id="03" class="task-status-offen dashboard-list-item">
                     System-check!
                     <span class="task-status">offen</span>
                 </li>
-                <li data-task-id="04" class="task-status-arbeit">
+                <li data-task-id="04" class="task-status-arbeit dashboard-list-item">
                     Prüfe Live-System auf Fehler!
                     <span class="task-status">in Arbeit</span>
                 </li>
 
-                <li data-task-id="05" class="task-status-offen">
+                <li data-task-id="05" class="task-status-offen dashboard-list-item">
                     System-check!
                     <span class="task-status">offen</span>
                 </li>
 
-                <li data-task-id="06" class="task-status-arbeit">
+                <li data-task-id="06" class="task-status-arbeit dashboard-list-item">
                     Prüfe Live-System auf Fehler!
                     <span class="task-status">in Arbeit</span>
                 </li>
 
-                <li data-task-id="07" class="task-status-offen">
+                <li data-task-id="07" class="task-status-offen dashboard-list-item">
                     System-check!
                     <span class="task-status">offen</span>
                 </li>
@@ -241,7 +242,7 @@
 
         <section id="offene-loeschungen">
             <h2>Offene Löschungen</h2>
-            <ul>
+            <ul class="dashboard-list">
                 <li data-recherche-id="01" title="Details zur Recherche ID 1 anzeigen">
                     <div><span class="label">ID:</span><span class="value-recherche-id">01</span></div>
                     <div><span class="label">System:</span><span class="value-recherche-system">Görlitz</span></div>
