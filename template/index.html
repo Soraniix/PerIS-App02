@@ -241,7 +241,7 @@
                 <form class="task-form">
 
                     <div class="form-group task-title ">
-                        <input class="task-titel task-info-field" type="text" name="task-titel" id="task-titel">
+                        <input class="task-titel task-info-field" type="text" name="task-titel" id="task-titel" disabled>
                     </div>
 
                     <div class="form-group task-meta">
@@ -250,7 +250,7 @@
                     </div>
                     
                     <div class="form-group task-content">
-                        <textarea class="task-body task-info-field" name="task-body" id="task-body" placeholder="Hier steht der Task Text drin!" ></textarea>    
+                        <textarea class="task-body task-info-field" name="task-body" id="task-body" placeholder="Hier steht der Task Text drin!" disabled></textarea>    
                     </div>
 
                     <div class="task-vis-prio">
@@ -280,24 +280,64 @@
                         <div class="person-tags">(PuNi0705)</div>
                     </div>
 
+                    <div class="form-group task-buttons">
+                        <div class="buttons-left">
+                            <button class="close-button" type="button">X</button>
+                            <button class="change-button" type="button">Bearbeiten</button>
+                        </div>
+                        <div class="task-button-right">
+                            <button class="save-button hidden" type="submit">Speichern</button>
+                            <a href="#"><button class="go-to-button" type="button">></button></a>
+                        </div>
+                        
+
+                    </div>
+                    <div class="border-unten"></div>
+                    <h4 style="text-align: center;">Kommentare</h4>
                     <div class="form-group task-comments-section">
                         <div class="existing-comments-list">
-                            <p><strong class="task-name-date-comment">Nico (09.05.2025):</strong>Zweiter Kommentar dazu</p>
-                            <p><strong class="task-name-date-comment">Robert (08.05.2025):</strong>Erster!</p>
+                            <ul class="task-comment-list">
+                                <li data-task-comment-id="1">
+                                    <div>
+                                        <strong class="task-name-date-comment">Nico - (09.05.2025):</strong>
+                                        <p class="task-comment-content">Zweiter Kommentar dazu</p>
+                                    </div>
+                                    
+                                </li>
+
+                                <li data-task-comment-id="2">
+                                    <div>
+                                        <strong class="task-name-date-comment">Robert (08.05.2025):</strong>
+                                        <p class="task-comment-content">Erster!</p>
+                                    </div>
+                                </li>
+                                <li data-task-comment-id="2">
+                                    <div>
+                                        <strong class="task-name-date-comment">Robert (08.05.2025):</strong>
+                                        <p class="task-comment-content">Erster!</p>
+                                    </div>
+                                </li>
+                                <li data-task-comment-id="2">
+                                    <div>
+                                        <strong class="task-name-date-comment">Robert (08.05.2025):</strong>
+                                        <p class="task-comment-content">Ersterasdljncalnscasjkdvbskldvcasdclaskclaljkscalkscjkasbcaksjcaskdnfsnjdfnlskdflnslkndfnsldfnsdnflslndfksdnlfslnkdfnlsdlnkksckajnscnkj!</p>
+                                    </div>
+                                </li>
+                                <li data-task-comment-id="2">
+                                    <div>
+                                        <strong class="task-name-date-comment">Robert (08.05.2025):</strong>
+                                        <p class="task-comment-content">Erster!</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            
+                            
                         </div>
                         <textarea class="new-comment-task change-info-task" placeholder="Neuer Kommentar..."></textarea>
                         <button type="button" class="add-comment-task-button change-info-task">Kommentar hinzufügen</button>
                     </div>
                     
-                    <div class="form-group task-buttons">
-                        <div class="buttons-left">
-                            <button class="close-button" type="button">X</button>
-                            <button class="clear-button" type="button">Clear</button>
-                        </div>
-                        <img class="task-header-icon" src="/static/images/quelle.jpg" alt="">
-                        <button class="save-button" type="submit">Speichern</button>
-
-                    </div>
+                    
                     
                 </form>
             </div>

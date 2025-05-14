@@ -27,12 +27,36 @@ const openNavHeader = document.querySelectorAll("header nav ul li a")
 
 const addListenObjekteAufgaben = document.querySelectorAll("#offene-aufgaben .dashboard-list li")
 const addAufgabeDetailsPanel = document.querySelector("#offene-aufgaben .dashboard-details-panel")
+const addTaskCloseButton = document.querySelector("#offene-aufgaben .close-button")
+const addTaskForm = document.querySelector("#offene-aufgaben .task-form")
+const addTaskChangeButton = document.querySelector("#offene-aufgaben .change-button")
+const addTaskChangeList = document.querySelectorAll("#offene-aufgaben .task-info-field")
+const addTaskSaveButton = document.querySelector("#offene-aufgaben .save-button")
 
 
 
+addTaskChangeButton.addEventListener("click", () => {
+
+    
+    const isEditMode = addTaskChangeButton.textContent === "Bearbeiten";
+
+    addTaskChangeButton.textContent = isEditMode ? "Abbrechen" : "Bearbeiten";
+    addTaskSaveButton.classList.toggle("hidden");
+
+    addTaskChangeList.forEach(eintrag => {
+        eintrag.toggleAttribute("disabled");  // toggelt das disabled-Attribut
+    });
+    
+        
+})
 
 
-
+addTaskCloseButton.addEventListener("click", (event) => {
+    addAufgabeDetailsPanel.classList.add("hidden")
+    addTaskChangeList.forEach(eintrag => eintrag.disabled = true)
+    addTaskForm.reset()
+    addTaskSaveButton.classList.add("hidden")
+})
 
 
 addListenObjekteAufgaben.forEach(eintrag => {
@@ -44,6 +68,8 @@ addListenObjekteAufgaben.forEach(eintrag => {
 
 function oeffneAufgabeDetails(eintrag){
     addAufgabeDetailsPanel.classList.remove("hidden")
+    addTaskChangeButton.textContent = "Bearbeiten"
+
 }
 
 
@@ -251,7 +277,6 @@ closeNoteInfoButton.addEventListener("click", () => {
 })
 
 changeNoteInfoButton.addEventListener("click", () => {
-    
 
     changeListe.forEach(element => {
         if (element.disabled) {

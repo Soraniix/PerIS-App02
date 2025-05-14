@@ -124,7 +124,7 @@ main section h2 {
     border-radius: 5px;
 }
 
-#offene-aufgaben ul {
+#offene-aufgaben .dashboard-list ul {
     list-style:  none;
     padding-left: 0;
     max-height: 80%;;
@@ -710,13 +710,14 @@ main section form fieldset {
 #offene-aufgaben .task-titel {
     font-weight: bold;
     border: none;
-    font-size: 1em;
+    font-size: 0.9em;
     align-self: center;
     width: 100%;
     text-align: left;
-    margin-top: 15px;
-    margin-left: 5px;
+    margin-top: 10px;
+    margin-left: 0px;
     border-radius: 5px;
+    padding: 5px;
     
 }
 
@@ -770,3 +771,80 @@ main section form fieldset {
     font-size: 0.8em;
     
 }
+
+#offene-aufgaben .task-tags label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+#offene-aufgaben .task-tags div {
+    font-size: 0.8em;
+}
+
+#offene-aufgaben .task-comments-section strong {
+    font-size: 0.7em;
+    font-style: italic;
+    font-weight: 100;
+
+}
+
+
+.task-comment-list li div {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    display: block;
+}
+
+
+.task-comment-content {
+    font-size: 0.8em;
+    font-weight: bold;
+    
+}
+
+
+.task-comments-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-comment-task {
+    max-width: 100%;
+    height: 50px;
+    padding: 5px;
+    resize: none;
+}
+
+.task-comment-list {
+    margin-bottom: 10px;
+}
+
+.task-buttons button, .add-comment-task-button {
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-comment-task-button {
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.task-buttons  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+
