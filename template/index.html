@@ -195,40 +195,35 @@
         <section id="offene-aufgaben">
             <h2>Aufgaben</h2>
             <ul class="dashboard-list">
-                <li data-task-id="01" class="task-status-offen dashboard-list-item">
-                    Aufgabe: Prüfe Lage XYL
-                    <span class="task-status">offen</span>
+                <li data-task-id="01" class="dashboard-list-item">
+                    <span class="task-dashboard-title">Aufgabe: Prüfe Lage XYL</span>
+                    <span class="task-status task-status-offen">offen</span>
+                    <span hidden class="task-vis-db">private</span>
+                    <span hidden class="task-prio-db">hoch</span>
+                    <span hidden class="task-creater">PuNi</span>
+                    <span hidden class="task-date">12.04.2025</span>
+                    <textarea hidden class="task-content-db" name="task-comment-content" id="task-comment-content">Hier könnte Ihre Werbung stehen! </textarea>
                 </li>
 
-                <li data-task-id="02" class="task-status-arbeit dashboard-list-item">
-                    Prüfe Live-System auf Fehler!
-                    <span class="task-status">in Arbeit</span>
+                <li data-task-id="02" class="dashboard-list-item">
+                    <span class="task-dashboard-title">Lageeintrag 007 in HW prüfen!</span>
+                    <span class="task-status task-status-arbeit">in Arbeit</span>
+                    <span hidden class="task-vis-db">public</span>
+                    <span hidden class="task-prio-db">mittel</span>
+                    <span hidden class="task-creater">PuNi</span>
+                    <span hidden class="task-date">12.04.2025</span>
+                    <textarea hidden class="task-content-db" name="task-comment-content" id="task-comment-content">Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! </textarea>
                 </li>
 
-                <li data-task-id="03" class="task-status-offen dashboard-list-item">
-                    System-check!
-                    <span class="task-status">offen</span>
+                <li data-task-id="03" class="dashboard-list-item">
+                    <span class="task-dashboard-title">Aufgabe: Prüfe Lage XYL</span>
+                    <span class="task-status task-status-done">fertig</span>
+                    <span hidden class="task-vis-db">private</span>
+                    <span hidden class="task-prio-db">niedrig</span>
+                    <span hidden class="task-creater">PuNi</span>
+                    <span hidden class="task-date">12.04.2025</span>
+                    <textarea hidden class="task-content-db" name="task-comment-content" id="task-comment-content">Hier könnte Ihre Werbung stehen! </textarea>
                 </li>
-                <li data-task-id="04" class="task-status-arbeit dashboard-list-item">
-                    Prüfe Live-System auf Fehler!
-                    <span class="task-status">in Arbeit</span>
-                </li>
-
-                <li data-task-id="05" class="task-status-offen dashboard-list-item">
-                    System-check!
-                    <span class="task-status">offen</span>
-                </li>
-
-                <li data-task-id="06" class="task-status-arbeit dashboard-list-item">
-                    Prüfe Live-System auf Fehler!
-                    <span class="task-status">in Arbeit</span>
-                </li>
-
-                <li data-task-id="07" class="task-status-offen dashboard-list-item">
-                    System-check!
-                    <span class="task-status">offen</span>
-                </li>
-
             </ul>
             
 
@@ -242,11 +237,11 @@
 
                     <div class="form-group task-title ">
                         <input class="task-titel task-info-field" type="text" name="task-titel" id="task-titel" disabled>
+                        
                     </div>
 
                     <div class="form-group task-meta">
-                        <span class="meta-ersteller-label label">Erstellt von <span class="meta-ersteller">Admin</span></span>
-                        <span class="meta-erstellt-label label">am <span class="meta-erstellt">12.12.2025 um 19:20 Uhr</span></span>
+                        <span class="task-mete-string">Erstellt von <span class="ersteller-von"></span> am <span class="erstellt-am"></span></span>
                     </div>
                     
                     <div class="form-group task-content">
@@ -260,6 +255,7 @@
                                 <option value="mittel">Mittel</option>
                                 <option value="hoch">Hoch</option>
                             </select>
+                            <span class="task-status task-info-field"></span>
                         </div>
                 
                         <div class="form-group task-vis">

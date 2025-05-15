@@ -154,18 +154,29 @@ main section form fieldset {
     margin-bottom: 10px;
 }
 
-#offene-aufgaben .task-status-offen .task-status {
+#offene-aufgaben .task-status-offen {
     color: whitesmoke;
     background-color: rgb(254, 0, 0);
     font-weight: bold;
+    margin-left: 5px;
     padding: 0 5px;
     border-radius: 5px;
 }
 
-#offene-aufgaben .task-status-arbeit .task-status {
+#offene-aufgaben .task-status-arbeit {
     color: whitesmoke;
     background-color: orange;
     font-weight: bold;
+    margin-left: 5px;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+#offene-aufgaben .task-status-done {
+    color: whitesmoke;
+    background-color: rgb(16, 159, 0);
+    font-weight: bold;
+    margin-left: 5px;
     padding: 0 5px;
     border-radius: 5px;
 }
@@ -732,7 +743,7 @@ main section form fieldset {
     }
 
 
-#offene-aufgaben .task-meta .label {
+#offene-aufgaben .task-meta .task-mete-string {
     border: none;
     width: 100%;
     padding: 5px;
@@ -742,7 +753,6 @@ main section form fieldset {
     font-size: 0.7em;
     margin-left: 5px;
     padding: 0;
-    
 }
 
 #offene-aufgaben .task-body {
@@ -848,3 +858,8 @@ main section form fieldset {
 }
 
 
+
+.task-prio {
+    display: flex;
+    align-items: center;
+}

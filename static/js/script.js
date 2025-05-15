@@ -34,6 +34,30 @@ const addTaskChangeList = document.querySelectorAll("#offene-aufgaben .task-info
 const addTaskSaveButton = document.querySelector("#offene-aufgaben .save-button")
 
 
+addTaskSaveButton.addEventListener("click", (event) => {
+    event.preventDefault()
+    const selectedList = document.querySelector("#offene-aufgaben ul .selected")
+
+    const newTitle = addAufgabeDetailsPanel.querySelector(".task-titel").value
+    const newText = addAufgabeDetailsPanel.querySelector(".task-body").value
+    const newPrio = addAufgabeDetailsPanel.querySelector(".task-vis-prio select.task-prio").value
+
+    selectedList.querySelector(".task-dashboard-title").textContent = newTitle
+    selectedList.querySelector(".task-content-db").textContent = newText
+    
+    
+    selectedList.querySelector(".task-prio-db").textContent = newPrio
+    
+    
+
+
+    addTaskChangeList.forEach(eintrag => eintrag.disabled = true)
+    addTaskSaveButton.classList.add("hidden")
+    addTaskChangeButton.textContent = "Bearbeiten"
+
+})
+
+
 
 addTaskChangeButton.addEventListener("click", () => {
 
@@ -56,6 +80,7 @@ addTaskCloseButton.addEventListener("click", (event) => {
     addTaskChangeList.forEach(eintrag => eintrag.disabled = true)
     addTaskForm.reset()
     addTaskSaveButton.classList.add("hidden")
+
 })
 
 
@@ -70,6 +95,47 @@ function oeffneAufgabeDetails(eintrag){
     addAufgabeDetailsPanel.classList.remove("hidden")
     addTaskChangeButton.textContent = "Bearbeiten"
 
+    addListenObjekteAufgaben.forEach(element => element.classList.remove("selected"))
+    eintrag.classList.add("selected")
+
+    titel = eintrag.querySelector(".task-dashboard-title").textContent
+    stati = eintrag.querySelector(".task-status").textContent
+    text = eintrag.querySelector(".task-content-db").textContent
+    vis = eintrag.querySelector(".task-vis-db").textContent
+    prio = eintrag.querySelector(".task-prio-db").textContent
+    creater = eintrag.querySelector(".task-creater").textContent
+    date = eintrag.querySelector(".task-date").textContent
+
+    panelTitle = addAufgabeDetailsPanel.querySelector(".task-titel")
+    panelText = addAufgabeDetailsPanel.querySelector(".task-body")
+    panelVis = addAufgabeDetailsPanel.querySelector(`input[name=task-visibility][value=${vis}]`)
+    panelStati = addAufgabeDetailsPanel.querySelector(".task-status")
+    panelPrio = addAufgabeDetailsPanel.querySelector("select.task-prio")
+    panelCreater = addAufgabeDetailsPanel.querySelector(".ersteller-von")
+    panelDate = addAufgabeDetailsPanel.querySelector(".erstellt-am")
+
+    panelTitle.value = titel
+    panelText.value = text
+    panelVis.checked = true
+    panelPrio.value = prio
+    panelCreater.textContent = creater
+    panelDate.textContent = date
+  
+    
+
+    // Zuerst alle alten Statusklassen entfernen
+    panelStati.classList.remove("task-status-offen", "task-status-arbeit", "task-status-done");
+
+    if (stati == "offen"){
+        panelStati.classList.add("task-status-offen");
+        panelStati.textContent = "offen";
+    } else if (stati == "in Arbeit") {
+        panelStati.classList.add("task-status-arbeit");
+        panelStati.textContent = "in Arbeit";
+    } else if (stati == "fertig") {
+        panelStati.classList.add("task-status-done");
+        panelStati.textContent = "fertig"; // Hier den Text ergänzen
+    }
 }
 
 
@@ -292,7 +358,7 @@ changeNoteInfoButton.addEventListener("click", () => {
     })
 })
 
-saveNoteInfoButton.addEventListener("click", () => {
+saveNoteInfoButton.addEventListener("click", (event) => {
     event.preventDefault()
     const selectedList = document.querySelector("#hinweise .hinweis-liste .selected")
 
