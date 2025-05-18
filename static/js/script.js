@@ -31,6 +31,76 @@ const addKommentarInhalt = document.querySelector("#offene-aufgaben .new-comment
 const addKommentarListe = document.querySelector("#offene-aufgaben .task-comment-list")
 const USER = "Nico"
 
+// Übersicht Beschlüsse
+
+const addBeschlussDetailsPanel = document.querySelector("#uebersicht-beschluesse .beschlussdetails")
+const addBeschlussDetailsCloseButton = document.querySelector("#uebersicht-beschluesse .close-button")
+const addAlleBeschluesse = document.querySelectorAll("#uebersicht-beschluesse .dashboard-list li")
+
+
+addAlleBeschluesse.forEach(geklickteLi => {
+    geklickteLi.addEventListener("click", () => {
+        oeffneBeschluesse(geklickteLi)
+    })
+})
+
+function oeffneBeschluesse(geklickteLi) {
+
+    addAlleBeschluesse.forEach(einLi => einLi.classList.remove("selected"))
+    geklickteLi.classList.add("selected")
+
+    const titel = geklickteLi.querySelector(".beschluss-titel").textContent
+    const vn = geklickteLi.querySelector(".beschluss-vn").textContent
+    const ablauf = geklickteLi.querySelector(".beschluss-ablaufdatum").textContent
+    const az = geklickteLi.querySelector(".beschluss-az-db").textContent
+    const org = geklickteLi.querySelector(".beschluss-org-einheit-db").textContent
+    const bl = geklickteLi.querySelector(".beschluss-bl-db").textContent
+    const orte = geklickteLi.querySelector(".beschluss-orte-db").textContent
+    const beginn = geklickteLi.querySelector(".beschluss-beginnU-db").textContent
+    const ende = geklickteLi.querySelector(".beschluss-endeU-db").textContent
+    const treffer = geklickteLi.querySelector(".beschluss-treffer-db").textContent
+    const einsaetze = geklickteLi.querySelector(".beschluss-einsaetze-db").textContent
+    const schaden = geklickteLi.querySelector(".beschluss-schaden-db").textContent
+
+    const detailTitel = addBeschlussDetailsPanel.querySelector(".beschluss-details-titel")
+    const detailVn = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-vn")
+    const detailsAblauf = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-ablauf")
+    const detailsAz = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-az")
+    const detailsOrg = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-org")
+    const detailsBl = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-bl")
+    const detailsOrte = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-orte")
+    const detailsBeginn = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-beginn")
+    const detailsEnde = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-ende")
+    const detailsTreffer = addBeschlussDetailsPanel.querySelector(".beschluss-details-treffer")
+    const detailsEinsaetze = addBeschlussDetailsPanel.querySelector(".beschluss-details-einsaetze")
+    const detailsSchaden = addBeschlussDetailsPanel.querySelector(".beschluss-details-schaden")
+
+    detailTitel.textContent = titel
+    detailVn.textContent = vn
+    detailsAblauf.textContent = ablauf
+    detailsAz.textContent = az
+    detailsOrg.textContent = org
+    detailsBl.textContent = bl
+    detailsOrg.textContent = orte
+    detailsBeginn.textContent = beginn
+    detailsEnde.textContent = ende
+    detailsTreffer.textContent = treffer
+    detailsEinsaetze.textContent = einsaetze
+    detailsSchaden.textContent = schaden
+
+
+    
+
+
+    addBeschlussDetailsPanel.classList.remove("hidden")
+}
+
+
+addBeschlussDetailsCloseButton.addEventListener("click", ()=> {
+    addBeschlussDetailsPanel.classList.add("hidden")
+    
+})
+
 
 
 
@@ -209,6 +279,15 @@ function oeffneAufgabeDetails(eintrag){
     allTaskComments.forEach(eintrag => eintrag.classList.add("hidden"))
     allTaskCommentsId.forEach(eintrag => eintrag.classList.remove("hidden"))
     
+
+    allTaskCommentsId.forEach(commi => {
+        const delButton = commi.querySelector(".rotes-kreuz")
+
+        delButton.addEventListener("click", () => {
+            commi.closest(".test01").remove()
+        })
+    })
+
 
 
     alert
