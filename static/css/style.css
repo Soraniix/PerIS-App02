@@ -148,6 +148,9 @@ main section h2 {
 #offene-aufgaben li:hover {
     cursor: pointer;
     background-color: #d5d5d5;
+    .rotes-kreuz {
+        display: block;
+    }
 }
 
 main section form fieldset {
@@ -187,9 +190,18 @@ main section form fieldset {
     display: inline-block; 
 }
 
+#offene-aufgaben .disabled {
+    opacity: 0.5;
+    
+}
+
 #offene-aufgaben .task-status:hover  { 
     transform: scale(1.1);
+    cursor: pointer;
 }
+
+#offene-aufgaben .task-status
+
 
 #uebersicht-beschluesse ul {
     list-style: none;
@@ -832,6 +844,8 @@ main section form fieldset {
 
 .task-comment-list {
     margin-bottom: 10px;
+    max-height: 230px;
+    overflow-y: auto;
 }
 
 .task-buttons button, .add-comment-task-button {
@@ -850,6 +864,26 @@ main section form fieldset {
     margin-top: 5px;
 }
 
+.test01 {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.rotes-kreuz {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 10px;
+    display: none;
+    transition: all 0.1s ease;
+}
+
+.rotes-kreuz:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
 .task-buttons  {
     display: flex;
     flex-direction: row;
@@ -857,9 +891,8 @@ main section form fieldset {
     
 }
 
-
-
 .task-prio {
     display: flex;
     align-items: center;
 }
+
