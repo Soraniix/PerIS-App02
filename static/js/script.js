@@ -1,4 +1,3 @@
-
 const addNoteButton = document.querySelector('.add-button');
 const addNotePanel = document.querySelector('#hinweise .dashboad-add-panel');
 
@@ -36,6 +35,81 @@ const USER = "Nico"
 const addBeschlussDetailsPanel = document.querySelector("#uebersicht-beschluesse .beschlussdetails")
 const addBeschlussDetailsCloseButton = document.querySelector("#uebersicht-beschluesse .close-button")
 const addAlleBeschluesse = document.querySelectorAll("#uebersicht-beschluesse .dashboard-list li")
+
+// Löschungen Übersicht
+
+const addDelCloseButton = document.querySelector("#offene-loeschungen .close-button")
+const addDelDetailsPanel = document.querySelector("#offene-loeschungen .loesch-detail-panel")
+const addDelListe = document.querySelectorAll("#offene-loeschungen ul li")
+const addDelDelButton = document.querySelector("#offene-loeschungen .delete-button")
+const addDelForm = document.querySelector("#offene-loeschungen .del-form")
+
+if (addDelForm) { // Sicherstellen, dass das Formular existiert
+    addDelForm.addEventListener("submit", (event) => {
+        event.preventDefault()
+        
+        if (addDelForm.checkValidity()){
+            addDelForm.reset()
+            const selectedLis = document.querySelector("#offene-loeschungen li.selected");
+            addDelDetailsPanel.classList.add("hidden")
+            selectedLis.remove()
+        }
+        
+    });
+}
+
+
+
+    
+
+    
+
+
+
+addDelListe.forEach(li => {
+    li.addEventListener("click", ()=> {
+        oeffneDelDetails(li)
+    })
+})
+
+
+addDelCloseButton.addEventListener("click", ()=> {
+    addDelDetailsPanel.classList.add("hidden")
+})
+
+
+
+function oeffneDelDetails(li){
+    addDelListe.forEach(list => list.classList.remove("selected"))
+    li.classList.add("selected")
+    addDelDetailsPanel.classList.remove("hidden")
+
+
+    const id = li.querySelector("#offene-loeschungen .value-recherche-id")
+    const system = li.querySelector("#offene-loeschungen .value-recherche-system")
+    const vn = li.querySelector("#offene-loeschungen .value-recherche-vn")
+    const delikt = li.querySelector("#offene-loeschungen .value-recherche-delikt")
+    const delTagger = li.querySelector("#offene-loeschungen .value-recherche-delTagger")
+    const grund = li.querySelector("#offene-loeschungen .value-recherche-grund")
+    const text = li.querySelector("#offene-loeschungen .value-recherche-text")
+
+    const infoId = addDelDetailsPanel.querySelector(".del-info-id")
+    const infoSystem = addDelDetailsPanel.querySelector(".del-info-system")
+    const infoVn = addDelDetailsPanel.querySelector(".del-info-vn")
+    const infoDelikt = addDelDetailsPanel.querySelector(".del-info-delikt")
+    const infoDelTagger = addDelDetailsPanel.querySelector(".del-info-delTagger")
+    const infoGrund = addDelDetailsPanel.querySelector(".del-info-grund")
+    const infoText = addDelDetailsPanel.querySelector(".del-info-text")
+
+    infoId.textContent = id.textContent
+    infoSystem.textContent = system.textContent
+    infoVn.textContent = vn.textContent
+    infoDelikt.textContent = delikt.textContent
+    infoDelTagger.textContent = delTagger.textContent
+    infoGrund.value = grund.textContent.trim()
+    infoText.textContent = text.textContent
+
+}
 
 
 addAlleBeschluesse.forEach(geklickteLi => {
@@ -358,6 +432,11 @@ closeNoteButton.addEventListener("click", () => {
 
 //From submit Änderung!
 addNoteForm.addEventListener('submit', function(event) {
+// Wenn das Formular ungültig ist, Standardverhalten NICHT verhindern!
+    if (!addNoteForm.checkValidity()) {
+        // Browser zeigt die "required"-Fehler automatisch an
+        return;
+    }
     event.preventDefault();
     const hinweiseListe = document.querySelector("#hinweise .hinweis-liste");
 

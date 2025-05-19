@@ -521,53 +521,82 @@
         </section>
 
         <section id="offene-loeschungen">
-            <h2>Offene Löschungen</h2>
+            <h2 class="del-header-title">Offene Löschungen</h2>
             <ul class="dashboard-list">
                 <li data-recherche-id="01" title="Details zur Recherche ID 1 anzeigen">
                     <div><span class="label">ID:</span><span class="value-recherche-id">01</span></div>
                     <div><span class="label">System:</span><span class="value-recherche-system">Görlitz</span></div>
                     <div><span class="label">Vorg.Nr.:</span><span class="value-recherche-vn">1234/24/133230</span></div>
                     <div><span class="label">Delikt:</span><span class="value-recherche-delikt">§244a StGB</span></div>
+                    <span hidden class="value-recherche-delTagger">PuNi</span>
+                    <span hidden class="value-recherche-grund">fehlanlegung</span>
+                    <span hidden class="value-recherche-text">Recherche ist nicht richtig aufrufbar</span>
                 </li>
                 <li data-recherche-id="01" title="Details zur Recherche ID 1 anzeigen">
                     <div><span class="label">ID:</span><span class="value-recherche-id">01</span></div>
                     <div><span class="label">System:</span><span class="value-recherche-system">Görlitz</span></div>
                     <div><span class="label">Vorg.Nr.:</span><span class="value-recherche-vn">1234/24/133230</span></div>
                     <div><span class="label">Delikt:</span><span class="value-recherche-delikt">§244a StGB</span></div>
+                    <span hidden class="value-recherche-delTagger">PuNi</span>
+                    <span hidden class="value-recherche-grund">fehlanlegung</span>
+                    <span hidden class="value-recherche-text">Recherche ist nicht richtig aufrufbar</span>
                 </li>
                 <li data-recherche-id="01" title="Details zur Recherche ID 1 anzeigen">
                     <div><span class="label">ID:</span><span class="value-recherche-id">01</span></div>
                     <div><span class="label">System:</span><span class="value-recherche-system">Görlitz</span></div>
                     <div><span class="label">Vorg.Nr.:</span><span class="value-recherche-vn">1234/24/133230</span></div>
                     <div><span class="label">Delikt:</span><span class="value-recherche-delikt">§244a StGB</span></div>
+                    <span hidden class="value-recherche-delTagger">PuNi</span>
+                    <span hidden class="value-recherche-grund">fehlanlegung</span>
+                    <span hidden class="value-recherche-text">Recherche ist nicht richtig aufrufbar</span>
                 </li>
                 <li data-recherche-id="01" title="Details zur Recherche ID 1 anzeigen">
                     <div><span class="label">ID:</span><span class="value-recherche-id">01</span></div>
                     <div><span class="label">System:</span><span class="value-recherche-system">Görlitz</span></div>
                     <div><span class="label">Vorg.Nr.:</span><span class="value-recherche-vn">1234/24/133230</span></div>
                     <div><span class="label">Delikt:</span><span class="value-recherche-delikt">§244a StGB</span></div>
+                    <span hidden class="value-recherche-delTagger">PuNi</span>
+                    <span hidden class="value-recherche-grund">fehlanlegung</span>
+                    <span hidden class="value-recherche-text">Recherche ist nicht richtig aufrufbar</span>
                 </li>
-                <li data-recherche-id="01" title="Details zur Recherche ID 1 anzeigen">
-                    <div><span class="label">ID:</span><span class="value-recherche-id">01</span></div>
-                    <div><span class="label">System:</span><span class="value-recherche-system">Görlitz</span></div>
-                    <div><span class="label">Vorg.Nr.:</span><span class="value-recherche-vn">1234/24/133230</span></div>
-                    <div><span class="label">Delikt:</span><span class="value-recherche-delikt">§244a StGB</span></div>
-                </li>
-                <li data-recherche-id="01" title="Details zur Recherche ID 1 anzeigen">
-                    <div><span class="label">ID:</span><span class="value-recherche-id">01</span></div>
-                    <div><span class="label">System:</span><span class="value-recherche-system">Görlitz</span></div>
-                    <div><span class="label">Vorg.Nr.:</span><span class="value-recherche-vn">1234/24/133230</span></div>
-                    <div><span class="label">Delikt:</span><span class="value-recherche-delikt">§244a StGB</span></div>
-                </li>
+
                 
   
             </ul>
             <div class="loesch-detail-panel hidden">
                 <h3>Details zum Löschen</h3>
-            <div class="details-content">(weitere infos zur Recherche)</div>
-            <button type="button" class="delete-button">Endgültig löschen</button>
-            <button type="button" class="close-button">Abbrechen</button>
+            <div>
+                <h4>Vorgang</h4>
+                
+                <div class="del-info-meta">
+                    <div><span class="left">ID:</span><span class="left-value del-info-id">1234</span></div> <div><span class="right">System:</span><span class="del-info-system">Görlitz</span></div> 
+                </div>
+                <div class="del-info-meta">
+                    <div><span class="left">VN:</span><span class="left-value del-info-vn">1234/12/123123</span></div><div><span class="right">Delikt:</span><span class="del-info-delikt">244a StGB</span></div></div>
+                </div>
+
+                
+                <form action="" class="del-form">
+                    <fieldset>
+                        <legend class="leg-titel">Löschgrund</legend>
+                        <div><label class="del-label">Lösch-Tagger:</label><span class="loesch-Vormerker del-info-delTagger">PuNi0705</span></div>
+                        <div><label for="loeschgrund-auswahl" class="del-label">Löschgrund:</label><select name="loeschgrund-auswahl" id="loeschgrund-auswahl" class="del-info-grund"><option value="datenfehler">Datenfehler</option><option value="fehlanlegung">Fehlanlegung</option><option value="recherchearbeit-abgeschlossen">Re. abgeschlossen</option></select></div>
+                        <div><label for="del-grund-text" class="del-label-extra">Lösch Hinweise:</label></div>
+                        <div><textarea readonly class="del-grund-text del-info-text" name="del-grund-text" id="del-grund-text"></textarea></div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend class="leg-titel">Prüfung</legend>
+                        <div><label for="check-id-eingetragen" class="del-label">ID geprüft/ vorhanden:</label><input type="checkbox" name="check-id-eingetragen" id="check-id-eingetragen" required></div>
+                        <div><label for="check-id-aufgaben" class="del-label">Keine Aufgaben/ Ausleitungen offen:</label> <input type="checkbox" name="check-id-aufgaben" id="check-id-aufgaben" required></div>
+                        <button type="submit" class="delete-button button">Endgültig löschen</button>
+                    </fieldset>
+                </form>
+
+                <button type="button" class="close-button button">Schließen</button>
+                </div>
             </div>
+            
         </section>
 
         <section id="offene-ausleitungen">
