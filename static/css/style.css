@@ -352,8 +352,6 @@ main section form fieldset {
     background-color: whitesmoke;
     border-radius: 4px ;
     cursor: pointer;
-    
-
 }
 
 .filter-tabs button.active {
@@ -896,3 +894,259 @@ main section form fieldset {
     align-items: center;
 }
 
+#uebersicht-beschluesse .beschlussdetails {
+    
+    background-color: #fff; /* Weißer Hintergrund */
+    border: 1px solid #ccc; /* Heller Rahmen */
+    border-radius: 5px;     /* Abgerundete Ecken, passend zu den Sektionen */
+    padding: 20px;          /* Innenabstand */
+    margin-top: 15px;       /* Abstand zum Plus-Button oder der Liste darüber */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Leichter Schatten für "Tiefe" */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 95%;
+    height: 85%;
+    overflow-y: auto;
+}   
+
+#uebersicht-beschluesse { /* Oder welche Sektion auch immer das .add-note-panel direkt enthält */
+    position: relative; /* WICHTIG für absolute Kinder */
+    /* Deine bestehenden Styles für die Sektion bleiben erhalten */
+}
+
+#uebersicht-beschluesse .beschlussdetails h3 {
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #333;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+#uebersicht-beschluesse .beschlussdetails > div {
+    margin: 10px 0px;
+    
+}
+
+#uebersicht-beschluesse .beschluss-verlaengerung ul {
+    width: 100%;
+}
+
+#uebersicht-beschluesse .beschluss-personen li div {
+    margin: 0px;
+    width: 100%;
+}
+
+
+#uebersicht-beschluesse .beschlussdetails .beschluss-fakten div {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    width: 100%;
+}
+
+.beschluss-fakten span {
+    font-size: 0.9em;
+}
+
+.beschluss-fakten-titel {
+    font-weight: bold;
+    display: inline-block;
+    width: 45px;
+}
+
+.beschluss-fakten-links {
+    display: inline-block;
+    width: 45%;
+}
+
+.beschluss-verlaengerung h4 {
+    margin-top: 10px;
+}
+
+.beschluss-verlaengerung .beschlüsse-verl-elemente {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
+}
+
+.beschluss-verlaengerung .beschlüsse-verl-elemente span {
+    margin: 5px;
+}
+
+#uebersicht-beschluesse legend {
+    font-size: 0.95em;
+}
+
+.beschluss-personen  {
+    font-size: 0.9em;
+}
+
+.beschluss-personen .label-beschluss-personen {
+    font-weight: bold;
+}
+
+.bio-person {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bio-person > span {
+    margin-right: 10px;
+}
+
+.beschluss-detail-statistik {
+    display: flex;
+    justify-content: space-between;
+}
+
+.beschluss-detail-statistik span {
+    margin-right: 5px;
+    font-size: 0.9em;
+}
+
+.beschluss-detail-statistik .label-statistik {
+    font-weight: bold;
+}
+
+#uebersicht-beschluesse .buttons {
+    display: flex;
+    justify-content: space-between;
+} 
+
+#uebersicht-beschluesse .button {
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+#uebersicht-beschluesse button:hover {
+    background-color: #555; 
+}
+
+    #uebersicht-beschluesse input:focus,
+    #uebersicht-beschluesse textarea:focus,
+    #uebersicht-beschluesse select:focus {
+        outline: 2px solid gray;
+    }
+
+#offene-loeschungen .loesch-detail-panel {
+    
+    background-color: #fff; /* Weißer Hintergrund */
+    border: 1px solid #ccc; /* Heller Rahmen */
+    border-radius: 5px;     /* Abgerundete Ecken, passend zu den Sektionen */
+    padding: 20px;          /* Innenabstand */
+    margin-top: 15px;       /* Abstand zum Plus-Button oder der Liste darüber */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Leichter Schatten für "Tiefe" */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 95%;
+    height: 85%;
+    overflow-y: auto;
+}  
+
+#offene-loeschungen button:hover {
+    background-color: #555; 
+}
+
+    #offene-loeschungen input:focus,
+    #offene-loeschungen textarea:focus,
+    #offene-loeschungen select:focus {
+        outline: 2px solid gray;
+    }
+
+#offene-loeschungen { /* Oder welche Sektion auch immer das .add-note-panel direkt enthält */
+    position: relative; /* WICHTIG für absolute Kinder */
+    /* Deine bestehenden Styles für die Sektion bleiben erhalten */
+}
+
+#offene-loeschungen .loesch-detail-panel h3 {
+    text-align: center;
+    color: #FFF;
+    background-color: #333;
+    border-radius: 5px; 
+    padding: 3px;  
+}
+
+#offene-loeschungen h4 {
+    margin: 15px 0 5px 0;
+}
+
+.leg-titel {
+    font-size: 1em;
+}
+
+#offene-loeschungen .del-info-meta {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+#offene-loeschungen .del-info-meta .left {
+    width: 30px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#offene-loeschungen .del-info-meta .left-value {
+    width: 200px;
+    display: inline-block;
+}
+#offene-loeschungen .del-info-meta .right {
+    width: 70px;
+    display: inline-block;
+}
+
+#offene-loeschungen .loesch-detail-panel span {
+    font-size: 0.9em;
+}
+#offene-loeschungen .loesch-detail-panel label {
+    font-size: 0.9em;
+}
+
+
+#offene-loeschungen .del-label {
+    width: 150px;
+    font-size: 0.9em;
+}
+
+#offene-loeschungen .del-label-extra {
+    width: 150px;
+    margin-top: 10px;
+}
+
+#offene-loeschungen .del-grund-text {
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+    resize: none;
+    border-radius: 5px;
+}
+#offene-loeschungen button {
+
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+
+}
+
+#offene-loeschungen .delete-button {
+
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    
+}

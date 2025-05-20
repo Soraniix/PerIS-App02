@@ -1,4 +1,3 @@
-
 const addNoteButton = document.querySelector('.add-button');
 const addNotePanel = document.querySelector('#hinweise .dashboad-add-panel');
 
@@ -30,6 +29,151 @@ const addKommentarButton = document.querySelector("#offene-aufgaben .add-comment
 const addKommentarInhalt = document.querySelector("#offene-aufgaben .new-comment-task")
 const addKommentarListe = document.querySelector("#offene-aufgaben .task-comment-list")
 const USER = "Nico"
+
+// Übersicht Beschlüsse
+
+const addBeschlussDetailsPanel = document.querySelector("#uebersicht-beschluesse .beschlussdetails")
+const addBeschlussDetailsCloseButton = document.querySelector("#uebersicht-beschluesse .close-button")
+const addAlleBeschluesse = document.querySelectorAll("#uebersicht-beschluesse .dashboard-list li")
+
+// Löschungen Übersicht
+
+const addDelCloseButton = document.querySelector("#offene-loeschungen .close-button")
+const addDelDetailsPanel = document.querySelector("#offene-loeschungen .loesch-detail-panel")
+const addDelListe = document.querySelectorAll("#offene-loeschungen ul li")
+const addDelDelButton = document.querySelector("#offene-loeschungen .delete-button")
+const addDelForm = document.querySelector("#offene-loeschungen .del-form")
+
+if (addDelForm) { // Sicherstellen, dass das Formular existiert
+    addDelForm.addEventListener("submit", (event) => {
+        event.preventDefault()
+        
+        if (addDelForm.checkValidity()){
+            addDelForm.reset()
+            const selectedLis = document.querySelector("#offene-loeschungen li.selected");
+            addDelDetailsPanel.classList.add("hidden")
+            selectedLis.remove()
+        }
+        
+    });
+}
+
+
+
+    
+
+    
+
+
+
+addDelListe.forEach(li => {
+    li.addEventListener("click", ()=> {
+        oeffneDelDetails(li)
+    })
+})
+
+
+addDelCloseButton.addEventListener("click", ()=> {
+    addDelDetailsPanel.classList.add("hidden")
+})
+
+
+
+function oeffneDelDetails(li){
+    addDelListe.forEach(list => list.classList.remove("selected"))
+    li.classList.add("selected")
+    addDelDetailsPanel.classList.remove("hidden")
+
+
+    const id = li.querySelector("#offene-loeschungen .value-recherche-id")
+    const system = li.querySelector("#offene-loeschungen .value-recherche-system")
+    const vn = li.querySelector("#offene-loeschungen .value-recherche-vn")
+    const delikt = li.querySelector("#offene-loeschungen .value-recherche-delikt")
+    const delTagger = li.querySelector("#offene-loeschungen .value-recherche-delTagger")
+    const grund = li.querySelector("#offene-loeschungen .value-recherche-grund")
+    const text = li.querySelector("#offene-loeschungen .value-recherche-text")
+
+    const infoId = addDelDetailsPanel.querySelector(".del-info-id")
+    const infoSystem = addDelDetailsPanel.querySelector(".del-info-system")
+    const infoVn = addDelDetailsPanel.querySelector(".del-info-vn")
+    const infoDelikt = addDelDetailsPanel.querySelector(".del-info-delikt")
+    const infoDelTagger = addDelDetailsPanel.querySelector(".del-info-delTagger")
+    const infoGrund = addDelDetailsPanel.querySelector(".del-info-grund")
+    const infoText = addDelDetailsPanel.querySelector(".del-info-text")
+
+    infoId.textContent = id.textContent
+    infoSystem.textContent = system.textContent
+    infoVn.textContent = vn.textContent
+    infoDelikt.textContent = delikt.textContent
+    infoDelTagger.textContent = delTagger.textContent
+    infoGrund.value = grund.textContent.trim()
+    infoText.textContent = text.textContent
+
+}
+
+
+addAlleBeschluesse.forEach(geklickteLi => {
+    geklickteLi.addEventListener("click", () => {
+        oeffneBeschluesse(geklickteLi)
+    })
+})
+
+function oeffneBeschluesse(geklickteLi) {
+
+    addAlleBeschluesse.forEach(einLi => einLi.classList.remove("selected"))
+    geklickteLi.classList.add("selected")
+
+    const titel = geklickteLi.querySelector(".beschluss-titel").textContent
+    const vn = geklickteLi.querySelector(".beschluss-vn").textContent
+    const ablauf = geklickteLi.querySelector(".beschluss-ablaufdatum").textContent
+    const az = geklickteLi.querySelector(".beschluss-az-db").textContent
+    const org = geklickteLi.querySelector(".beschluss-org-einheit-db").textContent
+    const bl = geklickteLi.querySelector(".beschluss-bl-db").textContent
+    const orte = geklickteLi.querySelector(".beschluss-orte-db").textContent
+    const beginn = geklickteLi.querySelector(".beschluss-beginnU-db").textContent
+    const ende = geklickteLi.querySelector(".beschluss-endeU-db").textContent
+    const treffer = geklickteLi.querySelector(".beschluss-treffer-db").textContent
+    const einsaetze = geklickteLi.querySelector(".beschluss-einsaetze-db").textContent
+    const schaden = geklickteLi.querySelector(".beschluss-schaden-db").textContent
+
+    const detailTitel = addBeschlussDetailsPanel.querySelector(".beschluss-details-titel")
+    const detailVn = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-vn")
+    const detailsAblauf = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-ablauf")
+    const detailsAz = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-az")
+    const detailsOrg = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-org")
+    const detailsBl = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-bl")
+    const detailsOrte = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-orte")
+    const detailsBeginn = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-beginn")
+    const detailsEnde = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-ende")
+    const detailsTreffer = addBeschlussDetailsPanel.querySelector(".beschluss-details-treffer")
+    const detailsEinsaetze = addBeschlussDetailsPanel.querySelector(".beschluss-details-einsaetze")
+    const detailsSchaden = addBeschlussDetailsPanel.querySelector(".beschluss-details-schaden")
+
+    detailTitel.textContent = titel
+    detailVn.textContent = vn
+    detailsAblauf.textContent = ablauf
+    detailsAz.textContent = az
+    detailsOrg.textContent = org
+    detailsBl.textContent = bl
+    detailsOrg.textContent = orte
+    detailsBeginn.textContent = beginn
+    detailsEnde.textContent = ende
+    detailsTreffer.textContent = treffer
+    detailsEinsaetze.textContent = einsaetze
+    detailsSchaden.textContent = schaden
+
+
+    
+
+
+    addBeschlussDetailsPanel.classList.remove("hidden")
+}
+
+
+addBeschlussDetailsCloseButton.addEventListener("click", ()=> {
+    addBeschlussDetailsPanel.classList.add("hidden")
+    
+})
 
 
 
@@ -210,6 +354,15 @@ function oeffneAufgabeDetails(eintrag){
     allTaskCommentsId.forEach(eintrag => eintrag.classList.remove("hidden"))
     
 
+    allTaskCommentsId.forEach(commi => {
+        const delButton = commi.querySelector(".rotes-kreuz")
+
+        delButton.addEventListener("click", () => {
+            commi.closest(".test01").remove()
+        })
+    })
+
+
 
     alert
 
@@ -279,6 +432,11 @@ closeNoteButton.addEventListener("click", () => {
 
 //From submit Änderung!
 addNoteForm.addEventListener('submit', function(event) {
+// Wenn das Formular ungültig ist, Standardverhalten NICHT verhindern!
+    if (!addNoteForm.checkValidity()) {
+        // Browser zeigt die "required"-Fehler automatisch an
+        return;
+    }
     event.preventDefault();
     const hinweiseListe = document.querySelector("#hinweise .hinweis-liste");
 
