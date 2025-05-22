@@ -18,7 +18,7 @@
         <nav>
             <ul>
                 <li><a href="index.html">Dashboard</a></li>
-                <li><a href="#">Rechercheübersicht</a></li>
+                <li><a href="/template/recherche_uebersicht.html">Rechercheübersicht</a></li>
                 <li><a href="#">Aufgabenliste</a></li>
                 <li><a href="#">Trefferliste</a></li>
                 <li><a href="#">Einsatzliste</a></li>
@@ -580,15 +580,16 @@
                     <fieldset>
                         <legend class="leg-titel">Löschgrund</legend>
                         <div><label class="del-label">Lösch-Tagger:</label><span class="loesch-Vormerker del-info-delTagger">PuNi0705</span></div>
-                        <div><label for="loeschgrund-auswahl" class="del-label">Löschgrund:</label><select name="loeschgrund-auswahl" id="loeschgrund-auswahl" class="del-info-grund"><option value="datenfehler">Datenfehler</option><option value="fehlanlegung">Fehlanlegung</option><option value="recherchearbeit-abgeschlossen">Re. abgeschlossen</option></select></div>
+                        <div><label for="loeschgrund-auswahl" class="del-label">Löschgrund:</label><select name="loeschgrund-auswahl" id="loeschgrund-auswahl" class="del-info-grund" disabled><option value="datenfehler">Datenfehler</option><option value="fehlanlegung">Fehlanlegung</option><option value="recherchearbeit-abgeschlossen">Re. abgeschlossen</option></select></div>
                         <div><label for="del-grund-text" class="del-label-extra">Lösch Hinweise:</label></div>
                         <div><textarea readonly class="del-grund-text del-info-text" name="del-grund-text" id="del-grund-text"></textarea></div>
                     </fieldset>
 
                     <fieldset>
-                        <legend class="leg-titel">Prüfung</legend>
-                        <div><label for="check-id-eingetragen" class="del-label">ID geprüft/ vorhanden:</label><input type="checkbox" name="check-id-eingetragen" id="check-id-eingetragen" required></div>
-                        <div><label for="check-id-aufgaben" class="del-label">Keine Aufgaben/ Ausleitungen offen:</label> <input type="checkbox" name="check-id-aufgaben" id="check-id-aufgaben" required></div>
+                        <legend class="leg-titel-unten">Prüfung</legend>
+                        <div><label for="check-id-eingetragen" class="del-label-unten">ID geprüft/ vorhanden:</label><input type="checkbox" name="check-id-eingetragen" id="check-id-eingetragen" required></div>
+                        <div><label for="check-id-aufgaben" class="del-label-unten">Keine Aufgaben/ Ausleitungen offen:</label> <input type="checkbox" name="check-id-aufgaben" id="check-id-aufgaben" required></div>
+                        <div><label for="check-id-aufgaben" class="del-label-unten">PerIS-Recherche Löschung:</label> <input type="checkbox" name="check-id-loeschung" id="check-id-loeschung" required></div>
                         <button type="submit" class="delete-button button">Endgültig löschen</button>
                     </fieldset>
                 </form>
@@ -602,9 +603,9 @@
         <section id="offene-ausleitungen">
             <h2>Offene Ausleitungen</h2>
 
-            <ul>
+            <ul class="ul-ausl-dashboard">
 
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
+                <li data-recherche-id="1" class="laufzeit-ok" title="Details zur Recherche-ID 04">
 
                     <div class="line-1">
                         <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
@@ -620,7 +621,7 @@
 
                 </li>
 
-                <li data-recherche-id="04" class="laufzeit-kurz" title="Details zur Recherche-ID 04">
+                <li data-recherche-id="2" class="laufzeit-kurz" title="Details zur Recherche-ID 04">
 
                     <div class="line-1">
                         <div><span class="label">ID:</span><span class="value-ausl-id">12000</span></div>
@@ -635,7 +636,7 @@
                     </div>
 
                 </li>
-                <li data-recherche-id="04" class="laufzeit-mittel" title="Details zur Recherche-ID 04">
+                <li data-recherche-id="3" class="laufzeit-mittel" title="Details zur Recherche-ID 04">
 
                     <div class="line-1">
                         <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
@@ -650,7 +651,7 @@
                     </div>
 
                 </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
+                <li data-recherche-id="4" class="laufzeit-ok" title="Details zur Recherche-ID 04">
 
                     <div class="line-1">
                         <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
@@ -664,136 +665,84 @@
                         <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
                     </div>
 
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
 
 
 
             </ul>
             <div class="ausl-details-panel hidden">
                 <h3>Recherche Details</h3>
-                <div>(Details Content)</div>
-                <button type="button" class="close-button">Schließen</button>
+                
+                <h4>Vorgang</h4>
+                
+                <div class="ausl-info-meta">
+                    <div><span class="left">ID:</span><span class="left-value ausl-info-id">1234</span></div> <div><span class="right">System:</span><span class="ausl-info-system">Görlitz</span></div> 
+                </div>
+                <div class="ausl-info-meta">
+                    <div><span class="left">VN:</span><span class="left-value ausl-info-vn">1234/12/123123</span></div><div><span class="right">Delikt:</span><span class="ausl-info-delikt">244a StGB</span></div>
+                </div>
+                <div class="ausl-info-meta">
+                    <div><span class="left">Schritt:</span><span class="left-value ausl-info-step">Step 7</span></div><div><span class="right">Zeit:</span><span class="ausl-info-zeit">100h</span></div>
+                </div>
 
+
+                <form class="ausl-done" action="">
+
+                    <fieldset >
+                        <legend>Empfänger</legend>
+                        <div>
+                            <div><span class="label-left">BL:</span><span class="value-left">Sachsen</span></div> <div><span class="label-right">Org.</span><span>Görlitz</span></div> 
+                        </div>
+                        <div class="">
+                            <div><span class="label-left">Person:</span><span class="value-left">Mandy Harmann</span></div> <div><span class="label-right">Tel:</span><span class="">747-3333</span></div> 
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Absprachen</legend>
+                        <div class="absprachen">
+                            <div><label for="step01" class="label-ausl-checkbox-absprachen">Mitteilung K23 / SB </label><input type="checkbox" name="step01" id="step01" required></div>
+                            <div><label for="step02" class="label-ausl-checkbox-absprachen">Kontakt SB</label> <input type="checkbox" name="step02" id="step02" required></div>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Check-Liste</legend>
+                        <div><label for="step01" class="label-ausl-checkbox">LiBiMap erstellen</label><input type="checkbox" name="step02" id="step02" required></div>
+                        <div><label for="step02" class="label-ausl-checkbox">LiBiMap ablegen im Ordner</label> <input type="checkbox" name="step03" id="step03" required></div>
+                        <div><label for="step03" class="label-ausl-checkbox">Treffermeldung schreiben</label> <input type="checkbox" name="step04" id="step04" required></div>
+                        <div><label for="step03" class="label-ausl-checkbox">Treffer Ausleiten</label> <input type="checkbox" name="step05" id="step05" required></div>
+                        <button type="submit" class="button-ausl-checkbox">Ausleiten abschließen</button>
+                    </fieldset>
+                    <button type="button" class="close-button">Schließen</button>
+                </form>
+
+                <form class="ausl-comment-form" action="">
+                    <div class="border-unten"></div>
+                    <h4 style="text-align: center;">Kommentare</h4>
+
+                    <ul class="ausl-comment-ul">
+                        <li data-ausl-comment="1" class="ausl-comment-li zu-ausl-id-1">
+                            <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
+                            <div class="ausl-comment-li-meta"><strong>Admin am 12.04.2025</strong></div>
+                            <div class="ausl-comment-li-content">Hier steht dann der Inhalt!</div>
+                        </li>
+                        <li data-ausl-comment="2" class="ausl-comment-li zu-ausl-id-1">
+                            <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
+                            <div class="ausl-comment-li-meta"><strong>Admin am 12.04.2025</strong></div>
+                            <div class="ausl-comment-li-content">Hier steht dann der Inhalt!</div>
+                        </li>
+                        <li data-ausl-comment="3" class="ausl-comment-li zu-ausl-id-1">
+                            <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
+                            <div class="ausl-comment-li-meta"><strong>Admin am 12.04.2025</strong></div>
+                            <div class="ausl-comment-li-content">Hier steht dann der Inhalt!</div>
+                        </li>
+
+                    </ul>
+                    <textarea class="ausl-comment-send" name="ausl-comment-send" id="ausl-comment-send"></textarea>
+                    <button type="submit" class="ausl-comment-add-Button">Kommentar hinzufügen</button>
+                </form>
             </div>
 
         </section>

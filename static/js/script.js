@@ -44,6 +44,121 @@ const addDelListe = document.querySelectorAll("#offene-loeschungen ul li")
 const addDelDelButton = document.querySelector("#offene-loeschungen .delete-button")
 const addDelForm = document.querySelector("#offene-loeschungen .del-form")
 
+// Offene Ausleitungen
+
+const addAuslCloseButton = document.querySelector(".ausl-details-panel .close-button")
+const addAuslDetailsPanel = document.querySelector(".ausl-details-panel")
+const addAuslListeLi = document.querySelectorAll(".ul-ausl-dashboard li")
+const addAuslListe = document.querySelectorAll(".ul-ausl-dashboard")
+const addAuslDone = document.querySelector(".button-ausl-checkbox")
+const addAuslFormDone = document.querySelector(".ausl-done")
+const addAuslFromComment = document.querySelector(".ausl-comment-form")
+const addAuslRotesKreuz = document.querySelector(".ausl-rotes-kreuz")
+const addAuslCommentBox = document.querySelector(".ausl-comment-send")
+const addAuslPanelCommentList = document.querySelector(".ausl-comment-ul")
+const USERAUSLCOMMENT = "Soranix"
+
+
+
+addAuslFromComment.addEventListener("submit", (event) => {
+    event.preventDefault()
+    const newComment = document.createElement("li")
+    const selectedID = document.querySelector(".ul-ausl-dashboard li.selected").dataset.rechercheID
+
+    newComment.dataset.auslComment = "new - " + Date.now()
+    newComment.classList.add(`zu-ausl-id-${selectedID}`)
+    newComment.classList.add("ausl-comment-li")
+
+    const time_now = new Date().toLocaleString('de-DE')
+
+
+    if (addAuslCommentBox !== "") {
+        newComment.innerHTML = `
+                            <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
+                            <div class="ausl-comment-li-meta"><strong>${USERAUSLCOMMENT} am ${time_now}</strong></div>
+                            <div class="ausl-comment-li-content">${addAuslCommentBox.value}</div>
+        `
+    }
+
+    const delKreuz = newComment.querySelector(".ausl-rotes-kreuz")
+    delKreuz.addEventListener("click", () => {
+        newComment.remove()
+    })
+
+    if (addAuslPanelCommentList) {
+        addAuslPanelCommentList.prepend(newComment)
+    }
+
+    addAuslCommentBox.value = ""
+
+
+})
+
+
+addAuslFormDone.addEventListener("submit", (event) => {
+    event.preventDefault()
+
+    const selectedList = document.querySelector(".ul-ausl-dashboard li.selected")
+    selectedList.remove()
+    addAuslFormDone.reset()
+    addAuslDetailsPanel.classList.add("hidden")
+})
+
+
+addAuslListeLi.forEach(li => {
+    li.addEventListener("click", ()=> {
+        oeffneAuslDetails(li)
+    })
+})
+
+
+
+function oeffneAuslDetails(li) {
+    addAuslListeLi.forEach(eintrag => eintrag.classList.remove("selected"))
+    li.classList.add("selected")
+    addAuslDetailsPanel.classList.remove("hidden")
+
+
+
+
+
+
+
+
+
+    
+    const allComment = document.querySelectorAll(".ausl-comment-li")
+    const idSelected = li.dataset.rechercheId
+    const allCommentZuId = document.querySelectorAll(`.zu-ausl-id-${idSelected}`)
+    allComment.forEach(comment => comment.classList.add("hidden"))
+    allCommentZuId.forEach(comment => comment.classList.remove("hidden"))
+    
+
+    
+    allCommentZuId.forEach(commi => {
+        const kreuz = commi.querySelector(".ausl-rotes-kreuz")
+        kreuz.addEventListener("click", ()=> {
+            commi.remove();
+        })
+    })
+    
+
+
+
+
+
+
+}
+
+
+addAuslCloseButton.addEventListener("click", ()=> {
+    addAuslDetailsPanel.classList.add("hidden")
+})
+
+
+
+
+
 if (addDelForm) { // Sicherstellen, dass das Formular existiert
     addDelForm.addEventListener("submit", (event) => {
         event.preventDefault()
@@ -57,12 +172,6 @@ if (addDelForm) { // Sicherstellen, dass das Formular existiert
         
     });
 }
-
-
-
-    
-
-    
 
 
 
@@ -406,17 +515,22 @@ openNavHeader.forEach(eintrag => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    let refLink = localStorage.getItem("letztesNavElement")
-    if (refLink) {
-        openNavHeader.forEach(eintrag => {
-            let vergleichRef = eintrag.href
-            eintrag.classList.remove("active")
-            if (refLink == vergleichRef){
-                eintrag.classList.add("active")
+    const gespeicherterAktiverLinkHref = localStorage.getItem("letztesNavElement");
+
+    // Zuerst von ALLEN Navigationslinks die Klasse 'active' entfernen
+    openNavHeader.forEach(link => {
+        link.classList.remove("active");
+    });
+
+    // Dann dem gespeicherten Link die Klasse 'active' geben, WENN er existiert
+    if (gespeicherterAktiverLinkHref) {
+        openNavHeader.forEach(link => {
+            if (link.href === gespeicherterAktiverLinkHref) { // Strikter Vergleich ist besser
+                link.classList.add("active");
             }
-        })
+        });
     }
-})
+});
 
 
 

@@ -1,3 +1,7 @@
+/* ============================================= */
+/* === STYLES FÜR DIE DASHBOARD SEITE === */
+/* ============================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -414,7 +418,7 @@ main section form fieldset {
 }
 
 
-#offene-ausleitungen ul {
+#offene-ausleitungen .ul-ausl-dashboard {
     list-style: none;
     max-height: 80%;
     overflow-y: auto;
@@ -544,7 +548,7 @@ main section form fieldset {
     align-items: center;
 }
 
-#hinweise { /* Oder welche Sektion auch immer das .add-note-panel direkt enthält */
+#offene-ausleitungen { /* Oder welche Sektion auch immer das .add-note-panel direkt enthält */
     position: relative; /* WICHTIG für absolute Kinder */
     /* Deine bestehenden Styles für die Sektion bleiben erhalten */
 }
@@ -766,7 +770,6 @@ main section form fieldset {
 }
 
 #offene-aufgaben .task-body {
-
     width: 100%;
     margin-top: 3px;
     padding: 5px;
@@ -824,7 +827,6 @@ main section form fieldset {
 .task-comment-content {
     font-size: 0.8em;
     font-weight: bold;
-    
 }
 
 
@@ -1120,6 +1122,11 @@ main section form fieldset {
     font-size: 0.9em;
 }
 
+#offene-loeschungen .del-label-unten {
+    width: 350px;
+    font-size: 0.9em;
+}
+
 #offene-loeschungen .del-label-extra {
     width: 150px;
     margin-top: 10px;
@@ -1150,3 +1157,197 @@ main section form fieldset {
     width: 100%;
     
 }
+
+#offene-ausleitungen .ausl-details-panel {
+    
+    background-color: #fff; /* Weißer Hintergrund */
+    border: 1px solid #ccc; /* Heller Rahmen */
+    border-radius: 5px;     /* Abgerundete Ecken, passend zu den Sektionen */
+    padding: 20px;          /* Innenabstand */
+    margin-top: 15px;       /* Abstand zum Plus-Button oder der Liste darüber */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Leichter Schatten für "Tiefe" */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 95%;
+    height: 85%;
+    overflow-y: auto;
+    
+}  
+
+#offene-ausleitungen button:hover {
+    background-color: #555; 
+}
+
+    #offene-ausleitungen input:focus,
+    #offene-ausleitungen textarea:focus,
+    #offene-ausleitungen select:focus {
+        outline: 2px solid gray;
+    }
+
+#offene-ausleitungen { /* Oder welche Sektion auch immer das .add-note-panel direkt enthält */
+    position: relative; /* WICHTIG für absolute Kinder */
+    /* Deine bestehenden Styles für die Sektion bleiben erhalten */
+}
+
+#offene-ausleitungen .ausl-details-panel h3 {
+    text-align: center;
+    color: #FFF;
+    background-color: #333;
+    border-radius: 5px; 
+    padding: 3px;  
+}
+
+#offene-ausleitungen h4 {
+    margin: 15px 0 5px 0;
+}
+
+.leg-titel {
+    font-size: 1em;
+}
+
+#offene-ausleitungen .ausl-info-meta {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+#offene-ausleitungen .ausl-info-meta .left {
+    width: 70px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#offene-ausleitungen .ausl-info-meta .left-value {
+    width: 170px;
+    display: inline-block;
+}
+#offene-ausleitungen .ausl-info-meta .right {
+    width: 70px;
+    display: inline-block;
+}
+
+#offene-ausleitungen .ausl-details-panel span {
+    font-size: 0.9em;
+}
+#offene-ausleitungen .ausl-details-panel label {
+    font-size: 0.9em;
+}
+
+#offene-ausleitungen .label-ausl-checkbox {
+    width: 350px;
+    font-size: 0.9em;
+}
+
+#offene-ausleitungen .button-ausl-checkbox {
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#offene-ausleitungen .label-ausl-checkbox-absprachen {
+    font-size: 0.9em;
+    width: 100%;
+}
+
+#offene-ausleitungen .absprachen {
+    display: flex;
+    justify-content: space-between;
+}
+
+#offene-ausleitungen .ausl-comment-li-meta strong {
+    font-size: 0.7em;
+    font-style: italic;
+    font-weight: 100;
+}
+
+.ausl-comment-li-content {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    display: block;
+}
+
+.ausl-comment-li-content {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.ausl-comment-send {
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+    resize: none;
+}
+
+.ausl-comment-ul {
+
+    height: 200px;         /* Eine vernünftige Testhöhe */
+    overflow-y: auto;      /* Beibehalten für Scrollbarkeit */
+    
+}
+
+.ausl-comment-add-Button {
+
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.ausl-comment-li {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.ausl-rotes-kreuz {
+    height: 10px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transition: transform 0.2s ease;
+    display: none;
+}
+
+.ausl-rotes-kreuz:hover {
+    transform: scale(1.2);
+}
+
+#offene-ausleitungen li:hover {
+    .ausl-rotes-kreuz {
+        display: block;
+    }
+}
+
+#offene-ausleitungen .close-button {
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+}
+
+#offene-ausleitungen .label-left {
+    width: 60px;
+}
+
+#offene-ausleitungen .value-left {
+    display: inline-block;
+    width: 160px;
+}
+
+#offene-ausleitungen .label-right {
+    width: 60px;
+}
+
+
+/* ============================================= */
+/* === STYLES FÜR RECHERCHE ÜBERSICHT SEITE === */
+/* ============================================= */
+
