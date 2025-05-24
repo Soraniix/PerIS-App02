@@ -9,17 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/style.css">
 
-
 </head>
 
 <body>
     <header>
         <img src="../static/images/PerIS-Logo.png" alt="PerIS-Logo">
-        <h1>Dashboard</h1>
+        <h1>Rechercheübersicht</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Dashboard</a></li>
-                <li><a href="recherche_uebersicht.html">Rechercheübersicht</a></li>
+                <li><a class="active" href="recherche_uebersicht.html">Rechercheübersicht</a></li>
                 <li><a href="#">Aufgabenliste</a></li>
                 <li><a href="#">Trefferliste</a></li>
                 <li><a href="#">Einsatzliste</a></li>
@@ -27,16 +26,250 @@
                 <li><a href="#">Beschlussliste</a></li>
                 <li><a href="#">Statistik</a></li>
             </ul>
-
         </nav>
     </header>
 
 
 
 
-    <main>
+    <main id="main-dashboard">
+        
+        <section class="dashboard-statistik-sektion">
+            <div>
+                <fieldset class="statistik-feld">
+                    <legend>Statistik</legend>
+                    <div class="statistik-feld-container">
+                        <div class="statistik-feld-reihen">
+                            <div><span class="label">Recherchen: </span><span class="value-recherchen">120</span></div>
+                            <div><span class="label">Einsatz: </span><span class="value-treffer">12</span></div>
+                           
+                        </div>
+    
+                        <div class="statistik-feld-reihen">
+                            <div><span class="label">Treffer: </span><span class="value-recherchen">120000€</span></div>
+                            <div><span class="label">Schaden: </span><span class="value-treffer">12€</span></div>
+                            
+                        </div>
+    
+                        <div class="statistik-feld-reihen">
+                            <div><span class="label">Treffer/Tag: </span><span class="value-recherchen">120</span></div>
+                            <div><span class="label">Schaden/Tag: </span><span class="value-treffer">12</span></div>
+                           
+                        </div>
+                    </div>
+                    
+                </fieldset>
+            </div>
+            <div>
+                <fieldset>
+                    <legend>Anzeige</legend>
+                    <div class="statistik-feld-container">
+                        <div class="statistik-feld-reihen">
+                            <div><span class="label">Recherchen: </span><span class="value-recherchen">120</span></div>
+                            <div><span class="label">Treffer: </span><span class="value-treffer">12</span></div>
+                           
+                        </div>
+    
+                        <div class="statistik-feld-reihen">
+                            <div><span class="label">Schaden: </span><span class="value-recherchen">120000€</span></div>
+                            <div><span class="label">Schaden/Re.: </span><span class="value-treffer">12€</span></div>
+                            
+                        </div>
+    
+                        <div class="statistik-feld-reihen">
+                            <div><span class="label">Recherchen: </span><span class="value-recherchen">120</span></div>
+                            <div><span class="label">Treffer: </span><span class="value-treffer">12</span></div>
+                           
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+                
+
+        </section>
+
+        <section class="filter-tools-tabelle">
+            <div class="grid-container">
+
+                <div class="grid-item grid-03">
+                    <img src="../static/images/hinzufugen.png" alt="" srcset="" style="height: 50px; margin: auto auto">
+                </div>
+
+                <div class="grid-item grid-01">
+                    <button type="button" class="g1">GR</button>
+                    <button type="button" class="g1">ZI</button>
+                    <button type="button" class="g1">PM</button>
+                </div>
+
+                <div class="grid-item">
+                    <select name="filter-kuerzel" id="filter-kuerzel" multiple class="filter-kuerzel">
+                        <optgroup label="GR">
+                            <option value="sb">SB</option>
+                            <option value="hw">HW</option>
+                            <option value="asb">ASB</option>
+                            <option value="jk">JK</option>
+                            <option value="hs">HS</option>
+                            <option value="ng">NG</option>
+                        </optgroup>
+                        <optgroup label="ZI">
+                            <option value="fs">FS</option>
+                            <option value="cs">CS</option>
+                            <option value="b178">B178</option>
+
+                        </optgroup>
+                        
+                    </select>
+                </div>
+
+                <div class="grid-item grid-01">
+                    <button type="button" class="g1">Beschluss</button>
+                    <button type="button" class="g1">Repressiv</button>
+                    <button type="button" class="g1">Präventiv</button>
+                </div>
+
+                <div class="grid-item grid-01">
+                    <button type="button" class="g1">Treffer</button>
+                    <button type="button" class="g1">Einsatz</button>
+                    <button type="button" class="g1">Wartung</button>
+                </div>
+
+                <div class="grid-item grid-01">
+                    <button type="button" class="g1 active" style="background-color: green;">Aktiv</button>
+                    <button type="button" class="g1" style="background-color: orange;">läuft aus</button>
+                    <button type="button" class="g1" style="background-color: brown;">inaktiv</button>
+                </div>
 
 
+                <div class="grid-item grid-02">
+                    <button type="button" class="g1">Löschen</button>
+                    <button type="button" class="g1">Ausleiten</button>
+                </div>
+
+                  
+                <div class="grid-item grid-02">
+                    <select class="auswahl-suche">
+                        <option value="all">alles</option><option value="id">ID</option><option value="vn">VN</option>
+                    </select>
+                    <input type="text" id="tabelleSucheInput" placeholder="Suchbegriff eingeben...">
+                </div>
+
+                
+                <div class="grid-item grid-02">
+                    <button type="button" class="g1">CSV Export</button>
+                    <button type="button" class="g1">CSV Import</button>
+                </div>
+
+            </div>
+        </section>
+        
+        <section class="recherche-tabelle-sektion">
+            <div>
+                <table class="recherche-tabelle">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>VN</th>
+                            <th>Name</th>
+                            <th>Standort</th>
+                            <th>System</th>
+                            <th>Delikt</th>
+                            <th>Von</th>
+                            <th>Bis</th>
+                            <th>Grund Erhebung</th>
+                            <th>Grund Erstellung</th>
+                            <th>Ersteller</th>
+                            <th>Erstelldatum</th>
+                            <th>Restlaufzeit</th>
+                            <th>Ablaufdatum</th>
+                            <th>Status</th>
+                            <th>Löschung</th>
+                            <th>Löschgrund</th>
+                            <th>Löscher</th>
+                            <th>Treffer</th>
+                            <th>Anzahl Treffer</th>
+                            <th>Ausgeleitet</th>
+                            <th>Einsatz</th>
+                            <th>Wartung</th>
+                            <th>Aktionen    </th>
+                        </tr>
+        
+                    </thead>
+                    <tbody>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>02</td><td>1234/24/123456</td><td>EV Elena</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+                        <tr data-recherche-id="R_GR_001">
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
 
     </main>
 
@@ -46,7 +279,9 @@
     <footer>
         <p>&copy;2025   -    Nico Puchert    -    PerIS-WebApp</p>
     </footer>  
-    <script src="../static/js/script.js"></script>
+
+
+    <script src="../static/js/main.js"></script>
 </body>
 
 

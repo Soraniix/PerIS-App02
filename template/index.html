@@ -17,8 +17,8 @@
         <h1>Dashboard</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="/template/recherche_uebersicht.html">Rechercheübersicht</a></li>
+                <li><a class="active" href="index.html">Dashboard</a></li>
+                <li><a href="recherche_uebersicht.html">Rechercheübersicht</a></li>
                 <li><a href="#">Aufgabenliste</a></li>
                 <li><a href="#">Trefferliste</a></li>
                 <li><a href="#">Einsatzliste</a></li>
@@ -26,7 +26,6 @@
                 <li><a href="#">Beschlussliste</a></li>
                 <li><a href="#">Statistik</a></li>
             </ul>
-
         </nav>
     </header>
 
@@ -312,7 +311,7 @@
             
             <img class="add-button" src="../static/images/plus-icon.png" alt="Plus Icon" title="Neue Notiz hinzufügen">
             
-            <div class="dashboad-add-panel hidden">
+            <div class="dashboard-add-panel hidden">
                 <form action=""> 
                     <div id="header">
                         <label for="note-title">Titel:</label>
@@ -728,12 +727,17 @@
                             <div class="ausl-comment-li-meta"><strong>Admin am 12.04.2025</strong></div>
                             <div class="ausl-comment-li-content">Hier steht dann der Inhalt!</div>
                         </li>
-                        <li data-ausl-comment="2" class="ausl-comment-li zu-ausl-id-1">
+                        <li data-ausl-comment="2" class="ausl-comment-li zu-ausl-id-2">
                             <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
                             <div class="ausl-comment-li-meta"><strong>Admin am 12.04.2025</strong></div>
                             <div class="ausl-comment-li-content">Hier steht dann der Inhalt!</div>
                         </li>
-                        <li data-ausl-comment="3" class="ausl-comment-li zu-ausl-id-1">
+                        <li data-ausl-comment="3" class="ausl-comment-li zu-ausl-id-3">
+                            <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
+                            <div class="ausl-comment-li-meta"><strong>Admin am 12.04.2025</strong></div>
+                            <div class="ausl-comment-li-content">Hier steht dann der Inhalt!</div>
+                        </li>
+                        <li data-ausl-comment="3" class="ausl-comment-li zu-ausl-id-4">
                             <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
                             <div class="ausl-comment-li-meta"><strong>Admin am 12.04.2025</strong></div>
                             <div class="ausl-comment-li-content">Hier steht dann der Inhalt!</div>
@@ -874,7 +878,7 @@
         <p>&copy;2025   -    Nico Puchert    -    PerIS-WebApp</p>
     </footer>  
 
-    <script src="../static/js/script.js"></script>
+    <script type="module" src="../static/js/main.js"></script>
 </body>
 
 </html>

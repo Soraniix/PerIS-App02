@@ -1,0 +1,633 @@
+import { togglePanelVisibility } from "./uiHelpers.js";
+import { initialisiereHinweisSektion } from "./hinweise.js";
+
+const openNavHeader = document.querySelectorAll("header nav ul li a")
+
+
+
+
+// const für Aufgaben
+
+const addListenObjekteAufgaben = document.querySelectorAll("#offene-aufgaben .dashboard-list li")
+const addAufgabeDetailsPanel = document.querySelector("#offene-aufgaben .dashboard-details-panel")
+const addTaskCloseButton = document.querySelector("#offene-aufgaben .close-button")
+const addTaskForm = document.querySelector("#offene-aufgaben .task-form")
+const addTaskChangeButton = document.querySelector("#offene-aufgaben .change-button")
+const addTaskChangeList = document.querySelectorAll("#offene-aufgaben .task-info-field")
+const addTaskSaveButton = document.querySelector("#offene-aufgaben .save-button")
+const addTaskStatusSpan = document.querySelectorAll("#offene-aufgaben .task-vis-prio .task-status")
+
+const addKommentarButton = document.querySelector("#offene-aufgaben .add-comment-task-button")
+const addKommentarInhalt = document.querySelector("#offene-aufgaben .new-comment-task")
+const addKommentarListe = document.querySelector("#offene-aufgaben .task-comment-list")
+const USER = "Nico"
+
+// Übersicht Beschlüsse
+
+const addBeschlussDetailsPanel = document.querySelector("#uebersicht-beschluesse .beschlussdetails")
+const addBeschlussDetailsCloseButton = document.querySelector("#uebersicht-beschluesse .close-button")
+const addAlleBeschluesse = document.querySelectorAll("#uebersicht-beschluesse .dashboard-list li")
+
+// Löschungen Übersicht
+
+const addDelCloseButton = document.querySelector("#offene-loeschungen .close-button")
+const addDelDetailsPanel = document.querySelector("#offene-loeschungen .loesch-detail-panel")
+const addDelListe = document.querySelectorAll("#offene-loeschungen ul li")
+const addDelDelButton = document.querySelector("#offene-loeschungen .delete-button")
+const addDelForm = document.querySelector("#offene-loeschungen .del-form")
+
+// Offene Ausleitungen
+
+const addAuslCloseButton = document.querySelector(".ausl-details-panel .close-button")
+const addAuslDetailsPanel = document.querySelector(".ausl-details-panel")
+const addAuslListeLi = document.querySelectorAll(".ul-ausl-dashboard li")
+const addAuslListe = document.querySelectorAll(".ul-ausl-dashboard")
+const addAuslDone = document.querySelector(".button-ausl-checkbox")
+const addAuslFormDone = document.querySelector(".ausl-done")
+const addAuslFromComment = document.querySelector(".ausl-comment-form")
+const addAuslRotesKreuz = document.querySelector(".ausl-rotes-kreuz")
+const addAuslCommentBox = document.querySelector(".ausl-comment-send")
+const addAuslPanelCommentList = document.querySelector(".ausl-comment-ul")
+const USERAUSLCOMMENT = "Soranix"
+
+if (addAuslFromComment) {
+    addAuslFromComment.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const selectedLi = document.querySelector(".ul-ausl-dashboard li.selected");
+        if (!selectedLi) {
+            alert("Bitte zuerst einen Ausleitungs-Eintrag auswählen!");
+            return;
+        } // <--- Diese Klammer MUSS da stehen!
+
+        const selectedID = selectedLi.dataset.rechercheId;
+
+        if (addAuslCommentBox.value.trim() === "") return;
+
+        const newComment = document.createElement("li");
+        newComment.dataset.auslComment = "new-" + Date.now();
+        newComment.classList.add(`zu-ausl-id-${selectedID}`);
+        newComment.classList.add("ausl-comment-li");
+
+        const time_now = new Date().toLocaleString('de-DE');
+        newComment.innerHTML = `
+            <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
+            <div class="ausl-comment-li-meta"><strong>${USERAUSLCOMMENT} am ${time_now}</strong></div>
+            <div class="ausl-comment-li-content">${addAuslCommentBox.value}</div>
+        `;
+
+        const delKreuz = newComment.querySelector(".ausl-rotes-kreuz");
+        delKreuz.addEventListener("click", () => {
+            newComment.remove();
+        });
+
+        if (addAuslPanelCommentList) {
+            addAuslPanelCommentList.prepend(newComment);
+        }
+
+        addAuslCommentBox.value = "";
+    });
+}
+
+if (addAuslFormDone) {
+    addAuslFormDone.addEventListener("submit", (event) => {
+        event.preventDefault()
+    
+        const selectedList = document.querySelector(".ul-ausl-dashboard li.selected")
+        if (selectedList) {
+            selectedList.remove()
+        }
+        addAuslFormDone.reset()
+        addAuslDetailsPanel.classList.add("hidden")
+    })
+    
+    
+    addAuslListeLi.forEach(li => {
+        li.addEventListener("click", ()=> {
+            oeffneAuslDetails(li)
+        })
+    })
+}
+
+
+
+
+function oeffneAuslDetails(li) {
+    addAuslListeLi.forEach(eintrag => eintrag.classList.remove("selected"))
+    li.classList.add("selected")
+    addAuslDetailsPanel.classList.remove("hidden")
+    
+    const allComment = document.querySelectorAll(".ausl-comment-li")
+    const idSelected = li.dataset.rechercheId
+    const allCommentZuId = document.querySelectorAll(`.zu-ausl-id-${idSelected}`)
+    allComment.forEach(comment => comment.classList.add("hidden"))
+    allCommentZuId.forEach(comment => comment.classList.remove("hidden"))
+    
+
+    
+    allCommentZuId.forEach(commi => {
+        const kreuz = commi.querySelector(".ausl-rotes-kreuz")
+        kreuz.addEventListener("click", ()=> {
+            commi.remove();
+        })
+    })
+    
+
+
+
+
+
+
+}
+
+if (addAuslCloseButton) {
+    addAuslCloseButton.addEventListener("click", ()=> {
+        addAuslDetailsPanel.classList.add("hidden")
+    })
+}
+
+
+
+
+
+
+if (addDelForm) { // Sicherstellen, dass das Formular existiert
+    addDelForm.addEventListener("submit", (event) => {
+        event.preventDefault()
+        
+        if (addDelForm.checkValidity()){
+            addDelForm.reset()
+            const selectedLis = document.querySelector("#offene-loeschungen li.selected");
+            addDelDetailsPanel.classList.add("hidden")
+            selectedLis.remove()
+        }
+        
+    });
+}
+
+
+
+addDelListe.forEach(li => {
+    li.addEventListener("click", ()=> {
+        oeffneDelDetails(li)
+    })
+})
+
+if (addDelCloseButton) {
+    addDelCloseButton.addEventListener("click", ()=> {
+        addDelDetailsPanel.classList.add("hidden")
+    })
+}
+
+
+
+
+function oeffneDelDetails(li){
+    addDelListe.forEach(list => list.classList.remove("selected"))
+    li.classList.add("selected")
+    addDelDetailsPanel.classList.remove("hidden")
+
+
+    const id = li.querySelector("#offene-loeschungen .value-recherche-id")
+    const system = li.querySelector("#offene-loeschungen .value-recherche-system")
+    const vn = li.querySelector("#offene-loeschungen .value-recherche-vn")
+    const delikt = li.querySelector("#offene-loeschungen .value-recherche-delikt")
+    const delTagger = li.querySelector("#offene-loeschungen .value-recherche-delTagger")
+    const grund = li.querySelector("#offene-loeschungen .value-recherche-grund")
+    const text = li.querySelector("#offene-loeschungen .value-recherche-text")
+
+    const infoId = addDelDetailsPanel.querySelector(".del-info-id")
+    const infoSystem = addDelDetailsPanel.querySelector(".del-info-system")
+    const infoVn = addDelDetailsPanel.querySelector(".del-info-vn")
+    const infoDelikt = addDelDetailsPanel.querySelector(".del-info-delikt")
+    const infoDelTagger = addDelDetailsPanel.querySelector(".del-info-delTagger")
+    const infoGrund = addDelDetailsPanel.querySelector(".del-info-grund")
+    const infoText = addDelDetailsPanel.querySelector(".del-info-text")
+
+    infoId.textContent = id.textContent
+    infoSystem.textContent = system.textContent
+    infoVn.textContent = vn.textContent
+    infoDelikt.textContent = delikt.textContent
+    infoDelTagger.textContent = delTagger.textContent
+    infoGrund.value = grund.textContent.trim()
+    infoText.textContent = text.textContent
+
+}
+
+
+addAlleBeschluesse.forEach(geklickteLi => {
+    geklickteLi.addEventListener("click", () => {
+        oeffneBeschluesse(geklickteLi)
+    })
+})
+
+function oeffneBeschluesse(geklickteLi) {
+
+    addAlleBeschluesse.forEach(einLi => einLi.classList.remove("selected"))
+    geklickteLi.classList.add("selected")
+
+    const titel = geklickteLi.querySelector(".beschluss-titel").textContent
+    const vn = geklickteLi.querySelector(".beschluss-vn").textContent
+    const ablauf = geklickteLi.querySelector(".beschluss-ablaufdatum").textContent
+    const az = geklickteLi.querySelector(".beschluss-az-db").textContent
+    const org = geklickteLi.querySelector(".beschluss-org-einheit-db").textContent
+    const bl = geklickteLi.querySelector(".beschluss-bl-db").textContent
+    const orte = geklickteLi.querySelector(".beschluss-orte-db").textContent
+    const beginn = geklickteLi.querySelector(".beschluss-beginnU-db").textContent
+    const ende = geklickteLi.querySelector(".beschluss-endeU-db").textContent
+    const treffer = geklickteLi.querySelector(".beschluss-treffer-db").textContent
+    const einsaetze = geklickteLi.querySelector(".beschluss-einsaetze-db").textContent
+    const schaden = geklickteLi.querySelector(".beschluss-schaden-db").textContent
+
+    const detailTitel = addBeschlussDetailsPanel.querySelector(".beschluss-details-titel")
+    const detailVn = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-vn")
+    const detailsAblauf = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-ablauf")
+    const detailsAz = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-az")
+    const detailsOrg = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-org")
+    const detailsBl = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-bl")
+    const detailsOrte = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-orte")
+    const detailsBeginn = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-beginn")
+    const detailsEnde = addBeschlussDetailsPanel.querySelector(".beschluss-fakten .beschluss-details-ende")
+    const detailsTreffer = addBeschlussDetailsPanel.querySelector(".beschluss-details-treffer")
+    const detailsEinsaetze = addBeschlussDetailsPanel.querySelector(".beschluss-details-einsaetze")
+    const detailsSchaden = addBeschlussDetailsPanel.querySelector(".beschluss-details-schaden")
+
+    detailTitel.textContent = titel
+    detailVn.textContent = vn
+    detailsAblauf.textContent = ablauf
+    detailsAz.textContent = az
+    detailsOrg.textContent = org
+    detailsBl.textContent = bl
+    detailsOrg.textContent = orte
+    detailsBeginn.textContent = beginn
+    detailsEnde.textContent = ende
+    detailsTreffer.textContent = treffer
+    detailsEinsaetze.textContent = einsaetze
+    detailsSchaden.textContent = schaden
+
+
+    
+
+    togglePanelVisibility(addBeschlussDetailsPanel, true)
+    //addBeschlussDetailsPanel.classList.remove("hidden")
+}
+
+if (addBeschlussDetailsCloseButton) {
+    addBeschlussDetailsCloseButton.addEventListener("click", ()=> {
+        //addBeschlussDetailsPanel.classList.add("hidden") - Altes Öffnen
+        togglePanelVisibility(addBeschlussDetailsPanel, false)
+    })
+}
+
+
+
+
+if (addKommentarButton) {
+    addKommentarButton.addEventListener("click", (event) => {
+        event.preventDefault()
+        if (addKommentarInhalt.value != "") {
+    
+            const selectedListId = document.querySelector("#offene-aufgaben ul .selected").dataset.taskId
+            const new_comment = document.createElement("li");
+            new_comment.dataset.taskcommentId = 'new-' + Date.now();
+            new_comment.classList.add("test01");
+            new_comment.classList.add(`zu-task-id-${selectedListId}`)
+            aktuelleZeit = new Date().toLocaleString('de-DE')
+    
+            new_comment.innerHTML = `
+            <img class="rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
+            <div>
+                <strong class="task-name-date-comment">${USER} - ${aktuelleZeit}:</strong>
+                <p class="task-comment-content">${addKommentarInhalt.value}</p>
+    
+            </div>
+    
+            `
+            const delButton = new_comment.querySelector(".rotes-kreuz") 
+            delButton.addEventListener("click", (event) => {
+                new_comment.remove()
+            })
+    
+    
+            if (addKommentarListe) {
+                addKommentarListe.prepend(new_comment)
+            }
+    
+            addKommentarInhalt.value = ""
+    
+        }
+    })
+}
+
+
+
+addTaskStatusSpan.forEach(eintrag => {
+    eintrag.addEventListener("click", ()=> {
+        statiButton(eintrag)
+    })
+})
+
+function statiButton(eintrag){
+    
+    if (addTaskChangeButton.textContent=="Abbrechen")
+    {
+        eintrag.classList.remove("task-status-offen", "task-status-arbeit", "task-status-done")
+        if (eintrag.textContent == "offen") {
+            eintrag.textContent = "in Arbeit"
+            eintrag.classList.add("task-status-arbeit")
+            return
+        }if (eintrag.textContent == "in Arbeit") {
+            eintrag.textContent = "fertig"
+            eintrag.classList.add("task-status-done")
+            return
+        }if (eintrag.textContent == "fertig") {
+            eintrag.textContent = "offen"
+            eintrag.classList.add("task-status-offen")
+            return
+        }
+            
+    }
+       
+}
+
+if (addTaskSaveButton) {
+    addTaskSaveButton.addEventListener("click", (event) => {
+        event.preventDefault()
+        const selectedList = document.querySelector("#offene-aufgaben ul .selected")
+    
+        const newTitle = addAufgabeDetailsPanel.querySelector(".task-titel").value
+        const newText = addAufgabeDetailsPanel.querySelector(".task-body").value
+        const newPrio = addAufgabeDetailsPanel.querySelector(".task-vis-prio select.task-prio").value
+        const newVis = addAufgabeDetailsPanel.querySelector('input[name="task-visibility"]:checked').value
+        const newStati = addAufgabeDetailsPanel.querySelector(".task-vis-prio .task-status").textContent
+    
+        selectedList.querySelector(".task-dashboard-title").textContent = newTitle
+        selectedList.querySelector(".task-content-db").textContent = newText
+        selectedList.querySelector(".task-prio-db").textContent = newPrio
+        selectedList.querySelector(".task-vis-db").textContent = newVis
+        altStati = selectedList.querySelector(".task-status")
+    
+        altStati.textContent = newStati
+    
+        altStati.classList.remove("task-status-offen", "task-status-arbeit", "task-status-done")
+            if (newStati == "offen") {
+                altStati.classList.add("task-status-offen")
+            }else if (newStati == "in Arbeit") {
+                altStati.classList.add("task-status-arbeit")
+            }else if (newStati == "fertig") {
+                altStati.classList.add("task-status-done")
+            }
+    
+        addTaskChangeList.forEach(eintrag => eintrag.disabled = true)
+        addTaskSaveButton.classList.add("hidden")
+        addTaskChangeButton.textContent = "Bearbeiten"
+    
+    })
+}
+
+
+
+if (addTaskChangeButton) {
+    addTaskChangeButton.addEventListener("click", () => {
+
+    
+        const isEditMode = addTaskChangeButton.textContent === "Bearbeiten";
+        addTaskStatusSpan.forEach(eintrag => {
+            eintrag.classList.toggle("disabled")
+        })
+        
+        addTaskChangeButton.textContent = isEditMode ? "Abbrechen" : "Bearbeiten";
+        addTaskSaveButton.classList.toggle("hidden");
+        
+    
+        addTaskChangeList.forEach(eintrag => {
+            eintrag.toggleAttribute("disabled");  // toggelt das disabled-Attribut
+        });
+        
+    
+            
+    })
+}
+
+
+if (addTaskCloseButton) {
+    addTaskCloseButton.addEventListener("click", (event) => {
+        addAufgabeDetailsPanel.classList.add("hidden")
+        addTaskChangeList.forEach(eintrag => eintrag.disabled = true)
+        addTaskForm.reset()
+        addTaskSaveButton.classList.add("hidden")
+        addTaskStatusSpan.forEach(eintrag => eintrag.classList.add("disabled"))
+    
+    })
+}
+
+
+
+addListenObjekteAufgaben.forEach(eintrag => {
+    eintrag.addEventListener("click", (event) => {
+        oeffneAufgabeDetails(eintrag)
+    })
+
+})
+
+
+function oeffneAufgabeDetails(eintrag){
+    addAufgabeDetailsPanel.classList.remove("hidden")
+    addTaskChangeButton.textContent = "Bearbeiten"
+
+    addListenObjekteAufgaben.forEach(element => element.classList.remove("selected"))
+    eintrag.classList.add("selected")
+
+    titel = eintrag.querySelector(".task-dashboard-title").textContent
+    stati = eintrag.querySelector(".task-status").textContent
+    text = eintrag.querySelector(".task-content-db").textContent
+    vis = eintrag.querySelector(".task-vis-db").textContent
+    prio = eintrag.querySelector(".task-prio-db").textContent
+    creater = eintrag.querySelector(".task-creater").textContent
+    date = eintrag.querySelector(".task-date").textContent
+
+    panelTitle = addAufgabeDetailsPanel.querySelector(".task-titel")
+    panelText = addAufgabeDetailsPanel.querySelector(".task-body")
+    panelVis = addAufgabeDetailsPanel.querySelector(`input[name=task-visibility][value=${vis}]`)
+    panelStati = addAufgabeDetailsPanel.querySelector(".task-status")
+    panelPrio = addAufgabeDetailsPanel.querySelector("select.task-prio")
+    panelCreater = addAufgabeDetailsPanel.querySelector(".ersteller-von")
+    panelDate = addAufgabeDetailsPanel.querySelector(".erstellt-am")
+
+    panelTitle.value = titel
+    panelText.value = text
+    panelVis.checked = true
+    panelPrio.value = prio
+    panelCreater.textContent = creater
+    panelDate.textContent = date
+
+    const allTaskComments = document.querySelectorAll("#offene-aufgaben .task-comment-list li")
+    const taskPanelId = document.querySelector("#offene-aufgaben ul.dashboard-list .selected").dataset.taskId
+    const allTaskCommentsId = document.querySelectorAll(`#offene-aufgaben .task-comment-list .zu-task-id-${taskPanelId}`)
+    allTaskComments.forEach(eintrag => eintrag.classList.add("hidden"))
+    allTaskCommentsId.forEach(eintrag => eintrag.classList.remove("hidden"))
+    
+
+    allTaskCommentsId.forEach(commi => {
+        const delButton = commi.querySelector(".rotes-kreuz")
+
+        delButton.addEventListener("click", () => {
+            commi.closest(".test01").remove()
+        })
+    })
+
+
+
+    
+
+    // Zuerst alle alten Statusklassen entfernen
+    panelStati.classList.remove("task-status-offen", "task-status-arbeit", "task-status-done");
+
+    if (stati == "offen"){
+        panelStati.classList.add("task-status-offen");
+        panelStati.textContent = "offen";
+    } else if (stati == "in Arbeit") {
+        panelStati.classList.add("task-status-arbeit");
+        panelStati.textContent = "in Arbeit";
+    } else if (stati == "fertig") {
+        panelStati.classList.add("task-status-done");
+        panelStati.textContent = "fertig"; // Hier den Text ergänzen
+    }
+}
+
+
+
+
+
+
+
+//---------------------------------------------------------------------//
+//Kamera Zeiten
+
+const addKameraZeitenChange = document.querySelector(".edit-times-button")
+const addKameraZeitenSave = document.querySelector(".save-times-button")
+const nameToggelButton = document.querySelector(".edit-times-button")
+
+if (addKameraZeitenChange) {
+    addKameraZeitenChange.addEventListener("click", () => {
+        const changeInputs = document.querySelectorAll("#kamera-zeiten input, select")
+        const addZeitenForm = document.querySelector("#kamera-zeiten form")
+        
+    
+        changeInputs.forEach(feld => feld.toggleAttribute("disabled"))
+        
+        if (addKameraZeitenSave.classList.contains("hidden"))
+            addKameraZeitenSave.classList.remove("hidden")
+        else
+            addKameraZeitenSave.classList.add("hidden")
+        
+    
+        if (nameToggelButton.textContent  == "Abbrechen") {
+            nameToggelButton.textContent  = "Bearbeiten"
+            addZeitenForm.reset()
+        } else {
+            nameToggelButton.textContent  = "Abbrechen"
+        }
+    })
+}
+
+if (addKameraZeitenSave) {
+    addKameraZeitenSave.addEventListener("click", (event) => {
+        event.preventDefault()
+        let kameraDaten = {}
+        const changeInputs = document.querySelectorAll("#kamera-zeiten input, select")
+        changeInputs.forEach(function(feld) {
+             
+            if (feld.name) {
+                kameraDaten[feld.name] = feld.value
+                feld.disabled = true
+            }
+            
+        } )
+        console.log(kameraDaten)
+        nameToggelButton.textContent = "Bearbeiten"
+        addKameraZeitenSave.classList.add("hidden")
+    })
+}
+
+
+
+/* ============================================= */
+/* === JS FÜR RECHERCHE ÜBERSICHT SEITE === */
+/* ============================================= */
+
+const sucheInput = document.querySelector("#tabelleSucheInput")
+const spaltenAuswahl = document.querySelector(".auswahl-suche")
+const rechercheTabellenZeilen = document.querySelectorAll(".recherche-tabelle tbody tr");
+
+if (sucheInput && spaltenAuswahl && (rechercheTabellenZeilen.length > 0)) {
+    sucheInput.addEventListener("input", filterRechercheTabelle)
+    spaltenAuswahl.addEventListener("change", filterRechercheTabelle)
+}
+
+
+
+
+function filterRechercheTabelle(){
+    const suchbegriff = sucheInput.value.trim().toLowerCase()
+    const suchSpalte = spaltenAuswahl.value
+
+    const spaltenIndizes = {
+        "id": 0,
+        "vn": 1,
+        "name":2,
+        "delikt":5
+    }
+
+    rechercheTabellenZeilen.forEach(zeile => {
+        let zeileEnthaeltSuchbegriff = false
+        const alleZellen = zeile.querySelectorAll("td")
+
+        if (suchSpalte === "all") {
+
+            alleZellen.forEach(zelle => {
+                new_zelle = zelle.textContent.trim().toLowerCase()
+                if (new_zelle.includes(suchbegriff)) {
+                    zeileEnthaeltSuchbegriff = true
+                }
+            })
+        } else {
+            const zielSpaltenIndex = spaltenIndizes[suchSpalte]
+            if (zielSpaltenIndex !== undefined){
+                const spezifischeZelle =  zeile.cells[zielSpaltenIndex]
+                if (spezifischeZelle !== undefined){
+                    const normalSpezifischeZelle = spezifischeZelle.textContent.trim().toLowerCase()
+                    if (normalSpezifischeZelle.includes(suchbegriff))
+                        zeileEnthaeltSuchbegriff = true
+                }
+                
+                
+
+            }
+        }
+        
+        if (zeileEnthaeltSuchbegriff || suchbegriff === "") {
+            zeile.style.display = "";
+        } else {
+            zeile.style.display = "none"
+        }
+
+    })
+}
+document.addEventListener('DOMContentLoaded', () => {
+
+
+    const hinweisSektionElement =document.querySelector("#hinweise")
+        if (hinweisSektionElement)
+            initialisiereHinweisSektion();
+
+    // Speziell für die Rechercheübersicht-Seite:
+    const aktuellesSucheInput = document.querySelector("#tabelleSucheInput");
+    if (aktuellesSucheInput && typeof filterRechercheTabelle === 'function') {
+        // Nur wenn das Suchfeld existiert UND die Funktion definiert ist,
+        // dann rufe die Filterfunktion initial auf.
+        filterRechercheTabelle();
+
+        
+    }
+});
