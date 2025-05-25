@@ -1,5 +1,4 @@
 
-
 export function togglePanelVisibility(panelElement, show) {
 
     if (panelElement) {
