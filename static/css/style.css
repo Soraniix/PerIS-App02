@@ -1543,7 +1543,7 @@ main section form fieldset {
 }
 
 /* Der äußere Container des Modals (der dunkle Hintergrund) */
-.panel-recherche-hinzufuegen {
+#panel-recherche-hinzufuegen {
 
   position: fixed; /* Bleibt beim Scrollen an der gleichen Position */
   z-index: 1000; /* Stellt sicher, dass es über allem anderen liegt */
@@ -1564,8 +1564,9 @@ main section form fieldset {
   padding: 20px;
   border: 1px solid #888;
   border-radius: 8px; /* Abgerundete Ecken */
-  width: 80%; /* Breite des Inhalts */
-  max-width: 500px; /* Maximale Breite */
+  width: 90%; /* Breite des Inhalts */
+  max-height: 700px;
+  max-width: 1000px; /* Maximale Breite */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   position: relative; /* Wichtig für den Schließen-Button */
   animation-name: animatetop; /* Optional: Animation beim Öffnen */
@@ -1593,7 +1594,7 @@ main section form fieldset {
   transform: scale(1.1);
 }
 
-.panel-recherche-hinzufuegen h2 {
+#panel-recherche-hinzufuegen h2 {
     text-align: center;
     margin-bottom: 25px;
     margin-top: 5px;
@@ -1603,7 +1604,7 @@ main section form fieldset {
     border-radius: 5px;
 }
 
-.panel-recherche-hinzufuegen h3 {
+#panel-recherche-hinzufuegen h3 {
     text-align: center;
     margin-bottom: 20px;
     background-color: #333;
@@ -1614,13 +1615,20 @@ main section form fieldset {
 
 
 
-.panel-recherche-hinzufuegen .content-main {
+#panel-recherche-hinzufuegen .content-main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
 }
 
+.section-content-new > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+}
+
 .section-content-new > div  {
+    
     margin: 20px 20px;
 }
 
@@ -1653,7 +1661,7 @@ main section form fieldset {
     gap: 15px 0;
 }
 
-.panel-recherche-hinzufuegen .close-button, .reset-button {
+#panel-recherche-hinzufuegen .save-button, .reset-button {
     background-color: #333;
     color: white; padding: 7px 10px;
     border: none; border-radius: 4px;
@@ -1662,7 +1670,7 @@ main section form fieldset {
     font-weight: bold;
 }
 
-.panel-recherche-hinzufuegen .new-recherche-buttons  {
+#panel-recherche-hinzufuegen .new-recherche-buttons  {
     display: flex;
     justify-content: space-between;
 }

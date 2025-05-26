@@ -92,7 +92,7 @@
             <div class="grid-container">
 
                 <div class="grid-item grid-03">
-                    <img src="../static/images/hinzufugen.png" alt="" srcset="" style="height: 50px; margin: auto auto">
+                    <img src="../static/images/hinzufugen.png" class="open-button" alt="" srcset="" style="height: 50px; margin: auto auto">
                 </div>
 
                 <div class="grid-item grid-01 filter-btn-system">
@@ -157,57 +157,62 @@
             </div>
         </section>
 
-        <div class="panel-recherche-hinzufuegen">
-            <div class="panel-content">
+        <div id="panel-recherche-hinzufuegen" class="hidden">
+            <div class="panel-content hidden">
                 <span class="close-button-new">&times;</span> <h2>Neue Recherche</h2>
                 <form>
                     <div class="content-main">
                         <div>
                             <section class="section-content-new">
                                 <h3>Grunddaten</h3>
-                                <div>
-                                    <div><label for="new-recherche-id">ID:</label></div>
-                                    <div><input type="number" required placeholder="ID: 1234..."></div>
+                                <div>                                   
+                                    <div>
+                                        <div><label for="new-recherche-id">ID:</label></div>
+                                        <div><input type="number" required placeholder="ID: 1234..."></div>
+                                    </div>
+
+                                    <div>
+                                        <div><label for="new-recherche-vn">Vorgangsnummer:</label></div>
+                                        <div><input type="number" required placeholder="1234/23/123456"></div>
+                                    </div>
+                                    <div>
+                                        <div><label for="new-recherche-standort">Standort:</label></div>
+                                        <div><input type="text" required></div>
+                                    </div>
+
+                                    <div>
+                                        <div><label for="new-recherche-delikt">Paragraph (§):</label></div>
+                                        <div><input type="" required></div>
+                                    </div>
+
+                                    <div>
+                                        <div><label for="new-recherche-von">Von:</label></div>
+                                        <div><input type="datetime-local" required></div>
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <div><label for="new-recherche-vn">Vorgangsnummer:</label></div>
-                                    <div><input type="number" required placeholder="1234/23/123456"></div>
-                                </div>
-                                <div>
-                                    <div><label for="new-recherche-standort">Standort:</label></div>
-                                    <div><input type="text" required></div>
+                                <div>                           
+                                    <div>
+                                        <div><label for="new-recherche-bis">Bis:</label></div>
+                                        <div><input type="datetime-local" required></div>
+                                    </div>
+
+                                    <div>
+                                        <div><label for="new-recherche-erstellt">Erstellt:</label></div>
+                                        <div><input type="datetime-local" required></div>
+                                    </div>
+
+                                    <div>
+                                        <div><label for="new-recherche-grund">Grund:</label></div>
+                                        <div><select name="grund-select-new-recherche" id="grund-select-new-recherche"><option value="beschluss">Beschluss</option><option value="repressiv">Repressiv</option><option value="präventiv">Präventiv</option></select></div>
+                                    </div>
+
+                                    <div>
+                                        <div><label for="new-recherche-ersteller">Ersteller:</label></div>
+                                        <div><select name="ersteller-select-new-recherche" id="ersteller-select-new-recherche"><option value="PuNi0705">PuNi0705</option><option value="LiRo2205">LiRo2205</option></select></div>
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <div><label for="new-recherche-delikt">Paragraph (§):</label></div>
-                                    <div><input type="" required></div>
-                                </div>
-
-                                <div>
-                                    <div><label for="new-recherche-von">Von:</label></div>
-                                    <div><input type="datetime-local" required></div>
-                                </div>
-
-                                <div>
-                                    <div><label for="new-recherche-bis">Bis:</label></div>
-                                    <div><input type="datetime-local" required></div>
-                                </div>
-
-                                <div>
-                                    <div><label for="new-recherche-erstellt">Erstellt:</label></div>
-                                    <div><input type="datetime-local" required></div>
-                                </div>
-
-                                <div>
-                                    <div><label for="new-recherche-grund">Grund:</label></div>
-                                    <div><select name="grund-select-new-recherche" id="grund-select-new-recherche"><option value="beschluss">Beschluss</option><option value="repressiv">Repressiv</option><option value="präventiv">Präventiv</option></select></div>
-                                </div>
-
-                                <div>
-                                    <div><label for="new-recherche-ersteller">Ersteller:</label></div>
-                                    <div><select name="ersteller-select-new-recherche" id="ersteller-select-new-recherche"><option value="PuNi0705">PuNi0705</option><option value="LiRo2205">LiRo2205</option></select></div>
-                                </div>
                                 
                             </section>
                         </div>
@@ -225,7 +230,7 @@
                     
 
                     <div class="new-recherche-buttons">
-                        <button type="submit" class="close-button">Speichern</button>
+                        <button type="submit" class="save-button">Speichern</button>
                         <button type="button" class="reset-button">Clear</button>
                     </div>
                     

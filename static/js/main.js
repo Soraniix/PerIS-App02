@@ -5,11 +5,20 @@ import { initialisiereAufgabenSektion } from "./aufgabe.js";
 import { initialisiereBeschluesse } from "./beschluesse.js";
 import { initialisiereAusleitungSektion } from "./ausleitungen.js";
 import { initialisiereLoeschungenSektion } from "./loeschungen.js";
+import { initialisiereRechercheAddPanel } from "./addRecherche.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // Add-Panel-Recherche - Rechercheübersicht
+    const containerPanelNeueRechercheElement = document.querySelector("#panel-recherche-hinzufuegen")
+    if (containerPanelNeueRechercheElement) {
+        initialisiereRechercheAddPanel();
+    }
+    
+    
     // Filterlogik aus der Rechercheübersicht-Tabelle 
-    const sucheLogikSektionElement = document.querySelectorAll(".filter-tools-tabelle")
+    const sucheLogikSektionElement = document.querySelector(".filter-tools-tabelle")
     if (sucheLogikSektionElement) {
         initialisiereRechercheTabelleFilter();
     }
