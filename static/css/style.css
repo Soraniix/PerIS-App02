@@ -715,9 +715,6 @@ main section form fieldset {
     padding: 3px;   
 }
 
-#offene-aufgaben .header {
-    
-}
 
 #offene-aufgaben .task-header-icon {
     height: 30px;
@@ -1421,7 +1418,6 @@ main section form fieldset {
     gap: 20px;
 }
 .grid-item {
-    /* Stile für die Items */
     border: none; border-radius: 4px;
 
     text-align: center;
@@ -1439,34 +1435,42 @@ main section form fieldset {
     border: 1px solid #555;
     border-radius: 5px;
     margin: 2px 0;
-    background-color: #333;
+    background-color: #666;
     color: #FFF;
     transition: all 0.2s ease;
     font-weight: bold;
 }
 
 .g1:hover {
-    background-color: #b0b0b0;
     transform: scale(1.02);
     cursor: pointer;
 }
 
-.grid-01 .active {
-    background-color: #a4a4a4;
+.g1.active {
+    background-color: #333;
 }
+
+.filter-btn-aktiv.active, .trueBtn.active {
+    background-color: green;
+    color: #FFF;
+}
+.filter-btn-ablauf.active {
+    background-color: orange;
+    color: #FFF;
+}
+.filter-btn-inaktiv.active {
+    background-color: brown;
+    color: #FFF;
+}
+
+
 
 .filter-tools-tabelle {
     padding: 5px;
 }
 
 .filter-kuerzel {
-    /* Schlüssel-Eigenschaften, um die Zelle auszufüllen: */
-  width: 100%;
-  height: 100%;
-  border: 1px solid #555;
-  border-radius: 5px;
-  background-color: #333;
-  color: #FFF;
+
 }
 
 .grid-02 {
@@ -1521,4 +1525,144 @@ main section form fieldset {
     height: 100%;
     padding: 20px;
     align-self: center;
+}
+
+.grid-kuerzel {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.grid-kuerzel span {
+    width: 60px;
+    text-align: left;
+}
+
+.standort {
+    display: flex;
+    font-size: 0.7em;
+}
+
+/* Der äußere Container des Modals (der dunkle Hintergrund) */
+.panel-recherche-hinzufuegen {
+
+  position: fixed; /* Bleibt beim Scrollen an der gleichen Position */
+  z-index: 1000; /* Stellt sicher, dass es über allem anderen liegt */
+  left: 0;
+  top: 0;
+  width: 100%; /* Volle Breite */
+  height: 100%; /* Volle Höhe */
+  overflow: auto; /* Aktiviert Scrollen, wenn der Inhalt zu groß ist */
+  background-color: rgba(0,0,0,0.5); /* Dunkler, halbtransparenter Hintergrund */
+  display: flex; /* Für Zentrierung des Inhalts */
+  align-items: center; /* Vertikale Zentrierung */
+  justify-content: center; /* Horizontale Zentrierung */
+}
+
+/* Der eigentliche Inhalt des Modals (der weiße Kasten) */
+.panel-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px; /* Abgerundete Ecken */
+  width: 80%; /* Breite des Inhalts */
+  max-width: 500px; /* Maximale Breite */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  position: relative; /* Wichtig für den Schließen-Button */
+  animation-name: animatetop; /* Optional: Animation beim Öffnen */
+  animation-duration: 0.4s
+}
+
+/* Schließen-Button (X) */
+.close-button-new {
+  color: #c89898;
+  float: right; /* Nach rechts floaten */
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute; /* Positioniert relativ zum .modal-content */
+  top: 0px;
+  right: 10px;
+  cursor: pointer; /* Zeigt an, dass es klickbar ist */
+  transition: all 0.2s ease;
+}
+
+.close-button-new:hover,
+.close-button-new:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.panel-recherche-hinzufuegen h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+    background-color: #333;
+    color: #FFF;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.panel-recherche-hinzufuegen h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #333;
+    color: #FFF;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+
+.panel-recherche-hinzufuegen .content-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.section-content-new > div  {
+    margin: 20px 20px;
+}
+
+.content-main input:focus,
+.content-main  textarea:focus,
+.content-main  select:focus {
+        outline: 2px solid gray;
+}
+
+.section-content-new input, select {
+
+    border: none;
+    font-size: 1em;
+    align-self: center;
+    width: 100%;
+    margin-top: 2px;
+    height: 20px;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.section-content-new label {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.section-content-right {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 15px 0;
+}
+
+.panel-recherche-hinzufuegen .close-button, .reset-button {
+    background-color: #333;
+    color: white; padding: 7px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.panel-recherche-hinzufuegen .new-recherche-buttons  {
+    display: flex;
+    justify-content: space-between;
 }

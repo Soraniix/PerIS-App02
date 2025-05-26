@@ -95,60 +95,55 @@
                     <img src="../static/images/hinzufugen.png" alt="" srcset="" style="height: 50px; margin: auto auto">
                 </div>
 
-                <div class="grid-item grid-01">
-                    <button type="button" class="g1">GR</button>
-                    <button type="button" class="g1">ZI</button>
-                    <button type="button" class="g1">PM</button>
+                <div class="grid-item grid-01 filter-btn-system">
+                    <button type="button" class="g1 filter-btn-gr" value="görlitz">GR</button>
+                    <button type="button" class="g1 filter-btn-zi" value="zittau">ZI</button>
+                    <button type="button" class="g1 filter-btn-pm" value="pm">PM</button>
                 </div>
 
-                <div class="grid-item">
-                    <select name="filter-kuerzel" id="filter-kuerzel" multiple class="filter-kuerzel">
-                        <optgroup label="GR">
-                            <option value="sb">SB</option>
-                            <option value="hw">HW</option>
-                            <option value="asb">ASB</option>
-                            <option value="jk">JK</option>
-                            <option value="hs">HS</option>
-                            <option value="ng">NG</option>
-                        </optgroup>
-                        <optgroup label="ZI">
-                            <option value="fs">FS</option>
-                            <option value="cs">CS</option>
-                            <option value="b178">B178</option>
-
-                        </optgroup>
-                        
-                    </select>
+                <div class="grid-item grid-kuerzel filter-btn-standort">
+                    <div class="standort"><span><label for="standort-sb">SB - </label><input value="sb" type="checkbox" name="standort-sb" id="standort-sb"></span><span><label for="standort-hw">HW - </label><input value="hw" type="checkbox" name="standort-hw" id="standort-hw"></span><span style="width: auto;"><label for="standort-ASB">ASB - </label><input value="asb" type="checkbox" name="standort-ASB" id="standort-ASB"></span></div>
+                    <div class="standort"><span><label for="standort-jk">JK - </label><input value="jk" type="checkbox" name="standort-jk" id="standort-jk"></span><span><label for="standort-hs">HS - </label><input value="hs" type="checkbox" name="standort-hs" id="standort-hs"></span><span style="width: auto;"><label for="standort-ng">NG - </label><input value="ng" type="checkbox" name="standort-ng" id="standort-ng"></span></div>
+                    <div class="standort"><span><label for="standort-b178">B178 - </label><input value="b178" type="checkbox" name="standort-b178" id="standort-b178"></span><span><label for="standort-fs">FS - </label><input value="fs" type="checkbox" name="standort-fs" id="standort-fs"></span><span><label for="standort-cs">CS - </label><input value="cs" type="checkbox" name="standort-cs" id="standort-cs"></span></div>
+                    <div class="standort"><span><label for="standort-pm1">PM1 - </label><input value="pm1" type="checkbox" name="standort-pm1" id="standort-pm1"></span><span><label for="standort-pm2">PM2 - </label><input value="pm2" type="checkbox" name="standort-pm2" id="standort-pm2"></span></div>
                 </div>
 
-                <div class="grid-item grid-01">
-                    <button type="button" class="g1">Beschluss</button>
-                    <button type="button" class="g1">Repressiv</button>
-                    <button type="button" class="g1">Präventiv</button>
+                <div class="grid-item grid-01 filter-btn-grund">
+                    <button type="button" class="g1 filter-btn-beschluss">Beschluss</button>
+                    <button type="button" class="g1 filter-btn-repressiv">Repressiv</button>
+                    <button type="button" class="g1 filter-btn-praeventiv">Präventiv</button>
                 </div>
 
-                <div class="grid-item grid-01">
-                    <button type="button" class="g1">Treffer</button>
-                    <button type="button" class="g1">Einsatz</button>
-                    <button type="button" class="g1">Wartung</button>
+                <div class="grid-item grid-01 filter-btn-typ">
+                    <button type="button" class="g1 filter-btn-treffer trueBtn">Treffer</button>
+                    <button type="button" class="g1 filter-btn-einsatz trueBtn">Einsatz</button>
+                    <button type="button" class="g1 filter-btn-wartung trueBtn">Wartung</button>
                 </div>
 
-                <div class="grid-item grid-01">
-                    <button type="button" class="g1 active" style="background-color: green;">Aktiv</button>
-                    <button type="button" class="g1" style="background-color: orange;">läuft aus</button>
-                    <button type="button" class="g1" style="background-color: brown;">inaktiv</button>
+                <div class="grid-item grid-01 filter-btn-status">
+                    <button type="button" class="g1 filter-btn-aktiv">aktiv</button>
+                    <button type="button" class="g1 filter-btn-ablauf">läuft aus</button>
+                    <button type="button" class="g1 filter-btn-inaktiv">abgelaufen</button>
                 </div>
 
 
                 <div class="grid-item grid-02">
-                    <button type="button" class="g1">Löschen</button>
-                    <button type="button" class="g1">Ausleiten</button>
+                    <button type="button" class="g1 ausstehende-loeschung">Auss. Löschen</button>
+                    <button type="button" class="g1 ausstehende-treffer">Auss. Ausleiten</button>
                 </div>
 
                   
                 <div class="grid-item grid-02">
                     <select class="auswahl-suche">
-                        <option value="all">alles</option><option value="id">ID</option><option value="vn">VN</option>
+                        <option value="all">alles</option><option value="id">ID</option><option value="vn">VN</option><option value="name">Name</option>
+                        <option value="standort">Standort</option><option value="system">System</option><option value="delikt">Delikt</option>
+                        <option value="von">von</option><option value="bis">bis</option><option value="grund-erhebung">Grund Erhebung</option>
+                        <option value="grund-erstellung">Grund Erstellung</option><option value="ersteller">Ersteller</option>
+                        <option value="erstelldatum">Erstelldatum</option><option value="restlaufzeit">Restlaufzeit</option>
+                        <option value="ablaufdatum">Ablaufdatum</option><option value="status">Status</option><option value="löschung">Löschung</option>
+                        <option value="löschgrund">Löschgrund</option><option value="löscher">Löscher</option><option value="treffer">Treffer</option>
+                        <option value="anzahl-treffer">Anzahl Treffer</option><option value="ausgeleitet">Ausgeleitet</option><option value="einsatz">Einsatz</option>
+                        <option value="wartung">Wartung</option>
                     </select>
                     <input type="text" id="tabelleSucheInput" placeholder="Suchbegriff eingeben...">
                 </div>
@@ -161,6 +156,82 @@
 
             </div>
         </section>
+
+        <div class="panel-recherche-hinzufuegen">
+            <div class="panel-content">
+                <span class="close-button-new">&times;</span> <h2>Neue Recherche</h2>
+                <form>
+                    <div class="content-main">
+                        <div>
+                            <section class="section-content-new">
+                                <h3>Grunddaten</h3>
+                                <div>
+                                    <div><label for="new-recherche-id">ID:</label></div>
+                                    <div><input type="number" required placeholder="ID: 1234..."></div>
+                                </div>
+
+                                <div>
+                                    <div><label for="new-recherche-vn">Vorgangsnummer:</label></div>
+                                    <div><input type="number" required placeholder="1234/23/123456"></div>
+                                </div>
+                                <div>
+                                    <div><label for="new-recherche-standort">Standort:</label></div>
+                                    <div><input type="text" required></div>
+                                </div>
+
+                                <div>
+                                    <div><label for="new-recherche-delikt">Paragraph (§):</label></div>
+                                    <div><input type="" required></div>
+                                </div>
+
+                                <div>
+                                    <div><label for="new-recherche-von">Von:</label></div>
+                                    <div><input type="datetime-local" required></div>
+                                </div>
+
+                                <div>
+                                    <div><label for="new-recherche-bis">Bis:</label></div>
+                                    <div><input type="datetime-local" required></div>
+                                </div>
+
+                                <div>
+                                    <div><label for="new-recherche-erstellt">Erstellt:</label></div>
+                                    <div><input type="datetime-local" required></div>
+                                </div>
+
+                                <div>
+                                    <div><label for="new-recherche-grund">Grund:</label></div>
+                                    <div><select name="grund-select-new-recherche" id="grund-select-new-recherche"><option value="beschluss">Beschluss</option><option value="repressiv">Repressiv</option><option value="präventiv">Präventiv</option></select></div>
+                                </div>
+
+                                <div>
+                                    <div><label for="new-recherche-ersteller">Ersteller:</label></div>
+                                    <div><select name="ersteller-select-new-recherche" id="ersteller-select-new-recherche"><option value="PuNi0705">PuNi0705</option><option value="LiRo2205">LiRo2205</option></select></div>
+                                </div>
+                                
+                            </section>
+                        </div>
+
+                        <div class="section-content-right">
+                            <section>
+                                <h3>Vorlagen</h3>
+                            </section>
+                            <section>
+                                <h3>Vorschau</h3>
+                            </section>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="new-recherche-buttons">
+                        <button type="submit" class="close-button">Speichern</button>
+                        <button type="button" class="reset-button">Clear</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
         
         <section class="recherche-tabelle-sektion">
             <div>
@@ -196,73 +267,34 @@
                     </thead>
                     <tbody>
                         <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>13.02.2025</td><td>12.02.2026</td><td>Beschluss</td><td>Repressiv</td><td>Schmidt</td><td>01.01.2025</td><td>150h</td><td>12.02.2026</td><td>aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>ja</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
                         </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        <tr data-recherche-id="R_ZI_002">
+                            <td>02</td><td>5588/24/654321</td><td>EV Marc</td><td>FS-Z</td><td>PerIS-Zittau</td><td>§129 StGB</td><td>01.01.2023</td><td>31.12.2023</td><td>Anzeige</td><td>Präventiv</td><td>Meier</td><td>15.12.2022</td><td>abgel.</td><td>31.12.2023</td><td>abgelaufen</td><td>ja</td><td>Fristablauf</td><td>System</td><td>nein</td><td>0</td><td>ja</td><td>nein</td><td>ja</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
                         </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>02</td><td>1234/24/123456</td><td>EV Elena</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        <tr data-recherche-id="R_GR_003">
+                            <td>03</td><td>2233/25/112233</td><td>EV Elena</td><td>HW-N</td><td>PerIS-Görlitz</td><td>§250 StGB</td><td>15.03.2025</td><td>14.03.2026</td><td>Beschluss</td><td>Beschluss</td><td>Schulze</td><td>01.03.2025</td><td>300d</td><td>14.03.2026</td><td>aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>12</td><td>nein</td><td>ja</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
                         </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        <tr data-recherche-id="R_PM_004">
+                            <td>04</td><td>7766/23/998877</td><td>EV Kevin</td><td>PM-C</td><td>PerIS-PM</td><td>§242 StGB</td><td>12.07.2023</td><td>11.07.2024</td><td>Eigen</td><td>Präventiv</td><td>Lehmann</td><td>01.07.2023</td><td>läuft aus</td><td>11.07.2024</td><td>aktiv</td><td>vorgemerkt</td><td>-</td><td>-</td><td>teilweise</td><td>5</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
                         </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        <tr data-recherche-id="R_GR_005">
+                            <td>05</td><td>3344/25/123456</td><td>Operation Adler</td><td>ASB-S</td><td>PerIS-Görlitz</td><td>§129a StGB</td><td>20.04.2025</td><td>19.10.2025</td><td>Beschluss</td><td>Repressiv</td><td>PuNi0705</td><td>10.04.2025</td><td>100h</td><td>19.10.2025</td><td>aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>25</td><td>ja</td><td>ja</td><td>ja</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
                         </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        <tr data-recherche-id="R_ZI_006">
+                            <td>06</td><td>8899/24/000111</td><td>Aktion Fuchs</td><td>CS-W</td><td>PerIS-Zittau</td><td>§244 StGB</td><td>01.09.2024</td><td>28.02.2025</td><td>Anzeige</td><td>Präventiv</td><td>Wolf</td><td>15.08.2024</td><td>50d</td><td>28.02.2025</td><td>Läuft aus</td><td>nein</td><td>-</td><td>-</td><td>nein</td><td>0</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
                         </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        <tr data-recherche-id="R_PM_007">
+                            <td>07</td><td>1122/25/555555</td><td>Projekt X</td><td>PM-N</td><td>PerIS-PM</td><td>§250 StGB</td><td>01.06.2025</td><td>30.11.2025</td><td>Beschluss</td><td>Beschluss</td><td>Krause</td><td>15.05.2025</td><td>180d</td><td>30.11.2025</td><td>aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>8</td><td>nein</td><td>ja</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
                         </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        <tr data-recherche-id="R_GR_008">
+                            <td>08</td><td>4455/23/777666</td><td>EV Testfall</td><td>JK-O</td><td>PerIS-Görlitz</td><td>§129 StGB</td><td>10.10.2023</td><td>09.04.2024</td><td>Beschluss</td><td>Präventiv</td><td>Huber</td><td>01.10.2023</td><td>abgel.</td><td>09.04.2024</td><td>abgelaufen</td><td>ja</td><td>Abschluss</td><td>Maier</td><td>ja</td><td>2</td><td>ja</td><td>nein</td><td>ja</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
                         </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        <tr data-recherche-id="R_ZI_009">
+                            <td>09</td><td>9900/25/333222</td><td>Beobachtung Nord</td><td>B178</td><td>PerIS-Zittau</td><td>§242 StGB</td><td>01.08.2025</td><td>31.01.2026</td><td>Anzeige</td><td>Repressiv</td><td>PuNi0705</td><td>15.07.2025</td><td>150d</td><td>31.01.2026</td><td>aktiv</td><td>nein</td><td>-</td><td>-</td><td>nein</td><td>0</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
                         </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
-                        </tr>
-                        <tr data-recherche-id="R_GR_001">
-                            <td>01</td><td>1234/24/123456</td><td>EV Soranix</td><td>SB-E</td><td>PerIS-Görlitz</td><td>§244a StGB</td><td>12.01.2024</td><td>12.02.2024</td><td>Beschluss</td><td>Beschluss</td><td>PuNi0705</td><td>01.01.2025</td><td>200h</td><td>02.02.2025</td><td>Aktiv</td><td>nein</td><td>-</td><td>-</td><td>ja</td><td>3</td><td>nein</td><td>nein</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
+                        <tr data-recherche-id="R_PM_010">
+                            <td>10</td><td>0011/24/888888</td><td>EV Pluto</td><td>PM-S</td><td>PerIS-PM</td><td>§244a StGB</td><td>05.05.2024</td><td>04.11.2024</td><td>Beschluss</td><td>Präventiv</td><td>Becker</td><td>20.04.2024</td><td>abgel.</td><td>04.11.2024</td><td>abgelaufen</td><td>ja</td><td>erledigt</td><td>System</td><td>ja</td><td>33</td><td>ja</td><td>ja</td><td>nein</td><td><button type="button" class="edit-recherche-btn">Bearbeiten</button></td>
                         </tr>
     
                     </tbody>
@@ -272,7 +304,6 @@
         
 
     </main>
-
 
 
 
