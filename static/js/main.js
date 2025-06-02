@@ -8,8 +8,10 @@ import { initialisiereLoeschungenSektion } from "./loeschungen.js";
 import { initialisiereRechercheAddPanel } from "./addRecherche.js";
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
-    
+
+
     // Add-Panel-Recherche - Rechercheübersicht
     const containerPanelNeueRechercheElement = document.querySelector("#panel-recherche-hinzufuegen")
     if (containerPanelNeueRechercheElement) {

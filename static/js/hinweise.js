@@ -257,6 +257,76 @@ export function initialisiereHinweisSektion(){
 
         })
         }
+
+
+        async function ladeUndZeigeHinweise() {
+            console.log("Versuche, Hinweise vom Backend zu laden...");
+            const hinweisListeUl = hinweisSektion.querySelector(".hinweis-liste"); // Stelle sicher, dass diese Variable korrekt auf deine <ul> zeigt
+
+            if (!hinweisListeUl) {
+                console.error("Hinweis-Liste UL nicht gefunden!");
+                return;
+            }
+
+            try {
+                const response = await fetch("/api/hinweise");
+                if (!response.ok) {
+                    throw new Error(`HTTP Fehler! Status: ${response.status}`);
+                }
+                const hinweisDatenArray = await response.json();
+                console.log("Empfangene Hinweise:", hinweisDatenArray);
+
+                hinweisListeUl.innerHTML = ""; // Liste leeren, BEVOR neue Elemente hinzugefügt werden
+
+                if (hinweisDatenArray.length === 0) {
+                    hinweisListeUl.innerHTML = "<li><p>Keine Hinweise vorhanden.</p></li>"; // Nachricht für leere Liste
+                    return;
+                }
+
+                hinweisDatenArray.forEach(hinweis => {
+                    const newList = document.createElement("li");
+                    newList.dataset.noteId = hinweis.id;
+
+                    const prioritaetKlein = hinweis.prioritaet ? hinweis.prioritaet.toLowerCase().trim() : "niedrig";
+                    const sichtbarkeitKlein = hinweis.sichtbarkeit ? hinweis.sichtbarkeit.toLowerCase().trim() : "privat";
+
+                    if (prioritaetKlein === "niedrig") newList.classList.add("prio-niedrig");
+                    else if (prioritaetKlein === "mittel") newList.classList.add("prio-mittel");
+                    else if (prioritaetKlein === "hoch") newList.classList.add("prio-hoch");
+
+                    if (sichtbarkeitKlein === "öffentlich" || sichtbarkeitKlein === "public") newList.classList.add("note-public");
+                    else if (sichtbarkeitKlein === "privat") newList.classList.add("note-private");
+
+                    const erstelldatumFormatiert = hinweis.erstelldatum 
+                        ? new Date(hinweis.erstelldatum).toLocaleString('de-DE', { dateStyle: 'short', timeStyle: 'short' }) 
+                        : 'Unbekannt';
+                    
+                    const prioTextFormatted = hinweis.prioritaet ? hinweis.prioritaet.charAt(0).toUpperCase() + hinweis.prioritaet.slice(1) : "";
+                    const visTextFormatted = hinweis.sichtbarkeit ? hinweis.sichtbarkeit.charAt(0).toUpperCase() + hinweis.sichtbarkeit.slice(1) : "";
+
+                    newList.innerHTML = `
+                        <div class="note-header">
+                            <span class="note-title">${hinweis.titel || 'Ohne Titel'}</span>
+                            <span class="note-meta">von ${hinweis.ersteller || 'Unbekannt'} am ${erstelldatumFormatiert}</span>
+                            <span class="note-prio-badge">${prioTextFormatted} <span> - </span><span class="note-vis-badge">${visTextFormatted}</span></span> 
+                        </div>
+                        <div class="note-body"><p>${hinweis.inhalt || ''}</p></div>`;
+                    
+                    // WICHTIG: Klick-Listener hinzufügen
+                    newList.addEventListener("click", () => {
+                        oeffnenDetailsHinweise(newList); // 'oeffnenDetailsHinweise' muss im Scope sein
+                    });
+
+                    hinweisListeUl.appendChild(newList);
+                });
+
+            } catch (error) {
+                console.error("Fehler beim Laden und Anzeigen der Hinweise:", error);
+                if (hinweisListeUl) hinweisListeUl.innerHTML = "<li><p>Fehler beim Laden der Hinweise.</p></li>";
+            }
+        }
+
+        ladeUndZeigeHinweise()
             
     }
 

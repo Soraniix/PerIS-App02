@@ -364,7 +364,6 @@ main section form fieldset {
 }
 
 #hinweise .filter-tabs button:hover {
-    
     background-color: #ccc;
 }
 
@@ -1469,10 +1468,6 @@ main section form fieldset {
     padding: 5px;
 }
 
-.filter-kuerzel {
-
-}
-
 .grid-02 {
     display: grid;
     grid-template-rows: repeat(2, 1fr);
@@ -1543,7 +1538,7 @@ main section form fieldset {
 }
 
 /* Der äußere Container des Modals (der dunkle Hintergrund) */
-#panel-recherche-hinzufuegen {
+#panel-recherche-hinzufuegen, #panel-recherche-oeffnen {
 
   position: fixed; /* Bleibt beim Scrollen an der gleichen Position */
   z-index: 1000; /* Stellt sicher, dass es über allem anderen liegt */
@@ -1565,8 +1560,8 @@ main section form fieldset {
   border: 1px solid #888;
   border-radius: 8px; /* Abgerundete Ecken */
   width: 90%; /* Breite des Inhalts */
-  max-height: 700px;
-  max-width: 1000px; /* Maximale Breite */
+  max-height: 900px;
+  max-width: 1500px; /* Maximale Breite */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   position: relative; /* Wichtig für den Schließen-Button */
   animation-name: animatetop; /* Optional: Animation beim Öffnen */
@@ -1594,7 +1589,7 @@ main section form fieldset {
   transform: scale(1.1);
 }
 
-#panel-recherche-hinzufuegen h2 {
+#panel-recherche-hinzufuegen h2, #panel-recherche-oeffnen h2 {
     text-align: center;
     margin-bottom: 25px;
     margin-top: 5px;
@@ -1604,7 +1599,7 @@ main section form fieldset {
     border-radius: 5px;
 }
 
-#panel-recherche-hinzufuegen h3 {
+#panel-recherche-hinzufuegen h3, #panel-recherche-oeffnen h3 {
     text-align: center;
     margin-bottom: 20px;
     background-color: #333;
@@ -1617,30 +1612,31 @@ main section form fieldset {
 
 #panel-recherche-hinzufuegen .content-main {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
 }
 
-.section-content-new > div {
+.section-content-new > div,
+.section-content-mid section form > div {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px 20px;
+
 }
 
-.section-content-new > div  {
-    
+.section-content-new > div {
     margin: 20px 20px;
 }
 
 .content-main input:focus,
 .content-main  textarea:focus,
 .content-main  select:focus {
-        outline: 2px solid gray;
+    outline: 2px solid gray;
 }
 
-.section-content-new input, select {
-
-    border: none;
+.section-content-new input, .filter-tools-tabelle select, .content-main select,
+.section-content-mid input, .filter-tools-tabelle select, .content-main select {
+    border: 1px solid #888;
     font-size: 1em;
     align-self: center;
     width: 100%;
@@ -1650,9 +1646,31 @@ main section form fieldset {
     padding: 15px;
 }
 
-.section-content-new label {
+/* Recherche Öffnen Inputs diesigen */
+.daten-container input, .daten-container select {
+    border: 1px solid #888;
+    font-size: 1em;
+    align-self: center;
+    width: 100%;
+    margin-top: 2px;
+    height: 20px;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+
+
+.section-content-new label,
+.section-content-mid label,
+.daten-container {
     font-weight: bold;
     font-size: 0.9em;
+}
+
+.section-content-mid label, 
+.daten-container label {
+    margin-top: 10px;
+    display: inline-block;
 }
 
 .section-content-right {
@@ -1661,16 +1679,169 @@ main section form fieldset {
     gap: 15px 0;
 }
 
-#panel-recherche-hinzufuegen .save-button, .reset-button {
+#panel-recherche-hinzufuegen .save-button, .reset-button, .change-button, .creat-button, 
+#panel-recherche-oeffnen .save-button, .reset-button, .change-button, .creat-button, .btn-weiter, .btn-zurueck {
     background-color: #333;
     color: white; padding: 7px 10px;
     border: none; border-radius: 4px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+#panel-recherche-hinzufuegen .save-button:hover, .reset-button:hover, .change-button:hover, .creat-button:hover,
+#panel-recherche-oeffnen .save-button:hover, .reset-button:hover, .change-button:hover, .creat-button:hover .btn-weiter:hover, .btn-zurueck:hover {
+     background-color: #555; 
+     
+}
+
+#panel-recherche-hinzufuegen .new-recherche-buttons, .user-vorlage-button, .beschluss-vorlage-button  {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-content-new ul, .daten-container ul {
+    position: absolute;
+    list-style:  none;
+    overflow-y: auto;
+    z-index: 1000;
+
+    max-height: 200px;
+    width: 120%;
+
+    background-color: #fff;
+    font-size: 0.9em;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 5px;
+}
+
+#new-recherche-standort-vorschlaege, #new-recherche-grund-vorschlaege, #new-recherche-user-vorschlaege {
+    width: 100%;
+}
+
+
+.section-content-new li, .daten-container li {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    flex-direction: column;
+
+    padding: 10px 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;   
+}
+
+.section-content-new li:hover,
+.daten-container li:hover  {
+    cursor: pointer;
+    background-color: #d5d5d5;
+}
+
+.section-content-right ul {
+    position: relative;
+    list-style:  none;
+    overflow-y: auto;
+    z-index: 1000;
+
+    height: 170px;
+    width: 100%;
+
+    background-color: #fff;
+    font-size: 0.9em;
+    border-radius: 5px;
+
+    margin-bottom: 5px;
+}
+
+.section-content-right li {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    flex-direction: column;
+
+    padding: 10px 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;   
+}
+
+.section-content-right li:hover {
+    cursor: pointer;
+    background-color: #d5d5d5;
+}
+
+td input[type="text"] {
+    width: calc(100% - 16px); /* Füllt die Zelle aus, abzüglich Padding */
+    box-sizing: border-box; /* Wichtig, damit Padding und Border in der Breite enthalten sind */
+    border: 1px solid #007bff;
+    padding: 7px;
+    font-size: 1em;
+    outline: none; /* Entfernt den blauen Fokus-Rahmen */
+}
+
+.recherche-tabelle tbody tr.row-selected td {
+    background-color: #d2d8ff;
+}
+.recherche-tabelle tbody tr {
+
+    user-select: none; 
+       -webkit-user-select: none;
+       -moz-user-select: none;
+       -ms-user-select: none; 
+    
+}
+
+#kontext-menue-rechercheuebersicht {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+    padding: 5px 0;
+    z-index: 1000;
+    min-width: 180px;
+    border-radius: 5px;
+}
+
+.kontext-menue ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.kontext-menue li button {
+    display: block;
+    width: 100%;
+    padding: 8px 15px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
     font-weight: bold;
 }
 
-#panel-recherche-hinzufuegen .new-recherche-buttons  {
+.kontext-menue li button:hover { background-color: #f0f0f0; }
+
+
+.daten-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Erstellt 6 Spalten */
+    grid-template-rows: repeat(5, 1fr);    /* Erstellt 4 Zeilen */
+    gap: 5px 30px; /* Optional: Fügt einen Abstand zwischen den Rasterzellen hinzu */
+}
+
+.oeffne-recherche-footer {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.status-btn {
     display: flex;
     justify-content: space-between;
+}
+
+.status-btn button:disabled {
+    background-color: #b0b0b0;
 }

@@ -1,6 +1,11 @@
+import { togglePanelVisibility } from "./uiHelpers.js";
+import { openRecherchePanel } from "./oeffneRecherche.js";
+
+
 
 export function initialisiereRechercheTabelleFilter(){
     const filterSektion = document.querySelector(".filter-tools-tabelle")
+
 
     if (filterSektion) {
         // Volltextsuche
@@ -29,12 +34,25 @@ export function initialisiereRechercheTabelleFilter(){
         // Filter für ausstehende Treffer
         const filterBtnAusstehendeTreffer = filterSektion.querySelector(".ausstehende-treffer")
         
+        // Shift Seleced:
+        let letzterAnkerZeilenIndex = -1;
+
+        // Kontextmenü
+        const kontextMenue = document.querySelector(".kontext-menue")
+        const tabellenKoerper = document.querySelector(".recherche-tabelle tbody")
+        const kontextMenueButtons = kontextMenue.querySelectorAll("ul li button")
 
 
 
 
 
 
+
+
+
+
+
+        
 
         // Event ausstehende Treffer
         if (filterBtnAusstehendeTreffer){
@@ -50,7 +68,7 @@ export function initialisiereRechercheTabelleFilter(){
                 tabellenFilter()
             })
         }
-        //Event für Filter Standort
+        // Event für Filter Standort
         if (filterBtnsStandort){
             filterBtnsStandort.forEach(standort => {
                 standort.addEventListener("change", ()=> {
@@ -100,6 +118,35 @@ export function initialisiereRechercheTabelleFilter(){
             })
             
         }
+        // Event für Row-Seleced
+        if (rechercheTabellenZeilen){
+            rechercheTabellenZeilen.forEach(zeile => {
+                zeile.addEventListener("click", (event) => {
+                    rowSelecting(event)
+                })
+            })
+        }
+        // Kontextmenü öffnen
+        if (kontextMenue && tabellenKoerper) {
+            tabellenKoerper.addEventListener("contextmenu", (event) => {
+                kontextMenuShow(event)
+            })
+        }
+        // Event Kontextmenü Handler Aufruf
+        if (kontextMenueButtons){
+            kontextMenueButtons.forEach(btn => {
+                btn.addEventListener("click", (event) => {
+                    handleKontextMenueAktion(event)
+                })
+            })
+        }
+
+        // Event Dokument
+        document.addEventListener("click", (event) => {
+            if (event.target.closest("#kontext-menue-rechercheuebersicht") !== kontextMenue){
+                togglePanelVisibility(kontextMenue, false)
+            }
+        })
 
 
 
@@ -283,6 +330,50 @@ export function initialisiereRechercheTabelleFilter(){
             return matchGefunden; // Gib am Ende zurück, ob ein Match gefunden wurde oder nicht
         }
 
+        // Funktion Markieren
+        function rowSelecting(event){
+            
+            if(event.shiftKey) {
+
+                if (letzterAnkerZeilenIndex !== -1){
+                    const aktuellerShiftKlickIndex = Array.from(rechercheTabellenZeilen).indexOf(event.currentTarget)
+                    
+                    const startIndex = Math.min(aktuellerShiftKlickIndex, letzterAnkerZeilenIndex)
+                    const endIndex = Math.max(aktuellerShiftKlickIndex, letzterAnkerZeilenIndex)
+                    
+                    //rechercheTabellenZeilen.forEach(zeile => zeile.classList.remove("row-selected"))
+
+                    for (let i = startIndex; i <= endIndex; i++){
+                        const elementDisplay = window.getComputedStyle(rechercheTabellenZeilen[i]).display
+                        if (elementDisplay !== "none") {
+                            rechercheTabellenZeilen[i].classList.add("row-selected")
+                        }
+                        
+                    }
+
+                } else {
+                    event.currentTarget.classList.toggle("row-selected")
+                    letzterAnkerZeilenIndex = Array.from(rechercheTabellenZeilen).indexOf(event.currentTarget)
+                }
+            }
+            else if(event.ctrlKey || event.metaKey) {
+                event.currentTarget.classList.toggle("row-selected")
+                letzterAnkerZeilenIndex = Array.from(rechercheTabellenZeilen).indexOf(event.currentTarget)
+            } else {
+                rechercheTabellenZeilen.forEach(zeile => zeile.classList.remove("row-selected"))
+                event.currentTarget.classList.add("row-selected")
+                letzterAnkerZeilenIndex = Array.from(rechercheTabellenZeilen).indexOf(event.currentTarget)
+            }
+        }
+
+        // Funktion Kontextmenü
+        function kontextMenuShow(event){
+            event.preventDefault()
+            kontextMenue.style.left = event.pageX + 'px'
+            kontextMenue.style.top = event.pageY + 'px'
+            togglePanelVisibility(kontextMenue, true)
+            
+        }
 
 
 
@@ -291,9 +382,17 @@ export function initialisiereRechercheTabelleFilter(){
 
 
 
+        // Kontext Handler
+        function handleKontextMenueAktion(event){
+            const aktionsLi = event.currentTarget.closest("li")
+            const selecedRecherchen = document.querySelectorAll("tbody .row-selected")
+            if (aktionsLi.classList.contains("set-anzeigen")){
+                openRecherchePanel(selecedRecherchen)
+            }
+            togglePanelVisibility(kontextMenue, false);
+        }
 
-
-
+        // Filter Zusammenschluss 
         function tabellenFilter() {
             rechercheTabellenZeilen.forEach(zeile => {
                 
