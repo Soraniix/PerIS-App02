@@ -89,6 +89,10 @@ main section {
     -2px -2px 5px rgb(66, 66, 66, 0.5);
     border-radius: 5px;
     transition: transform 0.2s ease;
+    position: relative;
+
+    /* HINZUFÜGEN: Wenn ein Element im Panel überläuft, soll das Panel es abschneiden */
+    overflow: hidden;
 }
 
 main section:hover {
@@ -128,10 +132,10 @@ main section h2 {
     border-radius: 5px;
 }
 
-#offene-aufgaben .dashboard-list ul {
+#offene-aufgaben .dashboard-list {
     list-style:  none;
     padding-left: 0;
-    max-height: 80%;;
+    max-height: 80%;
     overflow-y: auto;
     height: 350px;
 }
@@ -272,6 +276,7 @@ main section form fieldset {
     height: 300px;
     max-height: 80%;
     overflow-y: auto;
+    max-width: 100%;
 }
 
 #hinweise li {
@@ -281,6 +286,8 @@ main section form fieldset {
     border-bottom: 1px solid #ddd;
     padding: 15px;
     transition: background-color 0.2s ease;
+    overflow: hidden;
+    max-width: 100%;
 }
 
 #hinweise li div {
@@ -319,9 +326,9 @@ main section form fieldset {
 
 #hinweise .note-body {
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 400px;
+    overflow: hidden;         
+    text-overflow: ellipsis;  
+    width: 100%;       
 }
 
 
@@ -474,7 +481,7 @@ main section form fieldset {
     z-index: 1000;
     width: 90%;
     max-width: 500px;
-
+    
     
 }
 
@@ -522,13 +529,7 @@ main section form fieldset {
     border-radius: 5px;
 }
   
-#hinweise .dashboard-add-panel button {
-    background-color: #333;
-    color: white; padding: 10px 15px;
-    border: none; border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-}
+
 
 #hinweise button:hover {
      background-color: #555; 
@@ -566,8 +567,7 @@ main section form fieldset {
     transform: translate(-50%, -50%);
     z-index: 1000;
     width: 400px;
-    height: max-content;
-    max-width: 500px;
+    max-width: 80%;
 }
 
 #hinweise .dashboard-details-panel h3 {
@@ -587,6 +587,7 @@ main section form fieldset {
 #hinweise .dashboard-details-panel form {
     display: flex;
     flex-direction: column;
+    
 }
 
 #hinweise .dashboard-details-panel .details-titel {
@@ -604,10 +605,14 @@ main section form fieldset {
 #hinweise .dashboard-details-panel .details-meta {
     border: none;
     width: 80%;
-    padding: 5px;
-    padding-bottom: 0;
+    padding: 0px 5px;
     border-radius: 5px;
     font-style: italic;
+}
+#hinweise .meta-space {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #hinweise .dashboard-details-panel .details-content {
@@ -655,13 +660,7 @@ main section form fieldset {
     margin-top: 10px;
 }
 
-#hinweise .dashboard-details-panel .button {
-    background-color: #333;
-    color: white; padding: 5px 10px;
-    border: none; border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-}
+
 
 #hinweise .dashboard-details-panel .buttons div {
     display: flex;
@@ -691,13 +690,9 @@ main section form fieldset {
 
 
 #offene-aufgaben .dashboard-details-panel {
-    
-    height: 85%;
-    width: 85%;
+    height: 90%;
+    width: 90%;
     transform: translate(-50%, -50%);
-    
-
-    max-height: 100%;
     overflow-y: auto;
 }   
 
@@ -739,7 +734,19 @@ main section form fieldset {
     margin-left: 0px;
     border-radius: 5px;
     padding: 5px;
-    
+}
+
+#offene-aufgaben .task-titel-add {
+    border: 1px solid #000;
+    font-weight: bold;
+    font-size: 0.9em;
+    align-self: center;
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 0px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 #offene-aufgaben button:hover {
@@ -753,7 +760,8 @@ main section form fieldset {
     }
 
 
-#offene-aufgaben .task-meta .task-mete-string {
+#offene-aufgaben .task-meta .task-mete-string, 
+#offene-aufgaben .task-meta .task-meta-string-02 {
     border: none;
     width: 100%;
     padding: 5px;
@@ -842,14 +850,6 @@ main section form fieldset {
     margin-bottom: 10px;
     max-height: 230px;
     overflow-y: auto;
-}
-
-.task-buttons button, .add-comment-task-button {
-    background-color: #333;
-    color: white; padding: 5px 10px;
-    border: none; border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
 }
 
 .add-comment-task-button {
@@ -1679,14 +1679,13 @@ main section form fieldset {
     gap: 15px 0;
 }
 
-#panel-recherche-hinzufuegen .save-button, .reset-button, .change-button, .creat-button, 
-#panel-recherche-oeffnen .save-button, .reset-button, .change-button, .creat-button, .btn-weiter, .btn-zurueck {
+.save-button, .reset-button, .change-button, .creat-button, .del-button, .clear-button, .add-note-button,
+.btn-weiter, .btn-zurueck, .close-button {
     background-color: #333;
-    color: white; padding: 7px 10px;
+    color: white; padding: 5px 10px;
     border: none; border-radius: 4px;
     cursor: pointer;
     margin-top: 5px;
-    font-weight: bold;
     transition: all 0.2s ease;
 }
 
