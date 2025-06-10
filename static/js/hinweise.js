@@ -1,5 +1,7 @@
 import { togglePanelVisibility } from "./uiHelpers.js";
 import { markiereListenElementAlsSelektiert } from "./uiHelpers.js";
+import { initialisiereKommentarfunktion } from "./kommentare.js"
+
 
 export function initialisiereHinweisSektion(){
     console.log("initialisiere Hinweise...");
@@ -89,11 +91,9 @@ export function initialisiereHinweisSektion(){
 
         // Event hinzufügen von Recherchen
         if(addNoteForm) {
-        addNoteForm.addEventListener('submit', async function(event) {
-                if (!addNoteForm.checkValidity()) {
-                    return;
-                }
-                event.preventDefault();
+        addNoteForm.addEventListener('click', async function(event) {
+
+
 
                 const titel = addNoteForm.querySelector("#note-title").value;
                 const text = addNoteForm.querySelector("#note-text").value;
@@ -236,6 +236,15 @@ export function initialisiereHinweisSektion(){
 
             if (!panelNoteDetails)
                 return;
+
+
+            // Hinzufügen der Kommentarfunktion!
+            const aufgabeId = eintrag.dataset.noteId;
+            const aufgabeType = "hinweise";
+            const kommentarContainer = hinweisSektion.querySelector(".comment-container")
+            if (aufgabeId && aufgabeType && kommentarContainer) {
+                initialisiereKommentarfunktion(kommentarContainer, aufgabeType, aufgabeId);
+            }
 
             const titel = eintrag.querySelector(".note-title").textContent
             const meta = eintrag.querySelector(".note-meta").textContent

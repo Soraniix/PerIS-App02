@@ -1,3 +1,4 @@
+import { initialisiereKommentarfunktion } from "./kommentare.js"
 import { togglePanelVisibility } from "./uiHelpers.js"
 import { markiereListenElementAlsSelektiert } from "./uiHelpers.js"
 
@@ -337,6 +338,14 @@ export function initialisiereAufgabenSektion() {
 
             markiereListenElementAlsSelektiert(eintrag, addListenObjekteAufgaben)
 
+            // Hinzufügen der Kommentarfunktion!
+            const aufgabeId = eintrag.dataset.taskId;
+            const aufgabeType = "aufgaben";
+            const kommentarContainer = addAufgabeDetailsPanel.querySelector(".comment-container")
+            if (aufgabeId && aufgabeType && kommentarContainer) {
+                initialisiereKommentarfunktion(kommentarContainer, aufgabeType, aufgabeId);
+            }
+
             const titel = eintrag.querySelector(".task-dashboard-title").textContent
             const stati = eintrag.querySelector(".task-status").textContent.toLowerCase().trim()
             const text = eintrag.querySelector(".task-content-db").value
@@ -364,20 +373,6 @@ export function initialisiereAufgabenSektion() {
             panelDate.textContent = date
             panelUpdate.textContent = update
 
-            const allTaskComments = aufgabenSektion.querySelectorAll(".task-comment-list li")
-            const taskPanelId = aufgabenSektion.querySelector("ul.dashboard-list .selected").dataset.taskId
-            const allTaskCommentsId = aufgabenSektion.querySelectorAll(`.task-comment-list .zu-task-id-${taskPanelId}`)
-            allTaskComments.forEach(eintrag => eintrag.classList.add("hidden"))
-            allTaskCommentsId.forEach(eintrag => eintrag.classList.remove("hidden"))
-            
-
-            allTaskCommentsId.forEach(commi => {
-                const delButton = commi.querySelector(".rotes-kreuz")
-
-                delButton.addEventListener("click", () => {
-                    commi.closest(".test01").remove()
-                })
-            })
 
             // Zuerst alle alten Statusklassen entfernen
             panelStati.classList.remove("task-status-offen", "task-status-arbeit", "task-status-done");

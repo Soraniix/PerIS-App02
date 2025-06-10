@@ -273,7 +273,7 @@ main section form fieldset {
 #hinweise ul {
     list-style: none;
     padding-left: 0;
-    height: 300px;
+    height: max-content;
     max-height: 80%;
     overflow-y: auto;
     max-width: 100%;
@@ -553,6 +553,8 @@ main section form fieldset {
     /* Deine bestehenden Styles für die Sektion bleiben erhalten */
 }
 
+
+
 .dashboard-details-panel {
     background-color: #fff; /* Weißer Hintergrund */
     border: 1px solid #ccc; /* Heller Rahmen */
@@ -567,7 +569,9 @@ main section form fieldset {
     transform: translate(-50%, -50%);
     z-index: 1000;
     width: 400px;
-    max-width: 80%;
+    max-width: 100%;
+    max-height: 80%;
+    overflow-y: auto;
 }
 
 #hinweise .dashboard-details-panel h3 {
@@ -811,14 +815,6 @@ main section form fieldset {
     font-size: 0.8em;
 }
 
-#offene-aufgaben .task-comments-section strong {
-    font-size: 0.7em;
-    font-style: italic;
-    font-weight: 100;
-
-}
-
-
 .task-comment-list li div {
     white-space: normal;
     word-wrap: break-word;
@@ -833,8 +829,12 @@ main section form fieldset {
     font-weight: bold;
 }
 
+.task-name-date-comment {
+    font-size: 0.65em;
+    font-style: italic;
+}
 
-.task-comments-section {
+.kommentar-form {
     display: flex;
     flex-direction: column;
 }
@@ -860,7 +860,7 @@ main section form fieldset {
     margin-top: 5px;
 }
 
-.test01 {
+.comment-li {
     position: relative;
     max-width: 100%;
     max-height: 100%;
@@ -871,7 +871,6 @@ main section form fieldset {
     right: 5px;
     top: 5px;
     height: 10px;
-    display: none;
     transition: all 0.1s ease;
 }
 
@@ -879,6 +878,7 @@ main section form fieldset {
     cursor: pointer;
     transform: scale(1.2);
 }
+
 
 .task-buttons  {
     display: flex;
@@ -1844,3 +1844,4 @@ td input[type="text"] {
 .status-btn button:disabled {
     background-color: #b0b0b0;
 }
+

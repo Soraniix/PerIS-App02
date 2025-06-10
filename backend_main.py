@@ -57,7 +57,7 @@ async def api_get_alle_aufgaben():
     return aufgaben
 
 @app.get("/api/{commentable_type}/{commentable_id}/kommentare")
-async def api_get_alle_kommentare(commentable_type, commentable_id):
+async def api_get_alle_kommentare(commentable_type: str, commentable_id: int):
     kommentare = get_alle_passenden_kommentare_aus_db(commentable_type, commentable_id)
     return kommentare
 
@@ -119,7 +119,21 @@ async def api_erstelle_neue_aufgaben(aufgaben_payload: AufgabeCreate):
     except Exception as e:
         print(f"Fehelr beim Erstellen der Aufgabe: {e}")
         return {"message": "Fehler beim erstellen von der Aufgabe", "details": str(e)}
+    
 
+@app.post("/api/kommentare")
+async def api_erstelle_neuen_kommentar(kommentar_daten: KommentareCreate):
+    try:
+        neue_kommentar_id = add_kommentare_in_db(kommentar_daten)
+        return {
+            "message": "Kommentar erstellt",
+            "kommentar_id": neue_kommentar_id,
+            "Type": kommentar_daten.commentable_type
+        }
+    except Exception as e:
+        print(f"Fehler beim erstellen des Kommentares: {e}")
+        return {"message": "Fehler beim erstellen vom Kommentar", "details:": str(e)}
+    
 
 @app.delete("/api/hinweise/{hinweis_id}", status_code=200)
 async def api_loesche_einen_hinweis(hinweis_id: int):
@@ -136,6 +150,14 @@ async def api_loesche_eine_aufgabe(aufgabe_id: int):
         return {"message": f"Aufgabe mit ID {aufgabe_id} erfolgreich gelöscht"}
     else:
         raise HTTPException(status_code=404, detail=f"AUfgabe mit ID {aufgabe_id} nicht gefunden")
+    
+@app.delete("/api/kommentare/{kommentar_id}", status_code=200)
+async def api_loesche_einen_kommentar(kommentar_id: int):
+    erfolgreich_geloescht = loesche_kommentar_aus_db(kommentar_id)
+    if(erfolgreich_geloescht):
+        return {"message": f"Kommentar mit ID {kommentar_id} erfolgreich gelöscht."}
+    else:
+        raise HTTPException(status_code=404, detail=f"Kommentar mit ID {kommentar_id} nicht gefunden")
 
 @app.put("/api/hinweise/{hinweis_id}", status_code=200)
 async def api_update_einen_hinweis(hinweis_daten: HinweisCreate, hinweis_id: int):
@@ -280,6 +302,34 @@ def add_aufgaben_in_db(aufgaben_daten: AufgabeCreate, ersteller: str):
     print(f"Neue Aufgabe mit der ID: {neue_id} erstellt.")
     return neue_id
 
+def add_kommentare_in_db(kommentar_daten: KommentareCreate):
+    conn = sqlite3.Connection(DB_NAME)
+    cursor = conn.cursor()
+
+    erstellungszeitpunkt = datetime.now().isoformat()
+    user = "Nico"
+
+    sql = """
+    INSERT INTO kommentare (commentable_id, commentable_type, inhalt, ersteller, erstelldatum)
+    VALUES(?,?,?,?,?)
+    """
+    kommentar_tuple = (
+        kommentar_daten.commentable_id,
+        kommentar_daten.commentable_type,
+        kommentar_daten.inhalt,
+        user,
+        erstellungszeitpunkt
+    )
+
+    cursor.execute(sql, kommentar_tuple)
+    neue_id = cursor.lastrowid
+    conn.commit()
+    conn.close()
+
+    print(f"Neuer Kommentar für {kommentar_daten.commentable_type} unter der ID: {kommentar_daten.commentable_id} angelegt. Kommentar-ID: {neue_id}")
+    return neue_id
+
+
 # Funktion Löschen Hinweis
 def loesche_hinweis_aus_db(hinweis_id: int):
 
@@ -322,6 +372,27 @@ def loesche_aufgabe_aus_db(aufgabe_id: int):
     else:
         print(f"Aufgabe mit der ID {aufgabe_id} konnte nicht gelöscht werden")
         return False
+
+def loesche_kommentar_aus_db(kommentar_id: int):
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+
+    sql = """
+    DELETE FROM kommentare WHERE id = ?    
+    """
+
+    cursor.execute(sql, (kommentar_id,))
+    change_line = cursor.rowcount
+    conn.commit()
+    conn.close()
+
+    if change_line > 0:
+        print(F"Kommentar mit der ID {kommentar_id} konnte erfolgreich gelöscht werden.")
+        return True
+    else: 
+        print(f"Kommentar mit der ID: {kommentar_id} konnte nicht gelöscht werden")
+        return False
+    
 
 def update_hinweis_in_db(hinweis_daten: HinweisCreate, hinweis_id: int):
     conn = sqlite3.connect(DB_NAME)
