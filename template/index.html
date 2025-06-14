@@ -7,30 +7,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     
 </head>
 
 <body>
     <header>
-        <img src="../static/images/PerIS-Logo.png" alt="PerIS-Logo">
+        <img src="/static/images/PerIS-Logo.png" alt="PerIS-Logo">
         <h1>Dashboard</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="#">Rechercheübersicht</a></li>
-                <li><a href="#">Aufgabenliste</a></li>
+                <li><a class="active" href="index.html">Dashboard</a></li>
+                <li><a href="recherche_uebersicht.html">Rechercheübersicht</a></li>
+                <li><a href="aufgabenliste.html">Aufgabenliste</a></li>
                 <li><a href="#">Trefferliste</a></li>
                 <li><a href="#">Einsatzliste</a></li>
                 <li><a href="#">Wartungsliste</a></li>
                 <li><a href="#">Beschlussliste</a></li>
                 <li><a href="#">Statistik</a></li>
             </ul>
-
         </nav>
     </header>
 
-    <main>
+    <main id="dashboard-panel-container">
 
         <section id="uebersicht-beschluesse">
             <h2>Übersicht Beschlüsse</h2>
@@ -240,46 +239,14 @@
             </div>
 
             <ul class="hinweis-liste dashboard-list">
-                <li data-note-id="01" class="prio-hoch note-public ">
-                    
-                    <div class="note-header">
-                    <span class="note-title">Wichtiger Systemhinweis</span>
-                    <span class="note-meta">von Admin am 04.05.2025</span>
-                    <span class="note-prio-badge">Hoch <span> - </span><span class="note-vis-badge">public</span></span> 
-                    </div>
-                    
-                    <div class="note-body">Der Server wird heute Nacht um 02:00 Uhr neu gestartet für wichtige Updates.</div>
-                </li>
-
-                <li data-note-id="02" class="prio-mittel note-private">
-                    
-                    <div class="note-header"><span class="note-title">Recherchen checken</span>
-                    <span class="note-meta">von Soranix am 05.05.2025</span>
-                    <span class="note-prio-badge">Mittel <span> - </span><span class="note-vis-badge">private</span></span>
-                    </div>
-                    
-                    <div class="note-body">Du musst noch mit Robert eine Termin finden und die Mobile checken. Ich schreibe noch deutlich mehr extra um ... zu generieren</div>
-
-                </li>
-
-                <li data-note-id="03" class="prio-niedrig note-private">
-                    
-                    <div class="note-header"><span class="note-title">Recherchen checken</span>
-                    <span class="note-meta">von Soranix am 05.05.2025</span>
-                    <span class="note-prio-badge">Niedrig  <span> - </span><span class="note-vis-badge">private</span></span>
-                    </div>
-                    
-                    <div class="note-body">Du musst noch mit Robert eine Termin finden und die Mobile checken </div>
-
-                </li>
-
             </ul>
 
             <div class="dashboard-details-panel hidden">
                 <form action="">
-                    <h3>Infos</h3>
-                    <div><input type="text" name="details-titel" id="details-titel" class="details-titel change-info" disabled required></div>
-                    <div><input type="text" name="details-meta" id="details-meta" class="details-meta" disabled></div>
+                    <span class="close-button-new">&times;</span><h3>Infos</h3>
+                    <div style="padding-left: 5px;"><input type="text" name="details-titel" id="details-titel" class="details-titel change-info" disabled required></div>
+                    <div style="margin: 0; padding: 0; height: 13px;"><input type="text" name="details-meta" id="details-meta" class="details-meta" disabled></div>
+                    <div style="margin: 0; padding: 0; height: 20px;"><input type="text" name="details-meta-02" id="details-meta-02" class="details-meta meta-02" disabled></div>
                     
                     <textarea type="text" name="details-content" id="details-content" class="details-content change-info" disabled required></textarea>
                     <div class="border-unten"></div>
@@ -292,13 +259,12 @@
 
                         <div class="radio" >
                             <span style="font-weight: bold;">Sichtbarkeit:</span>
-                            <span><label for="note-details-vis">öffentlich</label> <input type="radio" name="note-details-vis" id="note-details-vis-public" value="public" disabled class="change-info"></span>
-                            <span><label for="note-details-vis">privat</label> <input type="radio" name="note-details-vis" id="note-details-vis-private" value="private" disabled class="change-info"></span>
+                            <span><label for="note-details-vis">öffentlich</label> <input type="radio" name="note-details-vis" id="note-details-vis-public" value="öffentlich" disabled class="change-info"></span>
+                            <span><label for="note-details-vis">privat</label> <input type="radio" name="note-details-vis" id="note-details-vis-private" value="privat" disabled class="change-info"></span>
                         </div>
                     </div>
                     <div class="buttons">
                         <div>
-                            <button type="button" class="close-button button">X</button>
                             <button type="button" class="change-button button">Bearbeiten</button>
                             <button type="button" class="del-button button">Löschen</button>
                         </div>
@@ -307,14 +273,16 @@
                     </div>
 
                 </form>
+                <div class="comment-container"></div>
 
             </div>
             
-            <img class="add-button" src="../static/images/plus-icon.png" alt="Plus Icon" title="Neue Notiz hinzufügen">
+            <img class="add-button" src="/static/images/plus-icon.png" alt="Plus Icon" title="Neue Notiz hinzufügen">
             
-            <div class="dashboad-add-panel hidden">
+            <div class="dashboard-add-panel hidden">
                 <form action=""> 
                     <div id="header">
+                        <span class="close-button-new">&times;</span>
                         <label for="note-title">Titel:</label>
                         <input type="text" name="note-title" id="note-title" placeholder="Titel..." required>
                         
@@ -336,21 +304,20 @@
                 
                         <div id="vis">
                             <label for="vis" id="vis-titel">Sichtbarkeit:</label>
-                            <input type="radio" name="visibility" id="vis-public" value="public" checked> <label for="vis-public">öffentlich</label>
-                            <input type="radio" name="visibility" id="vis-private" value="private"> <label for="vis-private">Privat</label> 
+                            <input type="radio" name="visibility" id="vis-public" value="öffentlich" checked> <label for="vis-public">öffentlich</label>
+                            <input type="radio" name="visibility" id="vis-private" value="privat"> <label for="vis-private">Privat</label> 
                         </div>
 
                     </div>
                     <div id="buttons">
                         <div>
-                            <button type="button" class="close-button">X</button>
                             <button type="reset" class="clear-button">Clear</button>
                         </div>
-                            <button type="submit">Notiz hinzufügen</button>
-                            
+                            <button type="submit" class="add-note-button">Notiz hinzufügen</button>
                         </div>
                     
                 </form>
+                
 
             </div>
 
@@ -360,42 +327,14 @@
         <section id="offene-aufgaben">
             <h2>Aufgaben</h2>
             <ul class="dashboard-list">
-                <li data-task-id="1" class="dashboard-list-item">
-                    <span class="task-dashboard-title">Aufgabe: Prüfe Lage XYL</span>
-                    <span class="task-status task-status-offen">offen</span>
-                    <span hidden class="task-vis-db">private</span>
-                    <span hidden class="task-prio-db">hoch</span>
-                    <span hidden class="task-creater">PuNi</span>
-                    <span hidden class="task-date">12.04.2025</span>
-                    <textarea hidden class="task-content-db" name="task-comment-content" id="task-comment-content">Hier könnte Ihre Werbung stehen! </textarea>
-                </li>
-
-                <li data-task-id="2" class="dashboard-list-item">
-                    <span class="task-dashboard-title">Lageeintrag 007 in HW prüfen!</span>
-                    <span class="task-status task-status-arbeit">in Arbeit</span>
-                    <span hidden class="task-vis-db">public</span>
-                    <span hidden class="task-prio-db">mittel</span>
-                    <span hidden class="task-creater">PuNi</span>
-                    <span hidden class="task-date">12.04.2025</span>
-                    <textarea hidden class="task-content-db" name="task-comment-content" id="task-comment-content">Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! Hier könnte Ihre Werbung stehen! </textarea>
-                </li>
-
-                <li data-task-id="3" class="dashboard-list-item">
-                    <span class="task-dashboard-title">Aufgabe: Prüfe Lage XYL</span>
-                    <span class="task-status task-status-done">fertig</span>
-                    <span hidden class="task-vis-db">private</span>
-                    <span hidden class="task-prio-db">niedrig</span>
-                    <span hidden class="task-creater">PuNi</span>
-                    <span hidden class="task-date">12.04.2025</span>
-                    <textarea hidden class="task-content-db" name="task-comment-content" id="task-comment-content">Hier könnte Ihre Werbung stehen! </textarea>
-                </li>
             </ul>
+            <img class="add-button" src="/static/images/plus-icon.png" alt="Plus Icon" title="Neue Notiz hinzufügen">
             
 
 
             <div class ="dashboard-details-panel hidden">
                 
-                <h3 class="task-header-title">Details</h3>
+                <span id="aufgaben-close-details" class="close-button-new">&times;</span><h3 class="task-header-title">Details</h3>
                 
                 
                 <form class="task-form">
@@ -407,6 +346,7 @@
 
                     <div class="form-group task-meta">
                         <span class="task-mete-string">Erstellt von <span class="ersteller-von"></span> am <span class="erstellt-am"></span></span>
+                        <div class="task-meta-string-02">geändert am: <span class="geaendert-am"></span></div>
                     </div>
                     
                     <div class="form-group task-content">
@@ -425,26 +365,27 @@
                 
                         <div class="form-group task-vis">
                             <label class="task-vis task-info-field" for="task-visibility" id="task-vis-titel">Sichtbarkeit:</label>
-                            <input class="task-vis task-info-field" type="radio" name="task-visibility" id="task-vis-public" disabled value="public" checked> <label for="task-vis-public">öffentlich</label>
-                            <input class="task-vis task-info-field" type="radio" name="task-visibility" id="task-vis-private" disabled value="private"> <label for="task-vis-private">Privat</label> 
+                            <input class="task-vis task-info-field" type="radio" name="task-visibility" id="task-vis-public" disabled value="öffentlich" checked> <label for="task-vis-public">öffentlich</label>
+                            <input class="task-vis task-info-field" type="radio" name="task-visibility" id="task-vis-private" disabled value="privat"> <label for="task-vis-private">Privat</label> 
                         </div>
                     </div>
                     
 
                     <div class="form-group task-tags">
                         <label>Zugehörige Recherche-IDs</label>
-                        <div class="id-tags">(7734-GR)</div>
+                        <input class="id-tags" type="text" placeholder="IDs...">
                     </div>
 
                     <div class="form-group task-tags">
                         <label>Zugehörige Personen</label>
-                        <div class="person-tags">(PuNi0705)</div>
+                        <input class="person-tags" type="text" placeholder="Person...">
                     </div>
 
                     <div class="form-group task-buttons">
                         <div class="buttons-left">
-                            <button class="close-button" type="button">X</button>
                             <button class="change-button" type="button">Bearbeiten</button>
+                            <button class="del-button" type="button">Löschen</button>
+                            <button type="button" class="abgeschlossen-button" disabled>abschließen</button>
                         </div>
                         <div class="task-button-right">
                             <button class="save-button hidden" type="submit">Speichern</button>
@@ -453,70 +394,72 @@
                         
 
                     </div>
-                    <div class="border-unten"></div>
-                    <h4 style="text-align: center;">Kommentare</h4>
-                    <div class="form-group task-comments-section">
-                        <div class="existing-comments-list">
-                            <ul class="task-comment-list">
-                                <li data-task-comment-id="1" class="test01 zu-task-id-1">
-                                    <img class="rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
-                                    <div>
-                                        <strong class="task-name-date-comment">Nico - (09.05.2025):</strong>
-                                        <p class="task-comment-content">Zweiter Kommentar dazu</p>
+                </form>
+                <div class="comment-container"></div>
+                    
+                    
+                    
+                    
 
-                                    </div>
-                                    
-                                </li>
+            </div>
+            <div class="dashboard-add-panel hidden">
+                <span class="close-button-new">&times;</span><h3 class="task-header-title">Aufgabe Erstellen</h3>
+                
+                
+                <form class="task-form-add">
 
-                                <li data-task-comment-id="2" class="test01 zu-task-id-2">
-                                    <img class="rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
-                                    <div>
-                                        <strong class="task-name-date-comment">Nico - (09.05.2025):</strong>
-                                        <p class="task-comment-content">Zweiter Kommentar dazu</p>
+                    <div class="form-group task-title-add">
+                        <input class="task-titel-add task-info-field" type="text" name="task-titel" id="task-titel" placeholder="Titel..." required>
+                    </div>
 
-                                    </div>
-                                    
-                                </li>
-                                <li data-task-comment-id="3" class="test01 zu-task-id-3">
-                                    <img class="rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
-                                    <div>
-                                        <strong class="task-name-date-comment">Nico - (09.05.2025):</strong>
-                                        <p class="task-comment-content">Zweiter Kommentar dazu</p>
-
-                                    </div>
-                                    
-                                </li>
-                                <li data-task-comment-id="1" class="test01 zu-task-id-2">
-                                    <img class="rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
-                                    <div>
-                                        <strong class="task-name-date-comment">Nico - (09.05.2025):</strong>
-                                        <p class="task-comment-content">Zweiter Kommentar dazu</p>
-
-                                    </div>
-                                    
-                                </li>
-                                <li data-task-comment-id="3" class="test01 zu-task-id-3">
-                                    <img class="rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
-                                    <div>
-                                        <strong class="task-name-date-comment">Nico - (09.05.2025):</strong>
-                                        <p class="task-comment-content">Zweiter Kommentar dazu</p>
-
-                                    </div>
-                                    
-                                </li>
-                            </ul>
-                            
-                            
-                        </div>
-                        <textarea class="new-comment-task change-info-task" placeholder="Neuer Kommentar..."></textarea>
-                        <button type="button" class="add-comment-task-button change-info-task">Kommentar hinzufügen</button>
+                    <div class="form-group task-meta">
+                        <span class="task-mete-string">Erstellt von <span class="ersteller-von">Nico</span>
                     </div>
                     
+                    <div class="form-group task-content">
+                        <textarea class="task-body task-info-field" name="task-body" id="task-body" placeholder="Hier steht der Task Text drin!" required></textarea>    
+                    </div>
+
+                    <div class="task-vis-prio">
+                        <div class="form-group task-prio"> 
+                            <select class="task-prio task-info-field" name="task-prio" id="task-prio" >
+                                <option value="niedrig">Niedrig</option>
+                                <option value="mittel">Mittel</option>
+                                <option value="hoch">Hoch</option>
+                            </select>
+                            <span class="task-status task-info-field disabled"></span>
+                        </div>
+                
+                        <div class="form-group task-vis">
+                            <label class="task-vis task-info-field" for="task-visibility" id="task-vis-titel">Sichtbarkeit:</label>
+                            <input class="task-vis task-info-field" type="radio" name="task-visibility" id="task-vis-public"  value="öffentlich" checked> <label for="task-vis-public">öffentlich</label>
+                            <input class="task-vis task-info-field" type="radio" name="task-visibility" id="task-vis-private"  value="privat"> <label for="task-vis-private">Privat</label> 
+                        </div>
+                    </div>
                     
-                    
+
+                    <div class="form-group task-tags">
+                        <label>Zugehörige Recherche-IDs</label>
+                        <input class="id-tags" type="text" placeholder="IDs...">
+                    </div>
+
+                    <div class="form-group task-tags">
+                        <label>Zugehörige Personen</label>
+                        <input class="person-tags" type="text" placeholder="Person...">
+                    </div>
+
+                    <div class="form-group task-buttons">
+                        <div class="buttons-left">
+                            <button class="creat-button" type="submit">Erstellen</button>
+                        </div>
+                        <div class="task-button-right">
+                            <button class="save-button hidden" type="submit">Speichern</button>
+                            <a href="#"><button class="go-to-button" type="button">></button></a>
+                        </div>
+                    </div>
                 </form>
             </div>
-
+            
 
         </section>
 
@@ -580,15 +523,16 @@
                     <fieldset>
                         <legend class="leg-titel">Löschgrund</legend>
                         <div><label class="del-label">Lösch-Tagger:</label><span class="loesch-Vormerker del-info-delTagger">PuNi0705</span></div>
-                        <div><label for="loeschgrund-auswahl" class="del-label">Löschgrund:</label><select name="loeschgrund-auswahl" id="loeschgrund-auswahl" class="del-info-grund"><option value="datenfehler">Datenfehler</option><option value="fehlanlegung">Fehlanlegung</option><option value="recherchearbeit-abgeschlossen">Re. abgeschlossen</option></select></div>
+                        <div><label for="loeschgrund-auswahl" class="del-label">Löschgrund:</label><select name="loeschgrund-auswahl" id="loeschgrund-auswahl" class="del-info-grund" disabled><option value="datenfehler">Datenfehler</option><option value="fehlanlegung">Fehlanlegung</option><option value="recherchearbeit-abgeschlossen">Re. abgeschlossen</option></select></div>
                         <div><label for="del-grund-text" class="del-label-extra">Lösch Hinweise:</label></div>
                         <div><textarea readonly class="del-grund-text del-info-text" name="del-grund-text" id="del-grund-text"></textarea></div>
                     </fieldset>
 
                     <fieldset>
-                        <legend class="leg-titel">Prüfung</legend>
-                        <div><label for="check-id-eingetragen" class="del-label">ID geprüft/ vorhanden:</label><input type="checkbox" name="check-id-eingetragen" id="check-id-eingetragen" required></div>
-                        <div><label for="check-id-aufgaben" class="del-label">Keine Aufgaben/ Ausleitungen offen:</label> <input type="checkbox" name="check-id-aufgaben" id="check-id-aufgaben" required></div>
+                        <legend class="leg-titel-unten">Prüfung</legend>
+                        <div><label for="check-id-eingetragen" class="del-label-unten">ID geprüft/ vorhanden:</label><input type="checkbox" name="check-id-eingetragen" id="check-id-eingetragen" required></div>
+                        <div><label for="check-id-aufgaben" class="del-label-unten">Keine Aufgaben/ Ausleitungen offen:</label> <input type="checkbox" name="check-id-aufgaben" id="check-id-aufgaben" required></div>
+                        <div><label for="check-id-aufgaben" class="del-label-unten">PerIS-Recherche Löschung:</label> <input type="checkbox" name="check-id-loeschung" id="check-id-loeschung" required></div>
                         <button type="submit" class="delete-button button">Endgültig löschen</button>
                     </fieldset>
                 </form>
@@ -602,9 +546,9 @@
         <section id="offene-ausleitungen">
             <h2>Offene Ausleitungen</h2>
 
-            <ul>
+            <ul class="ul-ausl-dashboard">
 
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
+                <li data-recherche-id="1" class="laufzeit-ok" title="Details zur Recherche-ID 04">
 
                     <div class="line-1">
                         <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
@@ -620,7 +564,7 @@
 
                 </li>
 
-                <li data-recherche-id="04" class="laufzeit-kurz" title="Details zur Recherche-ID 04">
+                <li data-recherche-id="2" class="laufzeit-kurz" title="Details zur Recherche-ID 04">
 
                     <div class="line-1">
                         <div><span class="label">ID:</span><span class="value-ausl-id">12000</span></div>
@@ -635,7 +579,7 @@
                     </div>
 
                 </li>
-                <li data-recherche-id="04" class="laufzeit-mittel" title="Details zur Recherche-ID 04">
+                <li data-recherche-id="3" class="laufzeit-mittel" title="Details zur Recherche-ID 04">
 
                     <div class="line-1">
                         <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
@@ -650,7 +594,7 @@
                     </div>
 
                 </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
+                <li data-recherche-id="4" class="laufzeit-ok" title="Details zur Recherche-ID 04">
 
                     <div class="line-1">
                         <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
@@ -664,136 +608,89 @@
                         <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
                     </div>
 
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
-                <li data-recherche-id="04" class="laufzeit-ok" title="Details zur Recherche-ID 04">
-
-                    <div class="line-1">
-                        <div><span class="label">ID:</span><span class="value-ausl-id">04</span></div>
-                        <div><span class="label">VN:</span><span class="value-ausl-vn">1234/23/123456</span></div>
-                        <div><span class="label">Sys:</span><span class="value-ausl-sys">GR</span></div>
-                    </div>
-
-                    <div class="line-2">
-                        <div><span class="label">SB:</span><span class="value-ausl-sbp">PuNi</span></div>
-                        <div><span class="label">Stand:</span><span class="value-ausl-stand">Step.4</span></div>
-                        <div><span class="label">Zeit:</span><span class="value-ausl-time">200h</span></div>
-                    </div>
-
-                </li>
 
 
 
             </ul>
             <div class="ausl-details-panel hidden">
                 <h3>Recherche Details</h3>
-                <div>(Details Content)</div>
-                <button type="button" class="close-button">Schließen</button>
+                
+                <h4>Vorgang</h4>
+                
+                <div class="ausl-info-meta">
+                    <div><span class="left">ID:</span><span class="left-value ausl-info-id">1234</span></div> <div><span class="right">System:</span><span class="ausl-info-system">Görlitz</span></div> 
+                </div>
+                <div class="ausl-info-meta">
+                    <div><span class="left">VN:</span><span class="left-value ausl-info-vn">1234/12/123123</span></div><div><span class="right">Delikt:</span><span class="ausl-info-delikt">244a StGB</span></div>
+                </div>
+                <div class="ausl-info-meta">
+                    <div><span class="left">Schritt:</span><span class="left-value ausl-info-step">Step 7</span></div><div><span class="right">Zeit:</span><span class="ausl-info-zeit">100h</span></div>
+                </div>
 
+
+                <form class="ausl-done" action="">
+
+                    <fieldset >
+                        <legend>Empfänger</legend>
+                        <div>
+                            <div><span class="label-left">BL:</span><span class="value-left">Sachsen</span></div> <div><span class="label-right">Org.</span><span>Görlitz</span></div> 
+                        </div>
+                        <div class="">
+                            <div><span class="label-left">Person:</span><span class="value-left">Mandy Harmann</span></div> <div><span class="label-right">Tel:</span><span class="">747-3333</span></div> 
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Absprachen</legend>
+                        <div class="absprachen">
+                            <div><label for="step01" class="label-ausl-checkbox-absprachen">Mitteilung K23 / SB </label><input type="checkbox" name="step01" id="step01" required></div>
+                            <div><label for="step02" class="label-ausl-checkbox-absprachen">Kontakt SB</label> <input type="checkbox" name="step02" id="step02" required></div>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Check-Liste</legend>
+                        <div><label for="step01" class="label-ausl-checkbox">LiBiMap erstellen</label><input type="checkbox" name="step02" id="step02" required></div>
+                        <div><label for="step02" class="label-ausl-checkbox">LiBiMap ablegen im Ordner</label> <input type="checkbox" name="step03" id="step03" required></div>
+                        <div><label for="step03" class="label-ausl-checkbox">Treffermeldung schreiben</label> <input type="checkbox" name="step04" id="step04" required></div>
+                        <div><label for="step03" class="label-ausl-checkbox">Treffer Ausleiten</label> <input type="checkbox" name="step05" id="step05" required></div>
+                        <button type="submit" class="button-ausl-checkbox">Ausleiten abschließen</button>
+                    </fieldset>
+                    <button type="button" class="close-button">Schließen</button>
+                </form>
+
+                <form class="ausl-comment-form" action="">
+                    <div class="border-unten"></div>
+                    <h4 style="text-align: center;">Kommentare</h4>
+
+                    <ul class="ausl-comment-ul">
+                        <li data-ausl-comment="1" class="ausl-comment-li zu-ausl-id-1">
+                            <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
+                            <div class="ausl-comment-li-meta"><strong>Admin am 12.04.2025</strong></div>
+                            <div class="ausl-comment-li-content">Hier steht dann der Inhalt!</div>
+                        </li>
+                        <li data-ausl-comment="2" class="ausl-comment-li zu-ausl-id-2">
+                            <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
+                            <div class="ausl-comment-li-meta"><strong>Admin am 12.04.2025</strong></div>
+                            <div class="ausl-comment-li-content">Hier steht dann der Inhalt!</div>
+                        </li>
+                        <li data-ausl-comment="3" class="ausl-comment-li zu-ausl-id-3">
+                            <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
+                            <div class="ausl-comment-li-meta"><strong>Admin am 12.04.2025</strong></div>
+                            <div class="ausl-comment-li-content">Hier steht dann der Inhalt!</div>
+                        </li>
+                        <li data-ausl-comment="3" class="ausl-comment-li zu-ausl-id-4">
+                            <img class="ausl-rotes-kreuz" src="/static/images/rotesKreuz.png" alt="rotesKreuz">
+                            <div class="ausl-comment-li-meta"><strong>Admin am 12.04.2025</strong></div>
+                            <div class="ausl-comment-li-content">Hier steht dann der Inhalt!</div>
+                        </li>
+
+                    </ul>
+                    <textarea class="ausl-comment-send" name="ausl-comment-send" id="ausl-comment-send"></textarea>
+                    <button type="submit" class="ausl-comment-add-Button">Kommentar hinzufügen</button>
+                </form>
             </div>
 
         </section>
@@ -925,7 +822,7 @@
         <p>&copy;2025   -    Nico Puchert    -    PerIS-WebApp</p>
     </footer>  
 
-    <script src="../static/js/script.js"></script>
+    <script type="module" src="/static/js/main.js"></script>
 </body>
 
 </html>

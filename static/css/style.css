@@ -1,3 +1,7 @@
+/* ============================================= */
+/* === STYLES FÜR DIE DASHBOARD SEITE === */
+/* ============================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -85,6 +89,10 @@ main section {
     -2px -2px 5px rgb(66, 66, 66, 0.5);
     border-radius: 5px;
     transition: transform 0.2s ease;
+    position: relative;
+
+    /* HINZUFÜGEN: Wenn ein Element im Panel überläuft, soll das Panel es abschneiden */
+    overflow: hidden;
 }
 
 main section:hover {
@@ -124,10 +132,10 @@ main section h2 {
     border-radius: 5px;
 }
 
-#offene-aufgaben .dashboard-list ul {
+#offene-aufgaben .dashboard-list {
     list-style:  none;
     padding-left: 0;
-    max-height: 80%;;
+    max-height: 80%;
     overflow-y: auto;
     height: 350px;
 }
@@ -265,9 +273,10 @@ main section form fieldset {
 #hinweise ul {
     list-style: none;
     padding-left: 0;
-    height: 300px;
+    height: max-content;
     max-height: 80%;
     overflow-y: auto;
+    max-width: 100%;
 }
 
 #hinweise li {
@@ -277,6 +286,8 @@ main section form fieldset {
     border-bottom: 1px solid #ddd;
     padding: 15px;
     transition: background-color 0.2s ease;
+    overflow: hidden;
+    max-width: 100%;
 }
 
 #hinweise li div {
@@ -315,9 +326,9 @@ main section form fieldset {
 
 #hinweise .note-body {
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 400px;
+    overflow: hidden;         
+    text-overflow: ellipsis;  
+    width: 100%;       
 }
 
 
@@ -360,7 +371,6 @@ main section form fieldset {
 }
 
 #hinweise .filter-tabs button:hover {
-    
     background-color: #ccc;
 }
 
@@ -414,7 +424,7 @@ main section form fieldset {
 }
 
 
-#offene-ausleitungen ul {
+#offene-ausleitungen .ul-ausl-dashboard {
     list-style: none;
     max-height: 80%;
     overflow-y: auto;
@@ -457,7 +467,7 @@ main section form fieldset {
 }
 
 /* Styling für das Panel zum Hinzufügen von Notizen */
-.dashboad-add-panel {
+.dashboard-add-panel {
     background-color: #fff; /* Weißer Hintergrund */
     border: 1px solid #ccc; /* Heller Rahmen */
     border-radius: 5px;     /* Abgerundete Ecken, passend zu den Sektionen */
@@ -471,37 +481,37 @@ main section form fieldset {
     z-index: 1000;
     width: 90%;
     max-width: 500px;
-
+    
     
 }
 
-#hinweise .dashboad-add-panel #header label {
+#hinweise .dashboard-add-panel #header label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-#hinweise .dashboad-add-panel #main #prio label {
+#hinweise .dashboard-add-panel #main #prio label {
     margin-right: 100px;
     font-weight: bold;
 
 }
 
-#hinweise .dashboad-add-panel #main #vis #vis-titel {
+#hinweise .dashboard-add-panel #main #vis #vis-titel {
     font-weight: bold;
     margin-right: 75px;
 }
 
-#hinweise .dashboad-add-panel #main #vis  {
+#hinweise .dashboard-add-panel #main #vis  {
     margin-top: 10px;
     
 }
 
-#hinweise .dashboad-add-panel #main #vis label {
+#hinweise .dashboard-add-panel #main #vis label {
     margin-right: 10px;
 }
 
-#hinweise .dashboad-add-panel #header #note-title {
+#hinweise .dashboard-add-panel #header #note-title {
     width: 100%;
     height: 3em;
     border: 1px solid #ccc;
@@ -510,7 +520,7 @@ main section form fieldset {
     border-radius: 5px;
 }
 
-#hinweise .dashboad-add-panel #header #note-text {
+#hinweise .dashboard-add-panel #header #note-text {
     width: 100%;
     height: 10em;
     border: 1px solid #ccc;
@@ -519,13 +529,7 @@ main section form fieldset {
     border-radius: 5px;
 }
   
-#hinweise .dashboad-add-panel button {
-    background-color: #333;
-    color: white; padding: 10px 15px;
-    border: none; border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-}
+
 
 #hinweise button:hover {
      background-color: #555; 
@@ -537,17 +541,19 @@ main section form fieldset {
          outline: 2px solid gray;
      }
 
-.dashboad-add-panel #buttons {
+.dashboard-add-panel #buttons {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
 }
 
-#hinweise { /* Oder welche Sektion auch immer das .add-note-panel direkt enthält */
+#offene-ausleitungen { /* Oder welche Sektion auch immer das .add-note-panel direkt enthält */
     position: relative; /* WICHTIG für absolute Kinder */
     /* Deine bestehenden Styles für die Sektion bleiben erhalten */
 }
+
+
 
 .dashboard-details-panel {
     background-color: #fff; /* Weißer Hintergrund */
@@ -563,8 +569,9 @@ main section form fieldset {
     transform: translate(-50%, -50%);
     z-index: 1000;
     width: 400px;
-    height: max-content;
-    max-width: 500px;
+    max-width: 100%;
+    max-height: 80%;
+    overflow-y: auto;
 }
 
 #hinweise .dashboard-details-panel h3 {
@@ -584,6 +591,7 @@ main section form fieldset {
 #hinweise .dashboard-details-panel form {
     display: flex;
     flex-direction: column;
+    
 }
 
 #hinweise .dashboard-details-panel .details-titel {
@@ -601,10 +609,14 @@ main section form fieldset {
 #hinweise .dashboard-details-panel .details-meta {
     border: none;
     width: 80%;
-    padding: 5px;
-    padding-bottom: 0;
+    padding: 0px 5px;
     border-radius: 5px;
     font-style: italic;
+}
+#hinweise .meta-space {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #hinweise .dashboard-details-panel .details-content {
@@ -652,13 +664,7 @@ main section form fieldset {
     margin-top: 10px;
 }
 
-#hinweise .dashboard-details-panel .button {
-    background-color: #333;
-    color: white; padding: 5px 10px;
-    border: none; border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-}
+
 
 #hinweise .dashboard-details-panel .buttons div {
     display: flex;
@@ -688,13 +694,9 @@ main section form fieldset {
 
 
 #offene-aufgaben .dashboard-details-panel {
-    
-    height: 85%;
-    width: 85%;
+    height: 90%;
+    width: 90%;
     transform: translate(-50%, -50%);
-    
-
-    max-height: 100%;
     overflow-y: auto;
 }   
 
@@ -711,9 +713,6 @@ main section form fieldset {
     padding: 3px;   
 }
 
-#offene-aufgaben .header {
-    
-}
 
 #offene-aufgaben .task-header-icon {
     height: 30px;
@@ -739,7 +738,19 @@ main section form fieldset {
     margin-left: 0px;
     border-radius: 5px;
     padding: 5px;
-    
+}
+
+#offene-aufgaben .task-titel-add {
+    border: 1px solid #000;
+    font-weight: bold;
+    font-size: 0.9em;
+    align-self: center;
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 0px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 #offene-aufgaben button:hover {
@@ -753,7 +764,8 @@ main section form fieldset {
     }
 
 
-#offene-aufgaben .task-meta .task-mete-string {
+#offene-aufgaben .task-meta .task-mete-string, 
+#offene-aufgaben .task-meta .task-meta-string-02 {
     border: none;
     width: 100%;
     padding: 5px;
@@ -766,7 +778,6 @@ main section form fieldset {
 }
 
 #offene-aufgaben .task-body {
-
     width: 100%;
     margin-top: 3px;
     padding: 5px;
@@ -804,14 +815,6 @@ main section form fieldset {
     font-size: 0.8em;
 }
 
-#offene-aufgaben .task-comments-section strong {
-    font-size: 0.7em;
-    font-style: italic;
-    font-weight: 100;
-
-}
-
-
 .task-comment-list li div {
     white-space: normal;
     word-wrap: break-word;
@@ -824,11 +827,14 @@ main section form fieldset {
 .task-comment-content {
     font-size: 0.8em;
     font-weight: bold;
-    
 }
 
+.task-name-date-comment {
+    font-size: 0.65em;
+    font-style: italic;
+}
 
-.task-comments-section {
+.kommentar-form {
     display: flex;
     flex-direction: column;
 }
@@ -846,14 +852,6 @@ main section form fieldset {
     overflow-y: auto;
 }
 
-.task-buttons button, .add-comment-task-button {
-    background-color: #333;
-    color: white; padding: 5px 10px;
-    border: none; border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
 .add-comment-task-button {
     background-color: #333;
     color: white; padding: 5px 10px;
@@ -862,7 +860,7 @@ main section form fieldset {
     margin-top: 5px;
 }
 
-.test01 {
+.comment-li {
     position: relative;
     max-width: 100%;
     max-height: 100%;
@@ -873,7 +871,6 @@ main section form fieldset {
     right: 5px;
     top: 5px;
     height: 10px;
-    display: none;
     transition: all 0.1s ease;
 }
 
@@ -881,6 +878,7 @@ main section form fieldset {
     cursor: pointer;
     transform: scale(1.2);
 }
+
 
 .task-buttons  {
     display: flex;
@@ -1120,6 +1118,11 @@ main section form fieldset {
     font-size: 0.9em;
 }
 
+#offene-loeschungen .del-label-unten {
+    width: 350px;
+    font-size: 0.9em;
+}
+
 #offene-loeschungen .del-label-extra {
     width: 150px;
     margin-top: 10px;
@@ -1149,4 +1152,721 @@ main section form fieldset {
     cursor: pointer;
     width: 100%;
     
+}
+
+#offene-ausleitungen .ausl-details-panel {
+    
+    background-color: #fff; /* Weißer Hintergrund */
+    border: 1px solid #ccc; /* Heller Rahmen */
+    border-radius: 5px;     /* Abgerundete Ecken, passend zu den Sektionen */
+    padding: 20px;          /* Innenabstand */
+    margin-top: 15px;       /* Abstand zum Plus-Button oder der Liste darüber */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Leichter Schatten für "Tiefe" */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 95%;
+    height: 85%;
+    overflow-y: auto;
+    
+}  
+
+#offene-ausleitungen button:hover {
+    background-color: #555; 
+}
+
+    #offene-ausleitungen input:focus,
+    #offene-ausleitungen textarea:focus,
+    #offene-ausleitungen select:focus {
+        outline: 2px solid gray;
+    }
+
+#offene-ausleitungen { /* Oder welche Sektion auch immer das .add-note-panel direkt enthält */
+    position: relative; /* WICHTIG für absolute Kinder */
+    /* Deine bestehenden Styles für die Sektion bleiben erhalten */
+}
+
+#offene-ausleitungen .ausl-details-panel h3 {
+    text-align: center;
+    color: #FFF;
+    background-color: #333;
+    border-radius: 5px; 
+    padding: 3px;  
+}
+
+#offene-ausleitungen h4 {
+    margin: 15px 0 5px 0;
+}
+
+.leg-titel {
+    font-size: 1em;
+}
+
+#offene-ausleitungen .ausl-info-meta {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+#offene-ausleitungen .ausl-info-meta .left {
+    width: 70px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#offene-ausleitungen .ausl-info-meta .left-value {
+    width: 170px;
+    display: inline-block;
+}
+#offene-ausleitungen .ausl-info-meta .right {
+    width: 70px;
+    display: inline-block;
+}
+
+#offene-ausleitungen .ausl-details-panel span {
+    font-size: 0.9em;
+}
+#offene-ausleitungen .ausl-details-panel label {
+    font-size: 0.9em;
+}
+
+#offene-ausleitungen .label-ausl-checkbox {
+    width: 350px;
+    font-size: 0.9em;
+}
+
+#offene-ausleitungen .button-ausl-checkbox {
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#offene-ausleitungen .label-ausl-checkbox-absprachen {
+    font-size: 0.9em;
+    width: 100%;
+}
+
+#offene-ausleitungen .absprachen {
+    display: flex;
+    justify-content: space-between;
+}
+
+#offene-ausleitungen .ausl-comment-li-meta strong {
+    font-size: 0.7em;
+    font-style: italic;
+    font-weight: 100;
+}
+
+.ausl-comment-li-content {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    display: block;
+}
+
+.ausl-comment-li-content {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.ausl-comment-send {
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+    resize: none;
+}
+
+.ausl-comment-ul {
+
+    height: 200px;         /* Eine vernünftige Testhöhe */
+    overflow-y: auto;      /* Beibehalten für Scrollbarkeit */
+    
+}
+
+.ausl-comment-add-Button {
+
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.ausl-comment-li {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.ausl-rotes-kreuz {
+    height: 10px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transition: transform 0.2s ease;
+    display: none;
+}
+
+.ausl-rotes-kreuz:hover {
+    transform: scale(1.2);
+}
+
+#offene-ausleitungen li:hover {
+    .ausl-rotes-kreuz {
+        display: block;
+    }
+}
+
+#offene-ausleitungen .close-button {
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+}
+
+#offene-ausleitungen .label-left {
+    width: 60px;
+}
+
+#offene-ausleitungen .value-left {
+    display: inline-block;
+    width: 160px;
+}
+
+#offene-ausleitungen .label-right {
+    width: 60px;
+}
+
+
+/* ============================================= */
+/* === STYLES FÜR RECHERCHE ÜBERSICHT SEITE === */
+/* ============================================= */
+
+.recherche-tabelle-sektion {
+    position: relative; 
+    overflow-x: auto;   
+    overflow-y: visible;    
+}
+
+.recherche-tabelle {
+    width: 100%;        
+    border-collapse: collapse; 
+    font-size: 0.8em;
+    background-color: #e6e6e6;
+    border-radius: 5px;        
+}
+
+.recherche-tabelle th {
+    background-color: #333;
+    color: #fff; 
+    font-weight: bold; 
+}
+
+.recherche-tabelle tbody tr {
+    transition: all 0.2s ease;
+}
+
+.recherche-tabelle tbody tr:hover {
+    background-color: #b7b7b7; /* Etwas dunklerer Grauton beim Überfahren mit der Maus */
+}
+
+.recherche-tabelle th,
+.recherche-tabelle td {
+    border: 1px solid #f2f2f2; /* Dünne graue Linien um jede Zelle */
+    padding: 8px;           /* Innenabstand in den Zellen, damit der Text nicht am Rand klebt */
+    text-align: center;  
+}
+
+#main-dashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+#main-dashboard .dashboard-statistik-sektion {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#main-dashboard .dashboard-statistik-sektion > div {
+    width: 49%;
+}
+
+.standort-filter {
+    height: 45px;
+    text-align: center;
+    margin: 5px 5px;
+    border: none;
+    background-color: #e6e6e6;
+}
+
+.standort-filter option {
+    color: #000000;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 20px;
+}
+.grid-item {
+    border: none; border-radius: 4px;
+
+    text-align: center;
+  }
+  
+.grid-01 {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+
+  }
+
+.g1 {
+    font-size: 0.8em;
+    padding: 3px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    margin: 2px 0;
+    background-color: #666;
+    color: #FFF;
+    transition: all 0.2s ease;
+    font-weight: bold;
+}
+
+.g1:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.g1.active {
+    background-color: #333;
+}
+
+.filter-btn-aktiv.active, .trueBtn.active {
+    background-color: green;
+    color: #FFF;
+}
+.filter-btn-ablauf.active {
+    background-color: orange;
+    color: #FFF;
+}
+.filter-btn-inaktiv.active {
+    background-color: brown;
+    color: #FFF;
+}
+
+
+
+.filter-tools-tabelle {
+    padding: 5px;
+}
+
+.grid-02 {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+
+}
+
+.statistik-feld-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.statistik-feld-reihen {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    width: 30%;
+    font-size: 0.9em;
+    .label {
+        font-weight: bold;
+        width: 100px;
+    }
+}
+
+.grid-03 {
+    display: grid;
+    grid-template-columns: 1fr;
+
+}
+
+.grid-03 img {
+    border-radius: 30px;
+    transition: all 0.2s ease;
+}
+
+.grid-03 img:hover {
+    background-color: #b0b0b0;
+    border-radius: 30px;
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+#tabelleSucheInput {
+    height: 30px;
+    align-self: center;
+    padding: 1px;
+    border: 2px solid #ccc;
+}
+
+.auswahl-suche {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    align-self: center;
+}
+
+.grid-kuerzel {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.grid-kuerzel span {
+    width: 60px;
+    text-align: left;
+}
+
+.standort {
+    display: flex;
+    font-size: 0.7em;
+}
+
+/* Der äußere Container des Modals (der dunkle Hintergrund) */
+#panel-recherche-hinzufuegen, #panel-recherche-oeffnen {
+
+  position: fixed; /* Bleibt beim Scrollen an der gleichen Position */
+  z-index: 1000; /* Stellt sicher, dass es über allem anderen liegt */
+  left: 0;
+  top: 0;
+  width: 100%; /* Volle Breite */
+  height: 100%; /* Volle Höhe */
+  overflow: auto; /* Aktiviert Scrollen, wenn der Inhalt zu groß ist */
+  background-color: rgba(0,0,0,0.5); /* Dunkler, halbtransparenter Hintergrund */
+  display: flex; /* Für Zentrierung des Inhalts */
+  align-items: center; /* Vertikale Zentrierung */
+  justify-content: center; /* Horizontale Zentrierung */
+}
+
+/* Der eigentliche Inhalt des Modals (der weiße Kasten) */
+.panel-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px; /* Abgerundete Ecken */
+  width: 90%; /* Breite des Inhalts */
+  max-height: 900px;
+  max-width: 1500px; /* Maximale Breite */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  position: relative; /* Wichtig für den Schließen-Button */
+  animation-name: animatetop; /* Optional: Animation beim Öffnen */
+  animation-duration: 0.4s
+}
+
+/* Schließen-Button (X) */
+.close-button-new {
+  color: #c89898;
+  float: right; /* Nach rechts floaten */
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute; /* Positioniert relativ zum .modal-content */
+  top: 0px;
+  right: 10px;
+  cursor: pointer; /* Zeigt an, dass es klickbar ist */
+  transition: all 0.2s ease;
+}
+
+.close-button-new:hover,
+.close-button-new:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+#panel-recherche-hinzufuegen h2, #panel-recherche-oeffnen h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+    background-color: #333;
+    color: #FFF;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+#panel-recherche-hinzufuegen h3, #panel-recherche-oeffnen h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #333;
+    color: #FFF;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+
+#panel-recherche-hinzufuegen .content-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.section-content-new > div,
+.section-content-mid section form > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+
+}
+
+.section-content-new > div {
+    margin: 20px 20px;
+}
+
+.content-main input:focus,
+.content-main  textarea:focus,
+.content-main  select:focus {
+    outline: 2px solid gray;
+}
+
+.section-content-new input, .filter-tools-tabelle select, .content-main select,
+.section-content-mid input, .filter-tools-tabelle select, .content-main select {
+    border: 1px solid #888;
+    font-size: 1em;
+    align-self: center;
+    width: 100%;
+    margin-top: 2px;
+    height: 20px;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+/* Recherche Öffnen Inputs diesigen */
+.daten-container input, .daten-container select {
+    border: 1px solid #888;
+    font-size: 1em;
+    align-self: center;
+    width: 100%;
+    margin-top: 2px;
+    height: 20px;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+
+
+.section-content-new label,
+.section-content-mid label,
+.daten-container {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.section-content-mid label, 
+.daten-container label {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.section-content-right {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 15px 0;
+}
+
+.save-button, .reset-button, .change-button, .creat-button, .del-button, .clear-button, .add-note-button,
+.btn-weiter, .btn-zurueck, .close-button, .go-to-button, .abgeschlossen-button {
+    background-color: #333;
+    color: white; padding: 5px 10px;
+    border: none; border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: all 0.2s ease;
+}
+
+#panel-recherche-hinzufuegen .save-button:hover, .reset-button:hover, .change-button:hover, .creat-button:hover,
+#panel-recherche-oeffnen .save-button:hover, .reset-button:hover, .change-button:hover, .creat-button:hover .btn-weiter:hover, .btn-zurueck:hover {
+     background-color: #555; 
+     
+}
+
+#panel-recherche-hinzufuegen .new-recherche-buttons, .user-vorlage-button, .beschluss-vorlage-button  {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-content-new ul, .daten-container ul {
+    position: absolute;
+    list-style:  none;
+    overflow-y: auto;
+    z-index: 1000;
+
+    max-height: 200px;
+    width: 120%;
+
+    background-color: #fff;
+    font-size: 0.9em;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 5px;
+}
+
+#new-recherche-standort-vorschlaege, #new-recherche-grund-vorschlaege, #new-recherche-user-vorschlaege {
+    width: 100%;
+}
+
+
+.section-content-new li, .daten-container li {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    flex-direction: column;
+
+    padding: 10px 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;   
+}
+
+.section-content-new li:hover,
+.daten-container li:hover  {
+    cursor: pointer;
+    background-color: #d5d5d5;
+}
+
+.section-content-right ul {
+    position: relative;
+    list-style:  none;
+    overflow-y: auto;
+    z-index: 1000;
+
+    height: 170px;
+    width: 100%;
+
+    background-color: #fff;
+    font-size: 0.9em;
+    border-radius: 5px;
+
+    margin-bottom: 5px;
+}
+
+.section-content-right li {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    flex-direction: column;
+
+    padding: 10px 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;   
+}
+
+.section-content-right li:hover {
+    cursor: pointer;
+    background-color: #d5d5d5;
+}
+
+td input[type="text"] {
+    width: calc(100% - 16px); /* Füllt die Zelle aus, abzüglich Padding */
+    box-sizing: border-box; /* Wichtig, damit Padding und Border in der Breite enthalten sind */
+    border: 1px solid #007bff;
+    padding: 7px;
+    font-size: 1em;
+    outline: none; /* Entfernt den blauen Fokus-Rahmen */
+}
+
+.recherche-tabelle tbody tr.row-selected td {
+    background-color: #d2d8ff;
+}
+.recherche-tabelle tbody tr {
+
+    user-select: none; 
+       -webkit-user-select: none;
+       -moz-user-select: none;
+       -ms-user-select: none; 
+    
+}
+
+#kontext-menue-rechercheuebersicht {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+    padding: 5px 0;
+    z-index: 1000;
+    min-width: 180px;
+    border-radius: 5px;
+}
+
+.kontext-menue ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.kontext-menue li button {
+    display: block;
+    width: 100%;
+    padding: 8px 15px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.kontext-menue li button:hover { background-color: #f0f0f0; }
+
+
+.daten-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Erstellt 6 Spalten */
+    grid-template-rows: repeat(5, 1fr);    /* Erstellt 4 Zeilen */
+    gap: 5px 30px; /* Optional: Fügt einen Abstand zwischen den Rasterzellen hinzu */
+}
+
+.oeffne-recherche-footer {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.status-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.status-btn button:disabled {
+    background-color: #b0b0b0;
+}
+
+
+
+
+#aufgabe-maincontainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#aufgabe-aufgabencontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.aufgabenpanel, .panel-filter {
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(255,255,255,0.1),
+    -2px -2px 5px rgb(66, 66, 66, 0.5);
+    border-radius: 5px;
+    position: relative;
+
+    /* HINZUFÜGEN: Wenn ein Element im Panel überläuft, soll das Panel es abschneiden */
+    overflow: hidden;
 }
