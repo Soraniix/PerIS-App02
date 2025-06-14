@@ -19,7 +19,7 @@
             <ul>
                 <li><a class="active" href="index.html">Dashboard</a></li>
                 <li><a href="recherche_uebersicht.html">Rechercheübersicht</a></li>
-                <li><a href="#">Aufgabenliste</a></li>
+                <li><a href="aufgabenliste.html">Aufgabenliste</a></li>
                 <li><a href="#">Trefferliste</a></li>
                 <li><a href="#">Einsatzliste</a></li>
                 <li><a href="#">Wartungsliste</a></li>
@@ -29,7 +29,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="dashboard-panel-container">
 
         <section id="uebersicht-beschluesse">
             <h2>Übersicht Beschlüsse</h2>
@@ -314,7 +314,6 @@
                             <button type="reset" class="clear-button">Clear</button>
                         </div>
                             <button type="submit" class="add-note-button">Notiz hinzufügen</button>
-                            
                         </div>
                     
                 </form>
@@ -335,7 +334,7 @@
 
             <div class ="dashboard-details-panel hidden">
                 
-                <h3 class="task-header-title">Details</h3>
+                <span id="aufgaben-close-details" class="close-button-new">&times;</span><h3 class="task-header-title">Details</h3>
                 
                 
                 <form class="task-form">
@@ -384,9 +383,9 @@
 
                     <div class="form-group task-buttons">
                         <div class="buttons-left">
-                            <button class="close-button" type="button">X</button>
                             <button class="change-button" type="button">Bearbeiten</button>
                             <button class="del-button" type="button">Löschen</button>
+                            <button type="button" class="abgeschlossen-button" disabled>abschließen</button>
                         </div>
                         <div class="task-button-right">
                             <button class="save-button hidden" type="submit">Speichern</button>
@@ -441,7 +440,6 @@
 
                     <div class="form-group task-tags">
                         <label>Zugehörige Recherche-IDs</label>
-                        <div class="id-tags">(7734-GR)</div>
                         <input class="id-tags" type="text" placeholder="IDs...">
                     </div>
 

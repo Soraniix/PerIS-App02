@@ -1,6 +1,5 @@
-import { togglePanelVisibility } from "./uiHelpers.js";
-import { markiereListenElementAlsSelektiert } from "./uiHelpers.js";
-import { initialisiereKommentarfunktion } from "./kommentare.js"
+import { togglePanelVisibility, markiereListenElementAlsSelektiert } from "../../../helpers/uiHelpers.js"
+import { initialisiereKommentarfunktion } from "../../../components/kommentare.js"
 
 
 export function initialisiereHinweisSektion(){
@@ -91,7 +90,7 @@ export function initialisiereHinweisSektion(){
 
         // Event hinzufügen von Recherchen
         if(addNoteForm) {
-        addNoteForm.addEventListener('click', async function(event) {
+        addNoteForm.addEventListener('submit', async function(event) {
 
 
 

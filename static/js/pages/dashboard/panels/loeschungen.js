@@ -1,5 +1,4 @@
-import { togglePanelVisibility } from "./uiHelpers.js"
-import { markiereListenElementAlsSelektiert } from "./uiHelpers.js"
+import { togglePanelVisibility, markiereListenElementAlsSelektiert } from "../../../helpers/uiHelpers.js"
 
 export function initialisiereLoeschungenSektion() {
     const loeschungSelektion = document.querySelector("#offene-loeschungen")

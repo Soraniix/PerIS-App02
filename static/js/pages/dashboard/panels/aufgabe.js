@@ -1,6 +1,6 @@
-import { initialisiereKommentarfunktion } from "./kommentare.js"
-import { togglePanelVisibility } from "./uiHelpers.js"
-import { markiereListenElementAlsSelektiert } from "./uiHelpers.js"
+import { initialisiereKommentarfunktion } from "../../../components/kommentare.js"
+import { togglePanelVisibility, markiereListenElementAlsSelektiert } from "../../../helpers/uiHelpers.js"
+import { createAufgabe, delAufgabe, getAufgaben } from "../../../api/aufgabenApi.js"
 
 
 export function initialisiereAufgabenSektion() {
@@ -26,6 +26,7 @@ export function initialisiereAufgabenSektion() {
         const addPanel = aufgabenSektion.querySelector(".dashboard-add-panel")
         const panelAddButton = aufgabenSektion.querySelector(".add-button")
         const addPanelCloseBtn = aufgabenSektion.querySelector(".dashboard-add-panel .close-button-new")
+        const addDetailsCloseBtn = aufgabenSektion.querySelector("#aufgaben-close-details")
         const addPanelCreatBtn = aufgabenSektion.querySelector(".dashboard-add-panel .creat-button")
         const addPanelGoToBtn = aufgabenSektion.querySelector(".dashboard-add-panel .go-to-button")
         const addPanelForm = aufgabenSektion.querySelector(".dashboard-add-panel .task-form-add")
@@ -72,21 +73,11 @@ export function initialisiereAufgabenSektion() {
                 "personangehoerigkeit": personangehoerigkeit,
                 "zuletzt_geaendert_am": null
             }
-            console.log("Sende dieses Objekt an das Backend:", neueAufgabeDaten);
+
             try {
-                const response = await fetch("/api/aufgaben", {
-                    method: "POST",
-                    headers: {"Content-Type" : "application/json"},
-                    body: JSON.stringify(neueAufgabeDaten)
-                })
 
-                if (!response.ok){
-                    throw new Error(`HTTP Fehler! Status: ${response.status}`);
-                }
-
-                const erstelleHinweisInfo = await response.json();
-                console.log("Erfolgreich gespeichert! Server Antwort:", erstelleHinweisInfo);
-
+                console.log("Sende dieses Objekt an das Backend:", neueAufgabeDaten);
+                await createAufgabe(neueAufgabeDaten);
                 if (typeof ladeundZeigeAufgaben === "function") {
                     ladeundZeigeAufgaben()
                 }
@@ -95,8 +86,7 @@ export function initialisiereAufgabenSektion() {
 
             }
             catch (error) {
-                console.error("Fehler beim Senden/Speichern der neuen Aufgabe", error);
-                alert("Es gab einen Fehler bei der Speicherung oder Erstellung der neuen Aufgabe: " + error.message);
+                console.error("Fehler beim Erstellen der Aufgaben", error);
             }
 
             });
@@ -112,39 +102,26 @@ export function initialisiereAufgabenSektion() {
                     const check = confirm("Sind Sie sicher, dass Sie diese Aufgabe löschen möchten?")
                     if (check) {
                         try {
-                            console.log(idSelected)
-                            const response = await fetch(`/api/aufgaben/${idSelected}`, {
-                                method: "DELETE"
-                            })
-                            if (!response.ok) {
-                                throw new Error(`HTTP Fehler! Status: ${response.status}`)
-                            }
-                            const erstelleAufgabeInfo = await response.json()
-                            console.log("Erfolgreich gelöscht! Server Antwort: ", erstelleAufgabeInfo)
-
-                            if (typeof ladeundZeigeAufgaben === "function") {
-                                ladeundZeigeAufgaben()
-                            }
-                            addTaskForm.reset()
-                            togglePanelVisibility(addAufgabeDetailsPanel, false)
-
-                            
+                        await delAufgabe(idSelected);
+                        if (typeof ladeundZeigeAufgaben === "function") {
+                            ladeundZeigeAufgaben()
+                        }
+                        addTaskForm.reset()
+                        togglePanelVisibility(addAufgabeDetailsPanel, false)
                         } catch (error) {
                             console.error("Fehler beim Löschen der Aufgabe", error)
                             alert("Fehler beim Löschen der Aufgabe: " + error.message)
                         }
+
+
                     }
                 }
+
             })
         }
         
 
 
-        addAufgabeDelBtn.addEventListener("click", (event) => {
-            let selectedList = aufgabenSektion.querySelector("ul .selected")
-            togglePanelVisibility(addAufgabeDetailsPanel, false)
-            selectedList.remove()
-        })
 
         if (addKommentarButton) {
             addKommentarButton.addEventListener("click", (event) => {
@@ -312,8 +289,8 @@ export function initialisiereAufgabenSektion() {
         }
 
 
-        if (addTaskCloseButton) {
-            addTaskCloseButton.addEventListener("click", (event) => {
+        if (addDetailsCloseBtn) {
+            addDetailsCloseBtn.addEventListener("click", (event) => {
                 togglePanelVisibility(addAufgabeDetailsPanel, false)
                 addTaskChangeList.forEach(eintrag => eintrag.disabled = true)
                 addTaskForm.reset()
@@ -404,14 +381,8 @@ export function initialisiereAufgabenSektion() {
             }
 
             try {
-                const response = await fetch("/api/aufgaben");
-                if(!response.ok) {
-                    throw new Error(`HTTP Fehler! Status: ${response.status}`);
-                }
-
-                const aufgabenDatenArray = await response.json();
-                console.log("Empfangene Aufgaben: ", aufgabenDatenArray);
-
+                
+                const aufgabenDatenArray = await getAufgaben();
                 aufgabenListeUl.innerHTML = ""
 
                 if (aufgabenDatenArray.length === 0) {

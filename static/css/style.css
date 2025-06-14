@@ -1680,7 +1680,7 @@ main section form fieldset {
 }
 
 .save-button, .reset-button, .change-button, .creat-button, .del-button, .clear-button, .add-note-button,
-.btn-weiter, .btn-zurueck, .close-button {
+.btn-weiter, .btn-zurueck, .close-button, .go-to-button, .abgeschlossen-button {
     background-color: #333;
     color: white; padding: 5px 10px;
     border: none; border-radius: 4px;
@@ -1845,3 +1845,28 @@ td input[type="text"] {
     background-color: #b0b0b0;
 }
 
+
+
+
+#aufgabe-maincontainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#aufgabe-aufgabencontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.aufgabenpanel, .panel-filter {
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(255,255,255,0.1),
+    -2px -2px 5px rgb(66, 66, 66, 0.5);
+    border-radius: 5px;
+    position: relative;
+
+    /* HINZUFÜGEN: Wenn ein Element im Panel überläuft, soll das Panel es abschneiden */
+    overflow: hidden;
+}

@@ -1,4 +1,4 @@
-import { togglePanelVisibility } from "./uiHelpers.js";
+import { togglePanelVisibility } from "../../helpers/uiHelpers.js"
 
 
 export function initialisiereRechercheAddPanel() {
@@ -372,5 +372,37 @@ export function initialisiereRechercheAddPanel() {
             togglePanelVisibility(containerPanelNeueRecherche, false)
         }
     }
+}
+
+// Panel für Recherche-Details öffnen und mit Daten befüllen
+export function openRecherchePanel(selectedRows) {
+    // Panel-Elemente holen
+    const panelRahmen = document.getElementById("panel-recherche-oeffnen");
+    const panelContent = panelRahmen ? panelRahmen.querySelector(".panel-content") : null;
+    if (!panelRahmen || !panelContent || !selectedRows || selectedRows.length === 0) {
+        return;
+    }
+
+    // Nur die erste selektierte Zeile verwenden (Mehrfachauswahl möglich, aber meist nur eine relevant)
+    const row = selectedRows[0];
+    const cells = row ? row.querySelectorAll("td") : [];
+    if (!cells || cells.length === 0) return;
+
+    // IDs der Input-Felder im Panel (müssen mit HTML übereinstimmen)
+    const fieldMap = [
+        "#recherche-id", "#recherche-vn", "#recherche-name", "#recherche-standort", "#recherche-system", "#recherche-delikt", "#recherche-von", "#recherche-bis", "#recherche-grundErhebung", "#recherche-grundErstellung", "#recherche-ersteller", "#recherche-erstelldatum", "#recherche-restlaufzeit", "#recherche-ablaufdatum", "#recherche-status", "#recherche-loeschung", "#recherche-loeschgrund", "#recherche-loescher", "#recherche-treffer", "#recherche-anzahlTreffer", "#recherche-ausgeleitet", "#recherche-einsatz", "#recherche-wartung"
+    ];
+
+    // Fülle die Felder im Panel mit den Werten aus der Zeile
+    fieldMap.forEach((selector, idx) => {
+        const input = panelContent.querySelector(selector);
+        if (input && cells[idx]) {
+            input.value = cells[idx].textContent.trim();
+        }
+    });
+
+    // Panel sichtbar machen
+    togglePanelVisibility(panelRahmen, true);
+    togglePanelVisibility(panelContent, true);
 }
 

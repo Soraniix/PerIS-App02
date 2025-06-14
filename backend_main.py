@@ -62,6 +62,7 @@ async def api_get_alle_kommentare(commentable_type: str, commentable_id: int):
     return kommentare
 
 
+
 # Definiere eine "Route" für den Wurzelpfad ("/")
 # Wenn jemand diese URL aufruft, wird die Funktion darunter ausgeführt.
 @app.get("/")
@@ -82,15 +83,13 @@ async def read_recherche_uebersicht():
 async def read_index():
     return FileResponse("template/index.html")
 
+@app.get("/aufgabenliste.html")
+async def read_aufgabenliste():
+    return FileResponse("template/aufgabenliste.html")
+
 
 @app.post("/api/hinweise", status_code=201)
 async def api_erstelle_neuen_hinweis(hinweis_payload: HinweisCreate):
-    # 'hinweis_payload' wird von FastAPI automatisch mit den Daten aus dem
-    # Request-Body (den dein Frontend als JSON sendet) gefüllt und validiert.
-
-    # Hier könnten wir den Ersteller dynamisch ermitteln, wenn wir Benutzer-Logins hätten.
-    # Fürs Erste nehmen wir einen festen Wert oder den, den du in JavaScript hast.
-
     ersteller_name = "Nico" # Oder später aus einem User-Login
 
     try:

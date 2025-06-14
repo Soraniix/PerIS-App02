@@ -1,4 +1,4 @@
-import { togglePanelVisibility } from "./uiHelpers.js";
+import { togglePanelVisibility } from "../../../helpers/uiHelpers.js"
 
 
 export function initialisiereBeschluesse() {

@@ -1,63 +1,20 @@
-import { initialisiereHinweisSektion } from "./hinweise.js";
-import { initialisiereKameraZeitenSektion } from "./kameraZeiten.js";
-import { initialisiereRechercheTabelleFilter } from "./filterRechercheTabelle.js";
-import { initialisiereAufgabenSektion } from "./aufgabe.js";
-import { initialisiereBeschluesse } from "./beschluesse.js";
-import { initialisiereAusleitungSektion } from "./ausleitungen.js";
-import { initialisiereLoeschungenSektion } from "./loeschungen.js";
-import { initialisiereRechercheAddPanel } from "./addRecherche.js";
+import { initalisiereAllePanel } from "./pages/dashboard/dashboard.js";
+import { initalisiereRechercheuebersicht } from "./pages/rechercheuebersicht/rechercheuebersicht.js";
 
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
-
-    // Add-Panel-Recherche - Rechercheübersicht
-    const containerPanelNeueRechercheElement = document.querySelector("#panel-recherche-hinzufuegen")
-    if (containerPanelNeueRechercheElement) {
-        initialisiereRechercheAddPanel();
+    const dashboardPanelContainer = document.querySelector("#dashboard-panel-container")
+    if (dashboardPanelContainer){
+        initalisiereAllePanel();
     }
+
+    const dashboardMainBereich = document.querySelector("#main-dashboard")
+    if (dashboardMainBereich) {
+        initalisiereRechercheuebersicht();
+    }
+
+
     
-    
-    // Filterlogik aus der Rechercheübersicht-Tabelle 
-    const sucheLogikSektionElement = document.querySelector(".filter-tools-tabelle")
-    if (sucheLogikSektionElement) {
-        initialisiereRechercheTabelleFilter();
-    }
-
-    // Löschungen - Dashboard
-    const loeschungSelektionElement = document.querySelector("#offene-loeschungen")
-    if (loeschungSelektionElement){
-        initialisiereLoeschungenSektion()
-    }
-
-    // Ausleitungen - Dashboard 
-    const ausleitungenSektionElement = document.querySelector("#offene-ausleitungen")
-    if(ausleitungenSektionElement){
-        initialisiereAusleitungSektion()
-    }
-
-    // Beschlüsse - Dashboard
-    const beschluesseSektionElement = document.querySelector("#uebersicht-beschluesse")
-    if (beschluesseSektionElement) {
-        initialisiereBeschluesse()
-    }
-
-    // Aufgabensektion - Dashboard
-    const aufgabenSektionElement = document.querySelector("#offene-aufgaben")
-    if (aufgabenSektionElement){
-        initialisiereAufgabenSektion()
-    }
-
-    // Hinweissektion - Dashboard
-    const hinweisSektionElement = document.querySelector("#hinweise")
-    if (hinweisSektionElement) {
-        initialisiereHinweisSektion();
-    }
-    
-    // Kamerazeiten - Dashboard
-    const kameraZeitenSektionElement = document.querySelector("#kamera-zeiten")
-    if (kameraZeitenSektionElement) {
-        initialisiereKameraZeitenSektion();
-    }
 });

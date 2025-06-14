@@ -1,7 +1,4 @@
-import { initialisiereAufgabenSektion } from "./aufgabe.js"
-import { togglePanelVisibility } from "./uiHelpers.js"
-
-
+import { togglePanelVisibility } from "../../../helpers/uiHelpers.js"
 
 
 // Var Deklaration & DOM 
